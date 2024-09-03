@@ -1,0 +1,453 @@
+\mychapter{Referencial Teórico}
+\label{Cap:ReferencialTeorico}
+
+Este capítulo aborda a prática da reconciliação de dados, fundamental para garantir a consistência e precisão das informações coletadas em diferentes contextos científicos e industriais e utilizada como base no desenvolvimento do \textit{software}. É detalhada sua definição, evolução e aplicação na indústria, destacando sua contribuição para a otimização de processos e a análise proativa. 
+    
+Além disso, é discutido o método dos multiplicadores de Lagrange como uma abordagem matemática eficaz para resolver problemas complexos de reconciliação de dados. Por fim, a sinergia entre a indústria e a internet é contextualizada, evidenciando o papel crucial do \textit{software} na atualidade.
+
+\section{Reconciliação de Dados}
+\subsection{Definição}
+
+A reconciliação de dados é uma prática de tratamento de dados em diversos campos da ciência e da engenharia, visando garantir a consistência e a precisão dos dados coletados a partir de diferentes fontes \cite{datarecshakar}. Em sua essência, a reconciliação de dados consiste no processo de comparar e corrigir dados divergentes ou inconsistentes, a fim de garantir que todas as informações disponíveis estejam alinhadas e concordantes. Esse processo é essencial em contextos nos quais múltiplas fontes de dados são utilizadas, como em sistemas industriais, processos químicos, redes de sensores e modelagem ambiental \cite{datarecshakar}.
+        
+A reconciliação de dados envolve a aplicação de técnicas estatísticas e matemáticas para identificar e corrigir discrepâncias entre os dados observados e os valores esperados, com base em modelos e relações conhecidas \cite{datarecragnoli}. Isso pode incluir a detecção e correção de erros sistemáticos ou aleatórios, a estimativa de valores ausentes e a harmonização de diferentes tipos de dados. Ao garantir a consistência e a confiabilidade dos dados, a reconciliação de dados permite uma análise mais precisa e uma tomada de decisão mais fundamentada em uma variedade de contextos aplicados \cite{datarecragnoli}.
+    
+Em suma, a reconciliação de dados desempenha um papel crucial na garantia da qualidade e integridade dos dados em diferentes áreas de aplicação. Ao alinhar e corrigir dados discrepantes, essa prática permite uma análise mais confiável e uma interpretação mais precisa dos fenômenos estudados, contribuindo assim para avanços significativos em diversos campos da ciência e da engenharia \cite{datarecshakar}.
+    
+\subsection{Reconciliação de Dados no âmbito Industrial}
+    
+No começo da década de 1960 se entendeu a importância do controle de processos químicos industriais por computadores que aplicavam técnicas matemáticas \cite{computecontrol}, dessa forma surge a área da computação voltada à reconciliação de dados, na qual há a comparação, validação e correção de informações coletadas em diferentes pontos do processo, a fim de determinar a consistência dos dados, a qualidade dos mesmos ou até otimizar os processos \cite{datarecshakar}.
+    
+Ao longo das últimas décadas, os métodos de reconciliação de dados evoluíram significativamente, acompanhando os avanços tecnológicos e as demandas crescentes da indústria \cite{datarecsurvey}. Com o advento de sistemas de automação mais avançados, sensores inteligentes e a proliferação de dispositivos conectados, a quantidade de dados gerados nas operações industriais aumentou drasticamente \cite{datarecsurvey}. Nesse contexto, a reconciliação, análise e gestão de dados tornaram-se ferramentas indispensáveis para garantir a integridade e a confiabilidade das informações coletadas em tempo real \cite{aularecon}.
+    
+Na era contemporânea, a reconciliação de dados desempenha um papel crucial na otimização dos processos industriais, contribuindo para a eficiência operacional e a redução de custos. Sistemas avançados de reconciliação não apenas comparam e validam dados, mas também utilizam algoritmos sofisticados para identificar padrões, tendências e anomalias \cite{datarecragnoli}. Essa capacidade analítica permite que as indústrias ajam proativamente, antecipando-se a problemas potenciais, otimizando a produção e melhorando a qualidade dos produtos finais \cite{datarecshakar}.
+
+\subsection{Reconciliação de Dados Pelo Método dos Multiplicadores de Lagrange}
+    
+No sistema em questão, a reconciliação de dados vai ser feita com a minimização de funções multivariáveis utilizando o método dos multiplicadores de Lagrange, desenvolvido pelo matemático Joseph Louis Lagrange (1739-1813), que desenvolveu um método de encontrar o mínimo ou máximo de uma função multivariável sujeita a uma ou várias condições de restrição \cite{lagrangebio}.
+    
+Nesse contexto, a aplicação do método dos multiplicadores de Lagrange destaca-se como uma abordagem matemática sofisticada e eficaz para resolver problemas complexos de reconciliação de dados \cite{optimizationlagrange}. A técnica proporciona uma estrutura robusta para lidar com situações em que é necessário otimizar uma função multivariável sujeita a restrições específicas. Ao utilizar os multiplicadores de Lagrange, o sistema ganha a capacidade de encontrar soluções que atendam simultaneamente às condições impostas, proporcionando uma reconciliação precisa e eficiente dos dados envolvidos \cite{aularecon}. Essa metodologia, fundamentada em princípios matemáticos sólidos, contribui para aprimorar a qualidade e a confiabilidade dos resultados obtidos, tornando-a uma ferramenta valiosa para a solução proposta no trabalhos.
+        
+\section{Desenvolvimento de um \textit{Software Online}}
+\subsection{Desenvolvimento \textit{Front-End}}
+    
+A interface de usuário de um \textit{software}, também denominada de \textit{front-end}, desempenha um papel crucial no desenvolvimento de sistemas modernos \cite{eloquentjavascript}. É responsável por criar a experiência do usuário, tornando a interação com o \textit{software} intuitiva, eficiente e agradável. Compreende todos os elementos visíveis e interativos de uma aplicação, como botões, menus, formulários e \textit{layouts}, que são projetados e desenvolvidos para fornecer uma interface acessível e funcional aos usuários \cite{frontendperfomance}.
+    
+As principais tecnologias aplicadas a essa área dentro do desenvolvimento \textit{web} são linguagens de programação como HTML, CSS, JavaScript e TypeScript \cite{webdevlang}. Essas tecnologias permitem aos desenvolvedores criar interfaces de usuário dinâmicas e responsivas, capazes de se adaptar a diferentes dispositivos e tamanhos de tela. Além disso, o \textit{front-end} envolve a utilização de \textit{frameworks}, \textit{runtimes} e bibliotecas importantes e poderosas, como React, Angular e Vue.js, possibilitando um desenvolvimento rápido e eficiente de interfaces de usuário modernas \cite{frontendperfomance}. Desta forma, o \textit{front-end} é uma parte essencial do processo de desenvolvimento de \textit{software}, desempenhando um papel fundamental na criação de sistemas interativos e centrados na experiência do usuário \cite{reactjs}.
+
+\subsection{Desenvolvimento \textit{Back-End}}
+    
+Muitas vezes referido como a parte não visível ou o "cérebro" por trás de uma aplicação, o \textit{back-end} é igualmente crucial para o funcionamento de sistemas modernos \cite{backend}. Enquanto o \textit{front-end} é responsável pela parte visual e interativa da aplicação, o \textit{back-end} lida com a lógica de negócios, o armazenamento de dados e a comunicação com o servidor. Isso inclui operações como autenticação de usuários, processamento de dados, gerenciamento de sessões e acesso a banco de dados \cite{backenddevroles}.
+    
+As tecnologias empregadas no \textit{back-end} são diversas, incluido linguagens de programação como Python, Ruby, Java, PHP e Node.js. Estas linguagens são utilizadas em conjunto com \textit{frameworks} e bibliotecas específicas para o desenvolvimento \textit{web}, como Django, Ruby on Rails, Spring, Laravel e Express.js \cite{eloquentjavascript}. O \textit{back-end} também envolve a criação de APIs (Interfaces de Programação de Aplicativos) para permitir a comunicação eficiente entre o \textit{front-end}, outros sistemas e o banco de dados. Desta forma, o \textit{back-end} é responsável por garantir que a aplicação \textit{web} seja funcional, segura e capaz de processar grandes volumes de dados, desempenhando um papel crucial no sucesso de sistemas \textit{web} modernos \cite{javascriptframework}.
+    
+\subsection{Desenvolvimento de Banco de Dados}
+    
+No contexto do desenvolvimento de sistemas \textit{web}, o banco de dados desempenha um papel fundamental na organização e armazenamento de dados utilizados pela aplicação \cite{databasedepth}. Ele oferece uma estrutura organizada e eficiente para armazenar informações de forma persistente, garantindo que os dados sejam recuperados de maneira rápida e precisa, quando necessário. O banco de dados é responsável por gerenciar grandes volumes de dados, lidar com transações complexas e garantir a integridade e a segurança das informações armazenadas \cite{databasesql}.
+    
+Existem diversos tipos de bancos de dados, cada um com suas características e funcionalidades específicas. Os bancos de dados relacionais, como MySQL, PostgreSQL e SQL Server, utilizam tabelas para organizar os dados em linhas e colunas, facilitando consultas complexas e garantindo a consistência dos dados por meio de relações definidas \cite{databasesqlnet}. Por outro lado, os bancos de dados NoSQL, como MongoDB e Cassandra, oferecem uma abordagem mais flexível e escalável para o armazenamento de dados não estruturados, como documentos, gráficos e dados em tempo real \cite{databasedepth}.
+    
+Além disso, o banco de dados é essencial para a integridade e a consistência dos dados em uma aplicação \textit{web}. Ele permite que os desenvolvedores armazenem e recuperem informações de forma eficiente, garantindo que os dados sejam sempre precisos e atualizados. Por meio de consultas e transações, o banco de dados fornece uma camada de abstração entre a aplicação e os dados subjacentes, facilitando o acesso e a manipulação dos dados de forma segura e eficaz \cite{databasesql}. Desta forma, o banco de dados é um componente essencial do desenvolvimento de sistemas \textit{web}, garantindo que as informações sejam armazenadas e gerenciadas de maneira confiável e eficiente \cite{databasesqlmaster}.
+
+\subsection{Servidor}
+    
+Na arquitetura de sistemas \textit{web}, o servidor desempenha um papel central na comunicação entre o cliente e o \textit{back-end}. Ele é responsável por receber as requisições dos clientes, processá-las e fornecer as respostas adequadas \cite{serverdummy}. Além disso, o servidor também gerencia o armazenamento e o acesso aos dados, garantindo que as informações sejam entregues de forma rápida e segura \cite{serverhost}.
+    
+As tecnologias utilizadas na área de servidor variam dependendo das necessidades específicas do projeto, mas geralmente incluem sistemas operacionais como Linux ou Windows Server, juntamente com servidores \textit{web} como Apache, Nginx ou Microsoft IIS \cite{serverapache}. Além disso, \textit{frameworks} e tecnologias como Docker, Kubernetes e AWS são frequentemente empregados para facilitar a implantação e o gerenciamento de servidores em escala. Em suma, a área de servidor é fundamental para o funcionamento eficiente e confiável de sistemas \textit{web}, garantindo a entrega de conteúdo e serviços de forma rápida, segura e escalável \cite{serversql}.
+    
+\section{A Sinergia Entre a Indústria e a Internet} 
+
+O panorama atual de avanço da internet e a convergência entre a internet e o setor industrial representam um marco significativo na era da Engenharia de Computação \cite{industry4status}. Este fenômeno transformador tem sido impulsionado pela fusão das tecnologias da informação com os processos industriais, dando origem a conceitos como Indústria 4.0. 
+    
+No âmbito desta ferramenta, é aplicada a intersecção dessas duas esferas, onde os conceitos de práticas industriais, reconciliação, análise e qualidade de dados se integram à internet, na qual é extraído deles o seu maior forte, como uma maior integralidade com outros sistemas por meio de APIs (interfaces de programação de aplicativos), melhor interatividade entre os elementos do sistema, promovendo uma comunicação mais dinâmica e eficaz, aumento da eficiência operacional e facilidade na gestão de processos \cite{industry4}. Essa sinergia possibilita a criação de ecossistemas industriais mais conectados nos quais os dados relevantes podem ser tratados de forma segura e eficiente. \cite{industrybuild}.
+    
+O horizonte atual, delineado pelos recentes avanços tecnológicos e inovações sustenta a perspectiva otimista que as indústrias estão destinadas a experimentar um crescimento substancial no país \cite{industrychina}. A convergência entre a internet e o setor industrial representa um catalisador significativo para a modernização e eficiência operacional. A integração de práticas avançadas de desenvolvimento de soluções voltadas à usabilidade e ao ambiente de desenvolvimento com controle computacional, como a reconciliação de dados e análise preditiva, impulsiona a qualidade e consistência dos processos produtivos \cite{industrydigital}.
+    
+Além disso, a aplicação da internet nas práticas industriais não só fortalece a competitividade das empresas mas também desempenha um papel crucial na expansão econômica do país \cite{industryiot}. A capacidade de adotar tecnologias inovadoras como a automação avançada, coloca as indústrias em uma posição estratégica para atender às crescentes demandas do mercado e elevar a produtividade \cite{industryinternet}. Nesse sentido é plausível afirmar que diante do atual cenário tecnológico e das tendências emergentes, é indubitável a necessidade e importância da ferramenta desenvolvida nesse trabalho \cite{industrychina}.
+
+
+% A teoria (ou referencial teórico) deve descrever as técnicas e metodologias existentes e desenvolvimentos anteriores que sejam essenciais ao entendimento do trabalho, sempre citando referencial teórico para cada técnica abordada. Aqui, as ferramentas matemáticas, mesmo que já conhecidas, podem ser revisitadas com as devidas citações. Geralmente, estas informações são obtidas em livros, \textit{survey papers} ou \textit{seminar papers}. É importante lembrar que o trabalho relatado em um trabalho de conclusão de curso (TCC), muito mais do que em um artigo, deve ser auto-contido e reproduzível.
+
+% Além de instruções sobre a montagem da teoria, este capítulo também apresenta considerações de ordem geral sobre a organização que deve ser adotada no seu documento, tais como número de
+% páginas, margens e subdivisões.
+
+% \section{Dimensões}
+% \label{dimensões}
+
+% Não há um número mínimo ou máximo de páginas para TCCs. Entretanto, se o seu documento for muito menor
+% do que a média pode transmitir uma ideia de falta de conteúdo a
+% apresentar. Por outro lado, um documento muito grande corre o risco de
+% só conseguir a atenção total do leitor no seu início, fazendo com que
+% as partes mais importantes, que geralmente estão no final do
+% documento, não sejam devidamente consideradas. Apenas para servir como
+% parâmetro, um trabalho de conclusão de curso possui o limite usual quanto ao número
+% de páginas\footnote{Uma folha corresponde a uma página em impressão em
+% face simples e a duas páginas em impressão em face dupla} entre 30 e 50 páginas, adotando as margens e os espaçamentos
+% definidos neste modelo.
+
+% O tamanho padrão para a fonte é de 12pt.  Para facilitar a escrita de
+% comentários, sugestões e correções da banca, recomenda-se o espaçamento
+% 1.5 entre as linhas do texto e a impressão em um único lado da folhas
+% para a versão inicial do trabalho de conclusão de curso.
+
+% Para as versões finais do TCC, onde se busca uma
+% melhor qualidade visual e tipográfica do texto, deve-se utilizar
+% espaçamento simples entre as linhas e a impressão nos dois lados da
+% página.
+
+% As margens devem seguir os valores adotados neste documento, que podem
+% ser verificados no arquivo \texttt{principal.tex}. É importante notar
+% que, na versão final de teses ou dissertações, recomenda-se a
+% impressão nos dois lados da página. Por esta razão, a margem direita
+% em páginas pares deve ter o mesmo valor que a margem esquerda em
+% páginas impares e vice-versa, para que a encadernação fique
+% correta. Também em razão da impressão em frente e verso, os capítulos
+% devem sempre começar em uma página de número ímpar, com a eventual
+% inclusão de uma página em branco. O \LaTeX\ se encarrega de fazer
+% automaticamente estes ajustes.
+
+% \section{Divisões do documento e referências cruzadas}
+% %\label{Sec:divisoes}
+
+% Documentos do porte de um TCC devem ser subdivididos
+% em capítulos. O capítulo deve conter uma introdução e um fecho.
+
+% A introdução do capítulo fornece ao leitor uma breve descrição do que
+% será tratado no capítulo e não forma uma seção: para exemplificar, a
+% introdução deste capítulo é o parágrafo que precede a primeira seção.
+
+% O fecho do capítulo apresenta comentários finais sobre o que foi
+% desenvolvido no capítulo e/ou faz uma ligação com o que será visto no
+% capítulo seguinte; normalmente é colocado em uma seção específica,
+% denominada ``Comentários Finais'', ``Conclusões'', ``Resultados'',
+% ``Avaliação Final'' ou qualquer outra denominação que se adéque ao
+% texto.
+
+% Capítulos são divididos em seções. O número ideal de seções é
+% impossível de se precisar. Entretanto, um capítulo com uma única seção
+% provavelmente deve ser agregado ao capítulo anterior ou posterior. Um
+% capítulo com quinze seções provavelmente deve ser subdividido em dois
+% capítulos.
+
+% Capítulos, seções e subseções devem ser rotulados para que possam ser
+% referenciados em qualquer parte do texto.  Isto é feito com o comando
+% \verb|\label{}|, que deve ser colocado logo após (nunca antes) o
+% comando que criou a seção, capítulo, etc. O parâmetro do comando
+% \texttt{label} é o nome simbólico que será usado para se fazer
+% referência a esta entidade dentro do texto, com o comando
+% \verb|\ref{}|. O nome pode ser qualquer coisa, mas não pode conter
+% acentos, por exemplo. Neste documento nós utilizamos a convenção de
+% prefixar os rótulos dos capítulos com \texttt{Cap:}, das seções com
+% \texttt{Sec:}, das equações com \texttt{Eq:} e assim por diante, mas
+% esta convenção não é obrigatória. Veja a seguir um exemplo de
+% utilização das referências cruzadas:
+% % quotation é um ambiente para citações, que ficam "recuadas" em
+% % relação ao resto do texto
+% \begin{quotation}
+% \dots no capítulo~\ref{Cap:Introducao} apresentamos um modelo de
+% capítulo de tese.
+% \end{quotation}
+% Note que, no código fonte deste trecho de frase, o espaço entre a palavra
+% \texttt{capítulo} e o comando \verb|\ref{}| foi escrito com
+% um \texttt{\~{}} e não com um espaço normal. O \texttt{\~{}} é o
+% comando \LaTeX\ para criar um espaço onde não se pode mudar de linha,
+% pois ficaria estranho se o texto ``no capítulo'' estivesse no fim de
+% uma linha e o número \ref{Cap:Introducao} no início da outra linha.
+
+% Existe uma particularidade no código fonte do parágrafo anterior. Para
+% se escrever:
+% \begin{quotation}
+% \dots o comando \LaTeX\ para criar\dots
+% \end{quotation}
+% se colocou depois do comando \verb|\LaTeX| um espaço
+% precedido de uma contra barra, ao invés de um espaço normal. Isto porque
+% espaços depois de comandos são ignorados pelo \LaTeX; com um espaço
+% % Na linha anterior não houve necessidade do espaço com contrabarra
+% % depois do comando \LaTeX, pois ele é seguido por um ; e não um espaço
+% normal as palavras ficariam ligadas:
+% \begin{quotation}
+% \dots o comando \LaTeX para criar\dots
+% \end{quotation}
+% Ao invés do espaço precedido pela contrabarra, poder-se-ia também
+% utilizar um \texttt{\~{}}. A diferença é que neste caso o \LaTeX\ não
+% poderia fazer uma quebra de linha entre as palavras.
+
+% \section{Seções}
+% %\label{Sec:secoes}  %% labels não devem conter caracteres acentuados
+
+% Seções são divisões do conteúdo do capítulo. Esta divisão
+% deve ser lógica (temática) e não física (por tamanho).
+% Por exemplo, um capítulo que trata de \textit{software}
+% de sistema teria seções que tratam de montadores, ligadores,
+% carregadores, compiladores e sistemas operacionais.
+
+% Tal como capítulos, seções devem ser rotuladas para referência
+% em outras partes do texto. Seções são divididas em subseções.
+
+% \subsection{Subseções}
+% %\label{Sec:subsecoes}
+
+% Subseções são divisões de seções. No exemplo do texto sobre
+% \textit{software} de sistema, a seção referente a sistema operacional
+% conteria, por exemplo, subseções que tratam de arquivos, processos,
+% memória e entrada/saída.  Tal como seções, subseções são divisões
+% temáticas do texto.
+
+% \subsubsection*{Subsubseções}
+% %\label{Sec:subsubsecoes}
+
+% Subsubseções são divisões de subseções e não devem ser numeradas no
+% texto. O \texttt{*} após o comando \texttt{subsubsection*} instrui
+% o \LaTeX\ a não numerar a subsubseção. Esta mesma regra se aplica
+% a outros comandos. Por exemplo, \verb|\chapter{}|
+% inicia um capítulo, enquanto \verb|\chapter*{}|
+% inicia um capítulo sem número. O comando \texttt{chapter*} foi
+% usado no arquivo \texttt{resumos.tex} para criar os capítulos não
+% numerados referentes ao resumo e ao \textit{abstract}.
+
+% \section{Índices}
+
+% O \LaTeX\ é capaz de gerar automaticamente o índice do texto
+% (sumário), os índices de figuras e de tabelas e uma lista de símbolos
+% ou glossário.
+
+% \subsection{Sumário}
+% \label{Sec:sumario}
+
+% Todas as divisões numeradas (capítulos, seções e subseções) são
+% automaticamente incluídas no sumário. Ao se criar uma nova divisão é
+% necessário compilar duas vezes o texto com o \LaTeX: na primeira
+% compilação será percebida a inclusão da nova divisão, enquanto na
+% segunda será gerado o índice atualizado. Esta mesma necessidade de uma
+% dupla compilação aparece quando se acrescenta qualquer nova referência
+% cruzada: uma nova figura ou tabela, uma nova referência bibliográfica,
+% etc.
+
+% Além das divisões que são incluídas automaticamente no sumário, pode-se
+% incluir manualmente outras informações. Os índices, por exemplo, não
+% são incluídos automaticamente no sumário. Verifique no arquivo
+% \texttt{principal.tex} o que deve ser feito para fazer esta inclusão.
+
+% \subsection{Listas de figuras e tabelas}
+% \label{Sec:listasfigtab}
+
+% Estas listas são geradas automaticamente a partir dos
+% \texttt{caption}'s de todos os ambientes \texttt{figure} e
+% \texttt{table}. Maiores detalhes sobre estes ambientes serão apresentados
+% no capítulo~\ref{Cap:Problema}.
+
+% \subsection{Lista de símbolos (glossário)}
+% \label{Sec:glossario}
+
+% Este ambiente pode ser utilizado para produzir uma lista de símbolos,
+% um glossário ou uma lista de abreviaturas. Ao utilizar pela primeira
+% vez uma entidade que precise de definição, o autor, ao final do
+% parágrafo, gera a entrada para o glossário. A título de exemplo,
+% foram incluídos na lista alguns símbolos e abreviaturas que aparecem
+% no texto a seguir:
+
+% \begin{quotation}
+% Os primeiros TCCs apresentados na UFMT eram datilografadas
+% manualmente. Para escrever uma fórmula simples como:%
+% \nomenclature[aa]{UFMT:}{Universidade Federal do Rio Grande do Norte}%
+% \nomenclature[az]{FAENG:}{Faculdade de Engenharia}%
+% \begin{equation}
+% \omega = \omega_0 + \alpha \cdot \Delta t
+% \label{Eq:glossario}
+% \end{equation}%
+% % Há problemas quando se põe uma quebra de linha em um comando \nomenclature.
+% % Para evitá-lo, comenta-se com um % todos os fins de linha das linhas que
+% % contêm o comando e da linha imediatamente anterior.
+% \nomenclature{$\omega$}{velocidade angular do corpo}%
+% \nomenclature{$\omega_0$}{velocidade angular inicial do corpo}%
+% \nomenclature{$\alpha$}{aceleração angular do corpo}%
+% \nomenclature{$\Delta t$}{tempo decorrido desde o instante em que foi medida
+% a velocidade inicial até o instante presente}%
+% os autores tinham que desenhar os símbolos manualmente ou, para os
+% mais afortunados, trocar inúmeras vezes a esfera da sua máquina de
+% datilografia.
+% \end{quotation}
+
+% A ordem de aparição dos verbetes no glossário é a seguinte:
+% inicialmente os símbolos, depois os números e por último as
+% \textit{strings}. Você pode modificar esta ordem incluindo um
+% parâmetro adicional no comando \verb|\nomenclature[opcional]{simb}{signif}|. No exemplo, este
+% parâmetro foi utilizado para colocar UFMT antes de FAENG.
+
+% \section{Bibliografia}
+% \label{Sec:citacoes}
+
+% As referências bibliográficas são incluídas dentro de um ambiente
+% específico para este fim, através dos comandos
+% \verb|\begin{thebibliography}| e \verb|\end{thebibliography}|. Um
+% documento só pode conter um único destes ambientes. A referência aos
+% documentos no texto é feita usando-se referências cruzadas e chaves
+% simbólicas, da mesma forma que as equações e as figuras. Cada
+% documento dentro de um ambiente \texttt{thebibliography} é introduzido
+% por um comando \verb|\bibitem|. O argumento obrigatório (entre chaves)
+% do comando \texttt{bibitem} é a chave simbólica pela qual o documento
+% será citado no texto, usando o comando \verb|\cite|.  O argumento
+% opcional (entre colchetes) do comando \texttt{bibitem} é a expressão
+% que será inserida tanto no texto, no local onde a referência foi
+% citada, quanto na lista de referências bibliográficas, como etiqueta
+% do documento em questão.
+
+% O ambiente \texttt{thebibliography} pode ser digitado diretamente pelo
+% usuário ou gerado automaticamente a partir de um arquivo de
+% informações bibliográficas. A digitação manual tem a vantagem de
+% tornar o documento autocontido, enquanto a geração automática permite
+% um melhor reaproveitamento das informações e uma maior uniformidade
+% das referências nos diversos documentos. Sempre que possível,
+% aconselha-se a geração automática, que é feita pelo aplicativo
+% \BibTeX.
+
+% A principal vantagem da geração automática de bibliografias é que se
+% pode manter um arquivo único com todas as referências bibliográficas
+% que foram ou podem vir a ser usadas em algum dos seus documentos
+% (artigos, tese, etc.).  O \BibTeX\ se encarrega de verificar quais
+% delas foram efetivamente citadas no documento sendo processado e gerar
+% um ambiente \texttt{thebibliography} que contém apenas os documentos
+% necessários.
+
+% As informações bibliográficas devem ser salvas em um arquivo no
+% formato \BibTeX\ e com extensão \texttt{.bib}. O formato \BibTeX\ 
+% permite referenciar diferentes tipos de documentos:
+% \begin{itemize}
+% \item artigos em revistas~\cite{art-solimaes03};
+% \item artigos em anais de simpósios~\cite{proc-gates01};
+% \item artigos em coletâneas de artigos~\cite{col-pinto00};
+% \item capítulos de livros~\cite{inbook-santos00};
+% \item anais de simpósios~\cite{proc-sbrc02};
+% \item livros~\cite{book-lamport94};
+% \item teses de doutorado~\cite{phd-gates01};
+% \item teses de mestrado~\cite{msc-santos03};
+% \item relatórios técnicos~\cite{rep-omg2000};
+% \item manuais técnicos~\cite{man-orbix99};
+% \item trabalhos não publicados~\cite{unp-sichman02};
+% \item páginas na Internet~\cite{hp-novet03} (a data é o dia do
+%       último acesso à página);
+% \item miscelânea~\cite{misc-cruz03}.
+% \end{itemize}
+
+% O arquivo \BibTeX\ não contém nenhuma informação de formatação. Esta
+% formatação é definida através do comando \verb|\bibliographystyle|.
+% Este modelo inclui um arquivo de estilo (\texttt{ppgee.bst}) que gera
+% as referências no padrão adotado para os documentos que usam esse modelo. Este
+% estilo é baseado no padrão \texttt{jmr} do pacote \texttt{harvard}, com
+% as modificações necessárias para a língua portuguesa. Para maiores
+% informações, veja a documentação do pacote \texttt{harvard}, disponível
+% na Internet ou na maiorias das instalações \LaTeX.
+
+% A lista de referências bibliográficas é gerada pelo comando
+% \verb|\bibliography|, cujo parâmetro obrigatório é o nome do(s) arquivo(s)
+% que contém(êm) as informações bibliográficas.  O \BibTeX\ se encarrega
+% de extrair deste(s) arquivo(s) as referências citadas, formatá-las de acordo
+% com o estilo escolhido e gerar o ambiente \texttt{thebibliography}
+% correspondente. Este ambiente é salvo em um arquivo com terminação
+% \texttt{.bbl}, que é automaticamente inserido no documento no local do
+% comando \verb|\bibliography|. Este procedimento pode ser melhor
+% compreendido analisando-se os arquivos \texttt{principal.tex} e
+% \texttt{bibliografia.bib}, além do arquivo \texttt{principal.bbl}
+% gerado automaticamente pelo \BibTeX.
+
+% Uma recomendação importante é que as citações não fazem parte do
+% texto; portanto, as frases devem fazer sentido mesmo que as expressões
+% de citação sejam removidas. Para exemplificar, não se deve usar:
+% \begin{quotation}
+% \dots conforme demonstrado por \cite{art-solimaes03}.
+% \end{quotation}
+% e sim:
+% \begin{quotation}
+% \dots conforme demonstrado por \citeasnoun{art-solimaes03} (para tal citação, utiliza-se o comando \verb|\citeasnoun|).
+
+% \dots conforme demonstrado na literatura
+% \cite[e.g. ]{art-solimaes03}.\footnote{A abreviatura e.g.
+% significa por exemplo. Vem do latim \emph{exempli gratia}. Também se
+% usa, para o mesmo caso, v.g. (\emph{verbi gratia}) ou simplesmente
+% p.ex.}
+% \end{quotation}
+
+% \section{Considerações finais}
+
+% O simples fatos de utilizar corretamente uma boa ferramenta de
+% formatação de textos e de seguir as recomendações quanto ao estilo
+% não garantem a qualidade do documento produzido. O principal
+% aspecto a ser levado em conta é a qualidade da redação.
+
+% Propostas de tema, dissertações e teses devem ser escritas em
+% linguagem técnica, que difere em alguns aspectos da linguagem
+% literária.  Em textos das ciências exatas e tecnológicas, o objetivo
+% principal é a clareza e a correção, algumas vezes com um certo
+% prejuízo da estética literária. Algumas recomendações quanto à
+% redação são as seguintes:
+% \begin{itemize}
+% \item Evite períodos longos, reduzindo o número de apostos, orações
+% subordinadas, pronomes relativos (o qual, que, cujo, o mesmo, do qual,
+% etc.) e inversões na ordem normal de aparecimento dos elementos da
+% frase (sujeito, verbo, predicado). Divida períodos longos em várias
+% frases menores, mesmo que seja necessário repetir alguns termos. Por
+% exemplo:
+% \begin{quotation}
+% \emph{Esta versão foi concebida por ocasião da disciplina de Sistemas
+% de Transmissão de Dados, que tinha como principal objetivo, fazer uso
+% de uma plataforma móvel onde pudesse ser aplicada uma técnica de
+% transmissão de dados, possibilitando dessa forma o controle desta.}
+% \end{quotation}
+% pode ser substituído por:
+% \begin{quotation}
+% \emph{Esta versão foi concebida durante a disciplina de Sistemas de
+% Transmissão de Dados. O principal objetivo desta primeira versão
+% era aplicar uma técnica de transmissão de dados a uma plataforma
+% móvel. O uso da técnica de transmissão de dados tornou possível
+% o controle da plataforma móvel.}
+% \end{quotation}
+% \item Verifique a pontuação empregada para não separar por vírgulas
+% o sujeito do verbo, como no exemplo anterior em ``\dots\emph{tinha
+% como principal objetivo, fazer uso de}\dots'', nem trocar pontos por
+% vírgulas ou vice-versa. Estes erros geralmente aparecem associados a
+% períodos muito longos, como nos dois exemplos a seguir:
+% \begin{quotation}
+% \emph{Quando a operação é realizada sem o sistema de recepção, o
+% veículo se desloca e realiza tarefas, baseadas na programação do
+% dispositivo microcontrolador e leitura de sensores, como a odometria,
+% por exemplo, a tabela abaixo lista a função atribuída a cada pino.}
+% \end{quotation}
+% \begin{quotation}
+% \emph{A garra é dotada também de um conjunto de sensores mecânicos
+% de fim de curso tipo contato seco normalmente aberto (NA), nas
+% posições de máxima elevação e abertura, bem como dois sensores desse
+% mesmo tipo nas pinças da garra que respondem a uma pequena pressão em
+% sua superfície, sendo responsáveis por pressionar o elemento objeto
+% que se deseja recolher. Evitando que o mesmo escorregue quando
+% erguido.}
+% \end{quotation}
+% \item Evite o uso de adjetivos que expressam julgamentos de valor de
+% maneira não quantificável. Por exemplo, ao invés de dizer que os
+% resultados foram excelentes, diga que em 98\% dos experimentos o erro
+% foi menor que 1\%, deixando ao leitor a tarefa de concluir se estes
+% resultados são excelentes ou não.
+% \end{itemize}
+
+% No que diz respeito aos recursos de formatação, lembre-se que o
+% \LaTeX\ já faz a maior parte do trabalho para você, seguindo padrões
+% que foram definidos por especialistas para garantir uma boa qualidade
+% tipográfica. Portanto, tente não modificar ``manualmente'' a
+% formatação gerada. Para isto, evite sempre que possível os seguintes
+% recursos, pois um texto ``limpo'' é mais agradável de ler que um texto
+% ``enfeitado'':
+% \begin{itemize}
+% \item letras maiúsculas em palavras onde elas não têm justificativa
+% gramatical: nomes de meses (janeiro e não Janeiro), apenas para dar
+% ênfase (\dots foi desenvolvido um Robô Móvel com rodas\dots), etc.
+% \item \textbf{o uso indiscriminado de negrito;}
+% \item \textit{o uso de itálico, exceto em palavras em outra língua
+% ou em definições de termos que aparecem pela primeira vez;}
+% \item texto em fontes diferentes: \texttt{espaçamento uniforme}, \textsf{sem
+% serifa}, \textsc{caixa alta}, etc.
+% \item \underline{o uso de texto sublinhado;}
+% \item o uso excessivo de notas de rodapé\footnote{Notas de rodapé
+% são estas expressões no pé da página.}.
+% \item palavras em língua estrangeira quando existe uma equivalente
+% em português (desempenho e não \textit{performance}) ou neologismos
+% não justificados (downlodear, randômico, etc.)
+% \end{itemize}
