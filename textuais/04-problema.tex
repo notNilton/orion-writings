@@ -1,0 +1,78 @@
+\mychapter{Problema}
+\label{Cap:Problema}
+
+Neste capítulo, descrevemos o problema que este trabalho visa resolver, focando em sua formulação formal e as soluções matemáticas propostas. O problema de reconciliação de dados em processos industriais envolve minimizar as discrepâncias entre medições obtidas em campo e os valores estimados por modelos matemáticos, sujeitos a restrições impostas por leis de conservação e equações de processo. Esta problemática é de suma importância para garantir a integridade das medições em plantas industriais, onde erros aleatórios e sistemáticos podem comprometer a otimização e o controle de processos.
+
+\section{Formulação do Problema}
+\label{Sec:FormulacaoProblema}
+
+O problema central a ser resolvido é a reconciliação de dados industriais. Dado um conjunto de variáveis medidas $y = [y_1, y_2, ..., y_n]$, que representam valores obtidos por sensores de uma planta industrial, nosso objetivo é encontrar o vetor $x = [x_1, x_2, ..., x_n]$ que representa os valores reconciliados dessas medições, minimizando a diferença entre os valores medidos e os valores reconciliados. Esta minimização deve respeitar as restrições impostas por leis físicas, como o balanço de massa e energia.
+
+Matematicamente, o problema de reconciliação de dados pode ser expresso como um problema de minimização de uma função objetivo $J(x)$, sujeita a restrições lineares representadas por uma matriz de coeficientes $A$ e um vetor de restrições $b$:
+
+\begin{equation}
+\min_x J(x) = \sum_{i=1}^{n} (y_i - x_i)^2
+\end{equation}
+
+Sujeito a:
+
+\begin{equation}
+Ax = b
+\end{equation}
+
+Aqui, $A$ é a matriz que define as equações de balanço de massa e energia, e $b$ representa os valores conhecidos dessas restrições.
+
+\section{Definições e Formalismo}
+\label{Sec:DefinicoesFormalismo}
+
+Antes de abordar a solução do problema, algumas definições importantes são necessárias para clarificar o formalismo matemático utilizado.
+
+\begin{definicao}[Erro de medição]
+Dado um valor medido $y_i$ e um valor verdadeiro desconhecido $x_i$, define-se o erro de medição como a diferença entre esses valores:
+\[
+e_i = y_i - x_i
+\]
+Nosso objetivo é minimizar o erro de medição total para todas as variáveis envolvidas no processo.
+\end{definicao}
+
+\begin{definicao}[Multiplicadores de Lagrange]
+Para resolver problemas de otimização com restrições, introduzimos os multiplicadores de Lagrange $\lambda = [\lambda_1, \lambda_2, ..., \lambda_m]$, que permitem incorporar as restrições lineares $Ax = b$ diretamente na função objetivo. A função de Lagrange é dada por:
+\[
+\mathcal{L}(x, \lambda) = J(x) + \lambda^T(Ax - b)
+\]
+\end{definicao}
+
+\section{Solução Matemática}
+\label{Sec:SolucaoMatematica}
+
+A solução do problema de reconciliação de dados é obtida resolvendo-se o sistema de equações gerado pelas condições de otimalidade de Karush-Kuhn-Tucker (KKT). Essas condições podem ser derivadas ao tomar as derivadas parciais da função de Lagrange em relação às variáveis $x$ e aos multiplicadores de Lagrange $\lambda$, e igualando-as a zero:
+
+\[
+\frac{\partial \mathcal{L}}{\partial x_i} = 2(x_i - y_i) + \lambda^T A_i = 0, \quad \forall i
+\]
+\[
+\frac{\partial \mathcal{L}}{\partial \lambda} = Ax - b = 0
+\]
+
+O sistema resultante é então resolvido para $x$ e $\lambda$, fornecendo os valores reconciliados e os multiplicadores de Lagrange.
+
+\section{Teorema de Convergência}
+\label{Sec:TeoremaConvergencia}
+
+\begin{teorema}[Convergência do Método]
+Sob condições de regularidade (como a convexidade da função objetivo e a independência linear das restrições), o método dos multiplicadores de Lagrange converge para a solução ótima do problema de reconciliação de dados. Isso garante que, para um conjunto de medições $y$ e restrições $Ax = b$, o vetor $x$ reconciliado minimiza o erro de medição total.
+\end{teorema}
+
+\begin{prova}
+A prova segue diretamente das condições de otimalidade de Karush-Kuhn-Tucker. A função objetivo $J(x)$ é convexa, e as restrições $Ax = b$ são lineares, o que garante a aplicabilidade dos métodos de otimização convexa. A solução do sistema KKT fornece o ponto crítico que minimiza a função de Lagrange $\mathcal{L}(x, \lambda)$, satisfazendo tanto a minimização da função objetivo quanto as restrições lineares.
+\end{prova}
+
+\section{Discussão sobre a Solução}
+\label{Sec:DiscussaoSolucao}
+
+A abordagem matemática apresentada para a reconciliação de dados utilizando multiplicadores de Lagrange é eficiente e robusta, especialmente para processos industriais onde a precisão das medições é crítica para a otimização e controle. O uso de restrições lineares para modelar o balanço de massa e energia é adequado para muitos processos industriais. No entanto, a solução pode ser sensível a medições muito imprecisas ou a erros grosseiros, que não são bem modelados pelo erro quadrático minimizado.
+
+\section{Conclusão}
+\label{Sec:ConclusaoProblema}
+
+Neste capítulo, foi apresentada a formulação formal do problema de reconciliação de dados em processos industriais, assim como a solução matemática por meio dos multiplicadores de Lagrange. Demonstrou-se que, ao aplicar as condições de otimalidade de KKT, é possível obter uma solução otimizada para o problema, minimizando os erros de medição e respeitando as restrições impostas pelas leis de conservação. Essa solução é essencial para garantir a integridade dos dados em sistemas de controle de processos industriais.
