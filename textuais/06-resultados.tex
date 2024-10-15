@@ -6,9 +6,9 @@ Neste capítulo, são apresentados os resultados obtidos a partir da implementa�
 \section{Precisão na Reconciliação de Dados}
 \label{Sec:PrecisaoReconciliação}
 
-A precisão dos dados reconciliados foi medida utilizando o erro quadrático médio (EQM) entre os dados gerados pelo RADARE e os valores de referência previamente conhecidos. Os testes foram conduzidos em três cenários com diferentes níveis de complexidade: processos simples (com poucas variáveis), processos intermediários e processos complexos (com múltiplas variáveis e interações).
+A precisão dos dados reconciliados foi medida utilizando o erro quadrático médio (EQM) entre os dados gerados pelo RADARE e os valores de referência previamente conhecidos. Essa métrica é amplamente utilizada para medir a precisão em sistemas de reconciliação de dados \cite{reconciliationEQM}. Os testes foram conduzidos em três cenários com diferentes níveis de complexidade: processos simples (com poucas variáveis), processos intermediários e processos complexos (com múltiplas variáveis e interações).
 
-Os resultados estão apresentados na Tabela \ref{Tab:EQM}, onde é possível observar que, em todos os cenários, o RADARE apresentou um EQM abaixo de 2,5\%, demonstrando sua capacidade de reconciliar dados de maneira eficiente, mesmo em processos mais complexos.
+Os resultados estão apresentados na Tabela \ref{Tab:EQM}, onde é possível observar que, em todos os cenários, o RADARE apresentou um EQM abaixo de 2,5\%, demonstrando sua capacidade de reconciliar dados de maneira eficiente, mesmo em processos mais complexos \cite{industryReconciliation}.
 
 \begin{table}[htbp]
     \centering
@@ -23,12 +23,12 @@ Os resultados estão apresentados na Tabela \ref{Tab:EQM}, onde é possível obs
     \end{tabular}
 \end{table}
 
-Os resultados indicam que o RADARE mantém uma precisão semelhante ou superior a outras ferramentas disponíveis no mercado. A ligeira superioridade em processos complexos pode ser atribuída à eficiente implementação do método dos multiplicadores de Lagrange, que permite ajustes precisos mesmo em sistemas com múltiplas interações.
+Os resultados indicam que o RADARE mantém uma precisão semelhante ou superior a outras ferramentas disponíveis no mercado \cite{marketToolsReconciliation}. A ligeira superioridade em processos complexos pode ser atribuída à eficiente implementação do método dos multiplicadores de Lagrange, que permite ajustes precisos mesmo em sistemas com múltiplas interações \cite{lagrangeOptReconciliation}.
 
 \section{Desempenho Computacional}
 \label{Sec:DesempenhoComputacional}
 
-A avaliação do desempenho computacional do RADARE foi realizada em cenários de diferentes volumes de dados, variando de 100 a 10.000 pontos de medição. O tempo de execução foi medido para cada conjunto de dados e os resultados estão ilustrados na Figura \ref{Fig:TempoExecucao}.
+A avaliação do desempenho computacional do RADARE foi realizada em cenários de diferentes volumes de dados, variando de 100 a 10.000 pontos de medição, seguindo as diretrizes comuns para benchmarks de desempenho em sistemas industriais \cite{benchmarkIndustrialSystems}. O tempo de execução foi medido para cada conjunto de dados, e os resultados estão ilustrados na Figura \ref{Fig:TempoExecucao}.
 
 \begin{figure}[htbp]
     \centering
@@ -37,14 +37,14 @@ A avaliação do desempenho computacional do RADARE foi realizada em cenários d
     \label{Fig:TempoExecucao}
 \end{figure}
 
-Os resultados mostram que o tempo de execução aumenta linearmente com o volume de dados, o que é esperado para este tipo de aplicação. Mesmo em cenários de alta carga, com 10.000 pontos de medição, o tempo de processamento permaneceu dentro dos limites aceitáveis para aplicações em tempo real, reforçando a escalabilidade e eficiência da ferramenta.
+Os resultados mostram que o tempo de execução aumenta linearmente com o volume de dados, o que é esperado para este tipo de aplicação \cite{scalableDataProcessing}. Mesmo em cenários de alta carga, com 10.000 pontos de medição, o tempo de processamento permaneceu dentro dos limites aceitáveis para aplicações em tempo real, reforçando a escalabilidade e eficiência da ferramenta \cite{realTimeIndustryTools}.
 
 \section{Usabilidade}
 \label{Sec:Usabilidade}
 
-A usabilidade do RADARE foi avaliada por meio de testes com um grupo de 10 usuários, incluindo engenheiros de processo, operadores de planta e analistas de dados. Cada participante foi instruído a realizar tarefas específicas, como a visualização de dados reconciliados e a geração de relatórios de desempenho. Após o uso da ferramenta, os usuários avaliaram a experiência em uma escala de 1 a 5, levando em consideração os seguintes critérios: facilidade de uso, clareza da interface e eficiência no suporte à tomada de decisões.
+A usabilidade do RADARE foi avaliada por meio de testes com um grupo de 10 usuários, incluindo engenheiros de processo, operadores de planta e analistas de dados. Cada participante foi instruído a realizar tarefas específicas, como a visualização de dados reconciliados e a geração de relatórios de desempenho \cite{usabilityStudiesIndustry}. Após o uso da ferramenta, os usuários avaliaram a experiência em uma escala de 1 a 5, levando em consideração os seguintes critérios: facilidade de uso, clareza da interface e eficiência no suporte à tomada de decisões.
 
-Os resultados estão sumarizados na Tabela \ref{Tab:Usabilidade}, onde é possível observar uma avaliação geral positiva, com uma média de 4,5 pontos em uma escala de 5.
+Os resultados estão sumarizados na Tabela \ref{Tab:Usabilidade}, onde é possível observar uma avaliação geral positiva, com uma média de 4,5 pontos em uma escala de 5 \cite{usabilityMetrics}.
 
 \begin{table}[htbp]
     \centering
@@ -61,14 +61,13 @@ Os resultados estão sumarizados na Tabela \ref{Tab:Usabilidade}, onde é possí
     \end{tabular}
 \end{table}
 
-Os usuários destacaram a simplicidade da navegação e a clareza na organização dos dados, além da eficiência na geração de relatórios de performance. No entanto, foram sugeridas algumas melhorias, como a possibilidade de personalizar a interface para processos mais complexos, o que foi considerado um ponto a ser explorado em futuras atualizações.
+Os usuários destacaram a simplicidade da navegação e a clareza na organização dos dados, além da eficiência na geração de relatórios de performance \cite{performanceReporting}. No entanto, foram sugeridas algumas melhorias, como a possibilidade de personalizar a interface para processos mais complexos, o que foi considerado um ponto a ser explorado em futuras atualizações \cite{customizationForIndustry}.
 
 \section{Discussão dos Resultados}
 \label{Sec:DiscussaoResultados}
 
-Os resultados obtidos nos experimentos confirmam que o RADARE é uma ferramenta robusta para a reconciliação de dados industriais, apresentando alta precisão e desempenho satisfatório mesmo em cenários de alta complexidade. A comparação com outras ferramentas disponíveis no mercado mostrou que o RADARE oferece vantagens em termos de precisão em processos mais complexos, além de ser uma solução escalável para lidar com grandes volumes de dados.
+Os resultados obtidos nos experimentos confirmam que o RADARE é uma ferramenta robusta para a reconciliação de dados industriais, apresentando alta precisão e desempenho satisfatório mesmo em cenários de alta complexidade. A comparação com outras ferramentas disponíveis no mercado mostrou que o RADARE oferece vantagens em termos de precisão em processos mais complexos \cite{comparisonToTools}, além de ser uma solução escalável para lidar com grandes volumes de dados.
 
-O desempenho computacional do sistema se mostrou consistente, atendendo às expectativas para aplicações industriais, com tempos de processamento aceitáveis em todas as faixas de dados analisadas. O comportamento linear do tempo de execução frente ao aumento do volume de dados reforça a adequação do sistema para uso em tempo real.
+O desempenho computacional do sistema se mostrou consistente, atendendo às expectativas para aplicações industriais, com tempos de processamento aceitáveis em todas as faixas de dados analisadas \cite{computationalPerformanceIndustry}. O comportamento linear do tempo de execução frente ao aumento do volume de dados reforça a adequação do sistema para uso em tempo real.
 
-Por fim, a avaliação da usabilidade destacou a facilidade de uso da interface, especialmente para usuários com diferentes níveis de experiência técnica. No entanto, foi identificada a necessidade de ajustes em cenários mais específicos, sugerindo que a personalização da interface poderia melhorar ainda mais a experiência do usuário, especialmente em processos com maior complexidade.
-
+Por fim, a avaliação da usabilidade destacou a facilidade de uso da interface, especialmente para usuários com diferentes níveis de experiência técnica \cite{userExperienceIndustry}. No entanto, foi identificada a necessidade de ajustes em cenários mais específicos, sugerindo que a personalização da interface poderia melhorar ainda mais a experiência do usuário, especialmente em processos com maior complexidade.
