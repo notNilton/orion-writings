@@ -1,51 +1,59 @@
 \mychapter{Problema}
 \label{Cap:Problema}
 
-Neste capítulo, descrevemos o problema que este trabalho visa resolver, focando em sua formulação formal e as soluções matemáticas propostas. O problema de reconciliação de dados em processos industriais envolve minimizar as discrepâncias entre medições obtidas em campo e os valores estimados por modelos matemáticos, sujeitos a restrições impostas por leis de conservação e equações de processo. Esta problemática é de suma importância para garantir a integridade das medições em plantas industriais, onde erros aleatórios e sistemáticos podem comprometer a otimização e o controle de processos.
+Neste capítulo, formalizamos o problema que este trabalho visa resolver, focando em sua formulação matemática e nas soluções propostas. O problema de reconciliação de dados em processos industriais envolve a minimização das discrepâncias entre medições obtidas em campo e os valores estimados por modelos matemáticos, respeitando restrições impostas por leis de conservação e equações de processo. Essa problemática é fundamental para garantir a confiabilidade e a integridade das medições em plantas industriais, onde erros aleatórios e sistemáticos podem comprometer tanto a otimização quanto o controle de processos.
+
+Com o avanço da Indústria 4.0, a necessidade de soluções para processar grandes volumes de dados gerados por sensores em tempo real se intensifica. A integração de tecnologias como IoT (Internet das Coisas), sistemas ciberfísicos e automação inteligente coloca a reconciliação de dados no centro da discussão sobre qualidade de informações em ambientes industriais \cite{industry40}. A Indústria 4.0 exige que os dados gerados pelos sensores sejam integrados a modelos matemáticos que otimizem operações e minimizem incertezas, criando um cenário de monitoramento e controle mais eficiente \cite{datareconciliationindustry4}. No contexto de desenvolvimento web, soluções online para reconciliação de dados proporcionam maior flexibilidade e acessibilidade, permitindo que indústrias acessem essas ferramentas de qualquer local \cite{websolutions}.
 
 \section{Formulação do Problema}
 \label{Sec:FormulacaoProblema}
 
-O problema central a ser resolvido é a reconciliação de dados industriais. Dado um conjunto de variáveis medidas $y = [y_1, y_2, ..., y_n]$, que representam valores obtidos por sensores de uma planta industrial, nosso objetivo é encontrar o vetor $x = [x_1, x_2, ..., x_n]$ que representa os valores reconciliados dessas medições, minimizando a diferença entre os valores medidos e os valores reconciliados. Esta minimização deve respeitar as restrições impostas por leis físicas, como o balanço de massa e energia.
+O problema central a ser resolvido é a reconciliação de dados industriais, formulado como um problema de otimização. Dado um conjunto de variáveis medidas $y = [y_1, y_2, \dots, y_n]$, que representam valores obtidos por sensores em uma planta industrial, o objetivo é encontrar o vetor $x = [x_1, x_2, \dots, x_n]$, representando os valores reconciliados dessas medições, minimizando a diferença entre os valores medidos e reconciliados. Esta minimização deve ser realizada de modo a respeitar as restrições impostas pelas leis de conservação de massa e energia.
 
-Matematicamente, o problema de reconciliação de dados pode ser expresso como um problema de minimização de uma função objetivo $J(x)$, sujeita a restrições lineares representadas por uma matriz de coeficientes $A$ e um vetor de restrições $b$:
+Matematicamente, o problema de reconciliação de dados pode ser expresso como a minimização de uma função objetivo $J(x)$, que representa o erro quadrático entre as medições e os valores reconciliados:
 
 \begin{equation}
 \min_x J(x) = \sum_{i=1}^{n} (y_i - x_i)^2
 \end{equation}
 
-Sujeito a:
+Sujeito às restrições:
 
 \begin{equation}
 Ax = b
 \end{equation}
 
-Aqui, $A$ é a matriz que define as equações de balanço de massa e energia, e $b$ representa os valores conhecidos dessas restrições.
+Aqui, $A$ é a matriz que define as equações de balanço de massa e energia, e $b$ representa os valores conhecidos dessas restrições. Este modelo é amplamente adotado na literatura de reconciliação de dados \cite{lagrangeopt}, \cite{processbalancing}, provando-se eficaz em diversas aplicações industriais, especialmente na Indústria 4.0, onde a integração entre dados e sistemas ciberfísicos é crucial \cite{cyberphysicalsystems}.
+
+\section{Algoritmos de Reconciliação de Dados}
+\label{Sec:AlgoritmosReconciliacao}
+
+O desenvolvimento de algoritmos para reconciliação de dados é um campo consolidado, com várias abordagens sendo exploradas ao longo das últimas décadas. O uso de métodos baseados em multiplicadores de Lagrange é uma das técnicas mais comuns, dada sua capacidade de lidar com restrições lineares e não lineares. Esses algoritmos são projetados para resolver problemas de otimização que minimizam o erro de medição, respeitando leis físicas. De acordo com \cite{reconciliationalgorithms}, métodos de minimização como os multiplicadores de Lagrange são amplamente aplicados em processos industriais, especialmente em indústrias químicas e petroquímicas, onde balanços de massa e energia são essenciais para manter a precisão das medições e evitar falhas nos processos.
 
 \section{Definições e Formalismo}
 \label{Sec:DefinicoesFormalismo}
 
-Antes de abordar a solução do problema, algumas definições importantes são necessárias para clarificar o formalismo matemático utilizado.
+Antes de abordarmos a solução do problema, algumas definições importantes são necessárias para clarificar o formalismo matemático utilizado.
 
 \begin{definicao}[Erro de medição]
 Dado um valor medido $y_i$ e um valor verdadeiro desconhecido $x_i$, define-se o erro de medição como a diferença entre esses valores:
 \[
 e_i = y_i - x_i
 \]
-Nosso objetivo é minimizar o erro de medição total para todas as variáveis envolvidas no processo.
+O objetivo da reconciliação de dados é minimizar o erro total em todas as variáveis medidas, corrigindo os valores medidos de forma consistente com as restrições físicas.
 \end{definicao}
 
 \begin{definicao}[Multiplicadores de Lagrange]
-Para resolver problemas de otimização com restrições, introduzimos os multiplicadores de Lagrange $\lambda = [\lambda_1, \lambda_2, ..., \lambda_m]$, que permitem incorporar as restrições lineares $Ax = b$ diretamente na função objetivo. A função de Lagrange é dada por:
+Para resolver problemas de otimização com restrições, introduzimos os multiplicadores de Lagrange $\lambda = [\lambda_1, \lambda_2, \dots, \lambda_m]$, que permitem incorporar as restrições lineares $Ax = b$ diretamente na função objetivo. A função de Lagrange é dada por:
 \[
 \mathcal{L}(x, \lambda) = J(x) + \lambda^T(Ax - b)
 \]
+Essa abordagem é amplamente reconhecida em problemas de otimização linear, especialmente em engenharia de processos \cite{lagrangerecon}.
 \end{definicao}
 
 \section{Solução Matemática}
 \label{Sec:SolucaoMatematica}
 
-A solução do problema de reconciliação de dados é obtida resolvendo-se o sistema de equações gerado pelas condições de otimalidade de Karush-Kuhn-Tucker (KKT). Essas condições podem ser derivadas ao tomar as derivadas parciais da função de Lagrange em relação às variáveis $x$ e aos multiplicadores de Lagrange $\lambda$, e igualando-as a zero:
+A solução do problema de reconciliação de dados é obtida resolvendo-se o sistema de equações gerado pelas condições de otimalidade de Karush-Kuhn-Tucker (KKT). As condições KKT são derivadas ao tomar as derivadas parciais da função de Lagrange em relação às variáveis $x$ e aos multiplicadores de Lagrange $\lambda$, e igualando-as a zero:
 
 \[
 \frac{\partial \mathcal{L}}{\partial x_i} = 2(x_i - y_i) + \lambda^T A_i = 0, \quad \forall i
@@ -54,25 +62,26 @@ A solução do problema de reconciliação de dados é obtida resolvendo-se o si
 \frac{\partial \mathcal{L}}{\partial \lambda} = Ax - b = 0
 \]
 
-O sistema resultante é então resolvido para $x$ e $\lambda$, fornecendo os valores reconciliados e os multiplicadores de Lagrange.
+Este sistema de equações resulta na solução otimizada para as variáveis reconciliadas $x$, levando em consideração as restrições físicas modeladas por $A$ e $b$. A resolução deste sistema pode ser feita utilizando métodos numéricos, como o método de Newton ou algoritmos de gradiente, que são eficazes em problemas de otimização não lineares \cite{newtonreconciliation}.
 
 \section{Teorema de Convergência}
 \label{Sec:TeoremaConvergencia}
 
 \begin{teorema}[Convergência do Método]
-Sob condições de regularidade (como a convexidade da função objetivo e a independência linear das restrições), o método dos multiplicadores de Lagrange converge para a solução ótima do problema de reconciliação de dados. Isso garante que, para um conjunto de medições $y$ e restrições $Ax = b$, o vetor $x$ reconciliado minimiza o erro de medição total.
+Sob condições de regularidade, como a convexidade da função objetivo e a independência linear das restrições, o método dos multiplicadores de Lagrange converge para a solução ótima do problema de reconciliação de dados. Essa convergência é garantida por resultados clássicos em otimização convexa \cite{convexopt}.
 \end{teorema}
 
 \begin{prova}
-A prova segue diretamente das condições de otimalidade de Karush-Kuhn-Tucker. A função objetivo $J(x)$ é convexa, e as restrições $Ax = b$ são lineares, o que garante a aplicabilidade dos métodos de otimização convexa. A solução do sistema KKT fornece o ponto crítico que minimiza a função de Lagrange $\mathcal{L}(x, \lambda)$, satisfazendo tanto a minimização da função objetivo quanto as restrições lineares.
+A prova segue diretamente das condições de otimalidade de Karush-Kuhn-Tucker. A função objetivo $J(x)$ é convexa, e as restrições $Ax = b$ são lineares, o que garante a aplicabilidade de métodos de otimização convexa. Ao resolver o sistema de equações KKT, encontramos o ponto crítico que minimiza a função de Lagrange $\mathcal{L}(x, \lambda)$, satisfazendo simultaneamente a minimização da função objetivo e as restrições lineares. Dessa forma, a solução obtida minimiza o erro total de medição, atendendo às leis físicas do processo \cite{kktproof}.
 \end{prova}
 
 \section{Discussão sobre a Solução}
 \label{Sec:DiscussaoSolucao}
 
-A abordagem matemática apresentada para a reconciliação de dados utilizando multiplicadores de Lagrange é eficiente e robusta, especialmente para processos industriais onde a precisão das medições é crítica para a otimização e controle. O uso de restrições lineares para modelar o balanço de massa e energia é adequado para muitos processos industriais. No entanto, a solução pode ser sensível a medições muito imprecisas ou a erros grosseiros, que não são bem modelados pelo erro quadrático minimizado.
+A abordagem adotada para a reconciliação de dados por meio dos multiplicadores de Lagrange é amplamente aplicável a processos industriais complexos, onde a precisão das medições é fundamental para a otimização e o controle operacional. De acordo com \cite{reconcilationindustrial}, a reconciliação de dados melhora significativamente a confiabilidade das medições, corrigindo erros aleatórios sem violar as leis de conservação.
 
-\section{Conclusão}
-\label{Sec:ConclusaoProblema}
+A Indústria 4.0 oferece um novo contexto para esse tipo de problema, integrando redes de sensores distribuídos e sistemas de controle em tempo real, onde os dados reconciliados são utilizados para monitoramento contínuo \cite{cyberphysicalsystems}. Ao mesmo tempo, a implementação de soluções baseadas em desenvolvimento web torna possível a criação de sistemas acessíveis e escaláveis para diferentes setores da indústria \cite{websolutions}.
 
-Neste capítulo, foi apresentada a formulação formal do problema de reconciliação de dados em processos industriais, assim como a solução matemática por meio dos multiplicadores de Lagrange. Demonstrou-se que, ao aplicar as condições de otimalidade de KKT, é possível obter uma solução otimizada para o problema, minimizando os erros de medição e respeitando as restrições impostas pelas leis de conservação. Essa solução é essencial para garantir a integridade dos dados em sistemas de controle de processos industriais.
+Entretanto, o método tem suas limitações, especialmente no que diz respeito a medições com erros grosseiros. O modelo assume que o erro de medição segue uma distribuição normal, o que pode não ser válido em todos os casos. Além disso, medições que contenham erros sistemáticos não modelados podem comprometer a qualidade da reconciliação \cite{dataerrorsystems}.
+
+Com base nesses fatores, futuras pesquisas podem focar na combinação de técnicas de detecção de erros grosseiros, como a Detecção de Erros Brutos (GED), com o método dos multiplicadores de Lagrange para aumentar a robustez da solução em cenários onde medições imprecisas ou incorretas são comuns.
