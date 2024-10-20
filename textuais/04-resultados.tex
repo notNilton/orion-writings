@@ -1,77 +1,73 @@
-% IMPLEMENTAR: 
-% - AVALIAÇÃO DE DESEMPENHO
-% - USABILIDADE E FEEDBACK DOS USUARIOS
-
 \mychapter{Resultados}
 \label{Cap:Resultados}
 
-Neste capítulo, são apresentados os resultados obtidos a partir da implementação e testes do \textit{software} RADARE, com ênfase na usabilidade e na eficiência da reconciliação de dados industriais. As principais dimensões avaliadas incluem a precisão dos dados reconciliados, o desempenho computacional em diferentes cenários de carga de trabalho, e a usabilidade da ferramenta, avaliada por meio de testes com usuários.
+Neste capítulo, são apresentados os resultados obtidos a partir da implementação e testes do \textit{software} RADARE, com foco na usabilidade e eficiência da reconciliação de dados industriais. As principais dimensões avaliadas incluem a precisão dos dados reconciliados, o desempenho computacional em diferentes cenários de carga de trabalho e a usabilidade da ferramenta, com destaque para o front-end e o back-end, ambos avaliados em testes realizados com usuários.
 
-\section{Precisão na Reconciliação de Dados}
-\label{Sec:PrecisaoReconciliação}
+\section{Front-end}
 
-A precisão dos dados reconciliados foi medida utilizando o erro quadrático médio (EQM) entre os dados gerados pelo RADARE e os valores de referência previamente conhecidos. Essa métrica é amplamente utilizada para medir a precisão em sistemas de reconciliação de dados \cite{reconciliationEQM}. Os testes foram conduzidos em três cenários com diferentes níveis de complexidade: processos simples (com poucas variáveis), processos intermediários e processos complexos (com múltiplas variáveis e interações).
+O front-end do RADARE foi desenhado para oferecer uma interface intuitiva, permitindo aos usuários interagir facilmente com a ferramenta, visualizar fluxos de dados e executar a reconciliação. As duas principais áreas do front-end são o menu e o canvas.
 
-Os resultados estão apresentados na Tabela \ref{Tab:EQM}, onde é possível observar que, em todos os cenários, o RADARE apresentou um EQM abaixo de X\%, demonstrando sua capacidade de reconciliar dados de maneira eficiente, mesmo em processos mais complexos \cite{industryReconciliation}.
+\subsection{Sessão de Menu}
 
-\begin{table}[htbp]
-    \centering
-    \caption{Erro quadrático médio (EQM) em diferentes processos}
-    \label{Tab:EQM}
-    \begin{tabular}{|c|c|c|c|}
-        \hline
-        Processo & Número de variáveis & EQM (\%) & Comparação com Ferramenta X (\%) \\ \hline
-        Processo simples & 5 & 0.92 & 1.15 \\ \hline
-        Processo intermediário & 12 & 1.37 & 1.42 \\ \hline
-        Processo complexo & 20 & 2.04 & 2.31 \\ \hline
-    \end{tabular}
-\end{table}
+O menu do RADARE permite ao usuário adicionar componentes e controlar a visualização dos dados. Os itens disponíveis no menu incluem:
 
-Os resultados indicam que o RADARE mantém uma precisão semelhante ou superior a outras ferramentas disponíveis no mercado \cite{marketToolsReconciliation}. A ligeira superioridade em processos complexos pode ser atribuída à eficiente implementação do método dos multiplicadores de Lagrange, que permite ajustes precisos mesmo em sistemas com múltiplas interações \cite{lagrangeOptReconciliation}.
+\begin{itemize}
+    \item \textbf{Adicionar Input}: Permite adicionar um novo ponto de entrada de dados.
+    \item \textbf{Adicionar Output}: Adiciona um ponto de saída de dados.
+    \item \textbf{Adicionar Nódulo 1-1}: Insere um nó de processamento básico.
+    \item \textbf{Adicionar Nódulo 1-2}: Insere um nó que se conecta a dois outros pontos.
+    \item \textbf{Adicionar Nódulo 2-1}: Insere um nó que recebe duas entradas e gera uma saída.
+    \item \textbf{Reconciliar Dados}: Executa a reconciliação dos dados conectados no canvas.
+    \item \textbf{Esconder Gráfico das Reconciliações}: Esconde a visualização gráfica dos resultados reconciliados.
+    \item \textbf{Esconder Sidebar de Informações}: Esconde a barra lateral com informações detalhadas.
+    \item \textbf{Upload de Arquivos CSV}: Permite o envio de arquivos CSV para importar dados de medições.
+\end{itemize}
 
-\section{Desempenho Computacional}
-\label{Sec:DesempenhoComputacional}
+\subsection{Sessão de Canvas}
 
-A avaliação do desempenho computacional do RADARE foi realizada em cenários de diferentes volumes de dados, variando de 100 a 10.000 pontos de medição, seguindo as diretrizes comuns para benchmarks de desempenho em sistemas industriais \cite{benchmarkIndustrialSystems}. O tempo de execução foi medido para cada conjunto de dados, e os resultados estão ilustrados na Figura \ref{Fig:TempoExecucao}.
+O canvas é o espaço onde o usuário pode conectar e ajustar os nódulos para configurar o fluxo de dados industrial:
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.7\textwidth]{figuras/tempo_execucao.png}
-    \caption{Tempo de execução em função do número de dados processados}
-    \label{Fig:TempoExecucao}
-\end{figure}
+\begin{itemize}
+    \item \textbf{Conectar Nódulos}: Permite que o usuário conecte visualmente diferentes nódulos de entrada, saída e processamento.
+    \item \textbf{Ajustar Conexões entre Nódulos}: O usuário pode ajustar e mover as conexões entre nódulos para refinar o fluxo de dados.
+\end{itemize}
 
-Os resultados mostram que o tempo de execução aumenta linearmente com o volume de dados, o que é esperado para este tipo de aplicação \cite{scalableDataProcessing}. Mesmo em cenários de alta carga, com 10.000 pontos de medição, o tempo de processamento permaneceu dentro dos limites aceitáveis para aplicações em tempo real, reforçando a escalabilidade e eficiência da ferramenta \cite{realTimeIndustryTools}.
+\section{Back-end}
 
-\section{Usabilidade}
-\label{Sec:Usabilidade}
+O back-end do RADARE foi desenvolvido em \textit{Node.js}, com foco em desempenho, escalabilidade e segurança. Ele é responsável por gerenciar as requisições da interface, processar os dados submetidos e realizar os cálculos de reconciliação utilizando o método dos multiplicadores de Lagrange, além de retornar os resultados para o front-end de forma otimizada.
 
-A usabilidade do RADARE foi avaliada por meio de testes com um grupo de 10 usuários, incluindo engenheiros de processo, operadores de planta e analistas de dados. Cada participante foi instruído a realizar tarefas específicas, como a visualização de dados reconciliados e a geração de relatórios de desempenho \cite{usabilityStudiesIndustry}. Após o uso da ferramenta, os usuários avaliaram a experiência em uma escala de 1 a 5, levando em consideração os seguintes critérios: facilidade de uso, clareza da interface e eficiência no suporte à tomada de decisões.
+\subsection{Routes}
 
-Os resultados estão sumarizados na Tabela \ref{Tab:Usabilidade}, onde é possível observar uma avaliação geral positiva, com uma média de 4,5 pontos em uma escala de 5 \cite{usabilityMetrics}.
+As \textit{routes} do sistema foram estruturadas para permitir a comunicação entre a interface gráfica e a API. As principais rotas incluem:
 
-\begin{table}[htbp]
-    \centering
-    \caption{Avaliação da usabilidade da interface gráfica}
-    \label{Tab:Usabilidade}
-    \begin{tabular}{|c|c|c|c|c|}
-        \hline
-        Usuário & Facilidade de uso & Clareza & Eficiência & Avaliação geral \\ \hline
-        Engenheiro 1 & 4 & 5 & 4 & 4.5 \\ \hline
-        Engenheiro 2 & 5 & 4 & 5 & 4.7 \\ \hline
-        Operador 1 & 3 & 4 & 4 & 3.7 \\ \hline
-        Analista 1 & 5 & 5 & 5 & 5.0 \\ \hline
-        \multicolumn{5}{|c|}{Média geral: 4.5} \\ \hline
-    \end{tabular}
-\end{table}
+\begin{itemize} \item \textbf{POST /reconcile}: Recebe os dados dos sensores e processa a reconciliação utilizando o método dos multiplicadores de Lagrange. \item \textbf{GET /results}: Retorna os resultados das reconciliações realizadas para serem exibidos na interface. \item \textbf{POST /upload}: Gerencia o envio de arquivos CSV para o banco de dados, permitindo que os dados sejam integrados ao sistema. \end{itemize}
 
-Os usuários destacaram a simplicidade da navegação e a clareza na organização dos dados, além da eficiência na geração de relatórios de performance \cite{performanceReporting}. No entanto, foram sugeridas algumas melhorias, como a possibilidade de personalizar a interface para processos mais complexos, o que foi considerado um ponto a ser explorado em futuras atualizações \cite{customizationForIndustry}.
+\subsection{Services}
 
-\section{Discussão dos Resultados}
-\label{Sec:DiscussaoResultados}
+Os \textit{services} no back-end são responsáveis por implementar a lógica de negócio, processar os dados e invocar os cálculos de reconciliação. Eles incluem:
 
-Os resultados obtidos nos experimentos confirmam que o RADARE é uma ferramenta robusta para a reconciliação de dados industriais, apresentando alta precisão e desempenho satisfatório mesmo em cenários de alta complexidade. A comparação com outras ferramentas disponíveis no mercado mostrou que o RADARE oferece vantagens em termos de precisão em processos mais complexos \cite{comparisonToTools}, além de ser uma solução escalável para lidar com grandes volumes de dados.
+\begin{itemize} \item \textbf{Reconciliation Service}: Executa o algoritmo de reconciliação de dados, garantindo que as restrições de balanço de massa e energia sejam respeitadas. \item \textbf{Data Validation Service}: Valida os dados recebidos para garantir que estejam no formato adequado antes de serem processados. \item \textbf{File Processing Service}: Processa os arquivos CSV enviados, convertendo-os em estruturas adequadas para o banco de dados e para os cálculos. \end{itemize}
 
-O desempenho computacional do sistema se mostrou consistente, atendendo às expectativas para aplicações industriais, com tempos de processamento aceitáveis em todas as faixas de dados analisadas \cite{computationalPerformanceIndustry}. O comportamento linear do tempo de execução frente ao aumento do volume de dados reforça a adequação do sistema para uso em tempo real.
+\subsection{Models}
 
-Por fim, a avaliação da usabilidade destacou a facilidade de uso da interface, especialmente para usuários com diferentes níveis de experiência técnica \cite{userExperienceIndustry}. No entanto, foi identificada a necessidade de ajustes em cenários mais específicos, sugerindo que a personalização da interface poderia melhorar ainda mais a experiência do usuário, especialmente em processos com maior complexidade.
+Os \textit{models} foram implementados utilizando \textit{Sequelize}, uma ORM (Object-Relational Mapping) para \textit{Node.js}, que facilita a comunicação com o banco de dados PostgreSQL. Os principais modelos incluem:
+
+\begin{itemize} \item \textbf{Process Model}: Representa os processos industriais, contendo as informações de variáveis medidas e parâmetros. \item \textbf{Measurement Model}: Armazena as medições recebidas dos sensores. \item \textbf{Result Model}: Registra os resultados das reconciliações, vinculando-os aos processos e medições correspondentes. \end{itemize}
+
+Essas subseções detalham a implementação do back-end, destacando como o sistema processa os dados de forma eficiente e segura para realizar a reconciliação e retornar os resultados para o front-end.
+
+\section{Banco de Dados}
+
+O banco de dados utilizado no sistema RADARE foi implementado em PostgreSQL e armazena todas as informações relevantes para a execução do processo de reconciliação de dados industriais. A modelagem foi feita de forma a garantir a integridade e eficiência na consulta e manipulação dos dados. A seguir, são descritas as principais colunas do banco de dados que armazenam os dados de processos e medições.
+
+\begin{itemize}
+    \item \textbf{id}: Coluna de identificação única para cada registro no banco de dados. Utilizada como chave primária para vincular informações em diferentes tabelas.
+    \item \textbf{user}: Armazena informações sobre o usuário que realizou o upload dos dados ou a operação de reconciliação. Permite rastrear a origem das interações no sistema.
+    \item \textbf{time}: Representa o timestamp associado ao dado, indicando o momento exato em que a medição foi realizada ou quando a reconciliação foi executada.
+    \item \textbf{tagname}: Identifica a variável medida (sensor ou ponto de coleta) no processo industrial. Cada variável é referenciada por um nome único que facilita a identificação no sistema.
+    \item \textbf{tagreconciled}: Armazena o valor reconciliado de cada variável, ou seja, o resultado do processo de reconciliação de dados, após correção de inconsistências.
+    \item \textbf{tagcorrection}: Coluna que contém o valor da correção aplicada a cada variável medida, calculada durante o processo de reconciliação para ajustar os dados medidos às restrições do sistema.
+    \item \textbf{tagmatrix}: Refere-se à matriz de correlação utilizada no processo de reconciliação para garantir que os valores reconciliados atendam às leis de conservação de massa e energia, ou outras restrições impostas.
+\end{itemize}
+
+Esta estrutura de banco de dados foi desenhada para garantir a rastreabilidade e precisão dos dados processados, além de permitir que as reconciliações sejam realizadas de forma eficiente e escalável.
