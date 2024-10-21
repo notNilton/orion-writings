@@ -1,7 +1,7 @@
 \mychapter{Resultados}
 \label{Cap:Resultados}
 
-Neste capítulo, são apresentados os resultados obtidos a partir da implementação e testes do \textit{software} RADARE, com foco na usabilidade e eficiência da reconciliação de dados industriais. As principais dimensões avaliadas incluem a precisão dos dados reconciliados, o desempenho computacional em diferentes cenários de carga de trabalho e a usabilidade da ferramenta, com destaque para o front-end e o back-end, ambos avaliados em testes realizados com usuários.
+Neste capítulo, são apresentados os resultados obtidos a partir da implementação e testes do \textit{software} RADARE. As principais dimensões avaliadas incluem a precisão dos dados reconciliados, o desempenho computacional em diferentes cenários de carga de trabalho, e a usabilidade da ferramenta, com foco em aspectos específicos do front-end, como a interação com o menu e o canvas, e do back-end, como as rotas, serviços e a integração com o banco de dados. Os testes foram realizados com usuários de diferentes perfis, permitindo avaliar tanto a eficiência técnica quanto a experiência de uso do sistema.
 
 \section{Front-end}
 
@@ -9,28 +9,269 @@ O front-end do RADARE foi desenhado para oferecer uma interface intuitiva, permi
 
 \subsection{Sessão de Menu}
 
-O menu do RADARE permite ao usuário adicionar componentes e controlar a visualização dos dados. Os itens disponíveis no menu incluem:
+A sessão de menu do RADARE oferece ao usuário uma interface para adicionar componentes, controlar o fluxo de dados e gerenciar a visualização do sistema. A seguir, detalhamos cada item disponível no menu, incluindo imagens e exemplos de código que ilustram seu funcionamento e implementação.
 
-\begin{itemize}
-    \item \textbf{Adicionar Input}: Permite adicionar um novo ponto de entrada de dados.
-    \item \textbf{Adicionar Output}: Adiciona um ponto de saída de dados.
-    \item \textbf{Adicionar Nódulo 1-1}: Insere um nó de processamento básico.
-    \item \textbf{Adicionar Nódulo 1-2}: Insere um nó que se conecta a dois outros pontos.
-    \item \textbf{Adicionar Nódulo 2-1}: Insere um nó que recebe duas entradas e gera uma saída.
-    \item \textbf{Reconciliar Dados}: Executa a reconciliação dos dados conectados no canvas.
-    \item \textbf{Esconder Gráfico das Reconciliações}: Esconde a visualização gráfica dos resultados reconciliados.
-    \item \textbf{Esconder Sidebar de Informações}: Esconde a barra lateral com informações detalhadas.
-    \item \textbf{Upload de Arquivos CSV}: Permite o envio de arquivos CSV para importar dados de medições.
-\end{itemize}
+\subsubsection{Adicionar Input}
+
+O botão "Adicionar Input" permite ao usuário inserir um novo ponto de entrada de dados no canvas. Esse input pode representar um sensor ou uma fonte de dados dentro do sistema industrial. Ao clicar no botão, um novo nó de input é adicionado ao canvas, permitindo ao usuário conectar esse ponto a outros elementos.
+
+\begin{verbatim}
+// Exemplo de código para adicionar input no ReactFlow
+const addInputNode = () => {
+    const newNode = {
+        id: `input_${Date.now()}`,
+        data: { label: 'Input' },
+        position: { x: 250, y: 5 },
+        type: 'input',
+    };
+    setElements((els) => [...els, newNode]);
+};
+\end{verbatim}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/add_input.png}
+    \caption{Nó de input adicionado ao canvas.}
+    \label{Fig:AddInput}
+\end{figure}
+
+\subsubsection{Adicionar Output}
+
+O botão "Adicionar Output" permite adicionar um novo ponto de saída de dados, representando, por exemplo, um destino de dados processados. Ao ser inserido no canvas, o nó de saída pode ser conectado a outros nós, finalizando um fluxo de processamento.
+
+\begin{verbatim}
+// Exemplo de código para adicionar output no ReactFlow
+const addOutputNode = () => {
+    const newNode = {
+        id: `output_${Date.now()}`,
+        data: { label: 'Output' },
+        position: { x: 450, y: 5 },
+        type: 'output',
+    };
+    setElements((els) => [...els, newNode]);
+};
+\end{verbatim}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/add_output.png}
+    \caption{Nó de output adicionado ao canvas.}
+    \label{Fig:AddOutput}
+\end{figure}
+
+\subsubsection{Adicionar Nódulo 1-1}
+
+Este item insere um nó de processamento básico, que recebe uma entrada e gera uma saída. Esse nódulo é utilizado em fluxos simples de dados.
+
+\begin{verbatim}
+// Exemplo de código para adicionar Nódulo 1-1 no ReactFlow
+const addNode1to1 = () => {
+    const newNode = {
+        id: `node1_1_${Date.now()}`,
+        data: { label: 'Nódulo 1-1' },
+        position: { x: 350, y: 100 },
+        type: 'default',
+    };
+    setElements((els) => [...els, newNode]);
+};
+\end{verbatim}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/add_node_1_1.png}
+    \caption{Nó 1-1 adicionado ao canvas.}
+    \label{Fig:AddNode1to1}
+\end{figure}
+
+\subsubsection{Adicionar Nódulo 1-2}
+
+Este item adiciona um nó que se conecta a dois outros pontos. Isso permite dividir os dados em dois fluxos distintos para processamento paralelo.
+
+\begin{verbatim}
+// Exemplo de código para adicionar Nódulo 1-2 no ReactFlow
+const addNode1to2 = () => {
+    const newNode = {
+        id: `node1_2_${Date.now()}`,
+        data: { label: 'Nódulo 1-2' },
+        position: { x: 300, y: 200 },
+        type: 'custom',
+    };
+    setElements((els) => [...els, newNode]);
+};
+\end{verbatim}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/add_node_1_2.png}
+    \caption{Nó 1-2 adicionado ao canvas.}
+    \label{Fig:AddNode1to2}
+\end{figure}
+
+\subsubsection{Adicionar Nódulo 2-1}
+
+O nódulo 2-1 recebe duas entradas e gera uma única saída, sendo útil em situações onde dados de diferentes fontes precisam ser combinados.
+
+\begin{verbatim}
+// Exemplo de código para adicionar Nódulo 2-1 no ReactFlow
+const addNode2to1 = () => {
+    const newNode = {
+        id: `node2_1_${Date.now()}`,
+        data: { label: 'Nódulo 2-1' },
+        position: { x: 400, y: 300 },
+        type: 'custom',
+    };
+    setElements((els) => [...els, newNode]);
+};
+\end{verbatim}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/add_node_2_1.png}
+    \caption{Nó 2-1 adicionado ao canvas.}
+    \label{Fig:AddNode2to1}
+\end{figure}
+
+\subsubsection{Reconciliar Dados}
+
+O botão "Reconciliar Dados" executa o processo de reconciliação de dados conectados no canvas. Ele faz a análise dos nós conectados e aplica o método dos multiplicadores de Lagrange para ajustar as discrepâncias nos dados.
+
+\begin{verbatim}
+// Função para iniciar o processo de reconciliação
+const reconcileData = () => {
+    axios.post('/api/reconcile', { data: elements })
+        .then((response) => {
+            console.log('Reconciliação concluída', response.data);
+        })
+        .catch((error) => {
+            console.error('Erro na reconciliação', error);
+        });
+};
+\end{verbatim}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/reconcile_data.png}
+    \caption{Botão de reconciliação de dados.}
+    \label{Fig:ReconcileData}
+\end{figure}
+
+\subsubsection{Esconder Gráfico das Reconciliações}
+
+Este item permite esconder o gráfico que exibe os resultados das reconciliações de dados, liberando espaço na interface para outros elementos.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/hide_chart.png}
+    \caption{Opção para esconder o gráfico de reconciliações.}
+    \label{Fig:HideChart}
+\end{figure}
+
+\subsubsection{Esconder Sidebar de Informações}
+
+O menu também oferece a opção de esconder a barra lateral que exibe informações detalhadas sobre os nós e fluxos.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/hide_sidebar.png}
+    \caption{Opção para esconder a barra lateral de informações.}
+    \label{Fig:HideSidebar}
+\end{figure}
+
+\subsubsection{Upload de Arquivos CSV}
+
+O botão "Upload de Arquivos CSV" permite importar dados de medições diretamente para o sistema. O usuário pode carregar arquivos CSV contendo as informações que serão processadas e reconciliadas pelo RADARE.
+
+\begin{verbatim}
+// Exemplo de código para upload de arquivos CSV
+const handleCSVUpload = (event) => {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('csvFile', file);
+
+    axios.post('/api/upload', formData)
+        .then((response) => {
+            console.log('Upload concluído', response.data);
+        })
+        .catch((error) => {
+            console.error('Erro no upload', error);
+        });
+};
+\end{verbatim}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/upload_csv.png}
+    \caption{Botão de upload de arquivos CSV.}
+    \label{Fig:UploadCSV}
+\end{figure}
+
 
 \subsection{Sessão de Canvas}
 
-O canvas é o espaço onde o usuário pode conectar e ajustar os nódulos para configurar o fluxo de dados industrial:
+O canvas é a área principal da interface do RADARE, onde o usuário pode visualizar, conectar e manipular os nódulos para configurar o fluxo de dados industrial. Nesta seção, descrevemos as funcionalidades disponíveis no canvas, incluindo exemplos de código e imagens que ilustram o comportamento da interface.
 
-\begin{itemize}
-    \item \textbf{Conectar Nódulos}: Permite que o usuário conecte visualmente diferentes nódulos de entrada, saída e processamento.
-    \item \textbf{Ajustar Conexões entre Nódulos}: O usuário pode ajustar e mover as conexões entre nódulos para refinar o fluxo de dados.
-\end{itemize}
+\subsubsection{Conectar Nódulos}
+
+A funcionalidade de "Conectar Nódulos" permite ao usuário estabelecer conexões visuais entre os nódulos de entrada, processamento e saída. Estas conexões representam o fluxo de dados entre diferentes pontos de um processo industrial.
+
+\begin{verbatim}
+// Exemplo de código para conectar nódulos no ReactFlow
+const onConnect = (params) => {
+    setElements((els) => addEdge(params, els));
+};
+<ReactFlow
+    elements={elements}
+    onConnect={onConnect}
+/>
+\end{verbatim}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/connect_nodes.png}
+    \caption{Conexões entre nódulos no canvas.}
+    \label{Fig:ConnectNodes}
+\end{figure}
+
+Ao clicar e arrastar entre dois nódulos, o usuário cria uma linha de conexão, simbolizando o fluxo de dados que vai de um nódulo de entrada para um de processamento ou saída.
+
+\subsubsection{Ajustar Conexões entre Nódulos}
+
+O canvas também permite que o usuário ajuste e mova as conexões entre os nódulos. Isso proporciona flexibilidade na organização dos fluxos de dados, permitindo que o layout seja personalizado conforme as necessidades do usuário.
+
+\begin{verbatim}
+// Exemplo de código para ajustar conexões entre nódulos no ReactFlow
+const onNodeDragStop = (event, node) => {
+    setElements((els) => 
+        els.map((el) => 
+            el.id === node.id 
+            ? { ...el, position: node.position } 
+            : el
+        )
+    );
+};
+<ReactFlow
+    elements={elements}
+    onNodeDragStop={onNodeDragStop}
+/>
+\end{verbatim}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/adjust_connections.png}
+    \caption{Ajuste das conexões entre os nódulos no canvas.}
+    \label{Fig:AdjustConnections}
+\end{figure}
+
+O usuário pode clicar e arrastar tanto os nódulos quanto as conexões para reorganizar a estrutura do fluxo. Esta funcionalidade é útil para criar uma visão mais clara e organizada dos processos, principalmente em fluxos mais complexos.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/move_nodes.png}
+    \caption{Movimentação dos nódulos no canvas.}
+    \label{Fig:MoveNodes}
+\end{figure}
+
+Essas opções permitem que o usuário tenha controle total sobre a disposição e as interações entre os componentes no canvas, criando uma experiência de visualização clara e eficiente para o fluxo de dados industrial.
 
 \section{Back-end}
 
@@ -38,15 +279,147 @@ O back-end do RADARE foi desenvolvido em \textit{Node.js}, com foco em desempenh
 
 \subsection{Routes}
 
-As \textit{routes} do sistema foram estruturadas para permitir a comunicação entre a interface gráfica e a API. As principais rotas incluem:
+As \textit{routes} do sistema foram estruturadas para facilitar a comunicação entre a interface gráfica e a API, garantindo que as requisições de dados e os processos de reconciliação sejam executados de maneira eficiente. Abaixo estão descritas as principais rotas implementadas no sistema, com exemplos de código e uma explicação detalhada de cada funcionalidade.
 
-\begin{itemize} \item \textbf{POST /reconcile}: Recebe os dados dos sensores e processa a reconciliação utilizando o método dos multiplicadores de Lagrange. \item \textbf{GET /results}: Retorna os resultados das reconciliações realizadas para serem exibidos na interface. \item \textbf{POST /upload}: Gerencia o envio de arquivos CSV para o banco de dados, permitindo que os dados sejam integrados ao sistema. \end{itemize}
+\subsubsection{POST /reconcile}
+
+Esta rota recebe os dados dos sensores e processa a reconciliação utilizando o método dos multiplicadores de Lagrange. O fluxo de dados é enviado pelo \textit{front-end} e, após o processamento, os resultados são armazenados no banco de dados para serem recuperados posteriormente.
+
+\begin{verbatim}
+// Exemplo de código para a rota de reconciliação
+app.post('/reconcile', (req, res) => {
+    const sensorData = req.body;
+    const reconciledData = processReconciliation(sensorData);
+    res.json(reconciledData);
+});
+\end{verbatim}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/reconcile_route.png}
+    \caption{Fluxo de dados na rota /reconcile.}
+    \label{Fig:ReconcileRoute}
+\end{figure}
+
+\subsubsection{GET /results}
+
+A rota \texttt{GET /results} permite ao usuário recuperar os resultados das reconciliações realizadas anteriormente. Esses resultados são exibidos na interface gráfica, fornecendo ao usuário uma visão dos dados reconciliados e permitindo a análise dos processos.
+
+\begin{verbatim}
+// Exemplo de código para a rota de resultados
+app.get('/results', (req, res) => {
+    const results = getReconciliationResults();
+    res.json(results);
+});
+\end{verbatim}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/results_route.png}
+    \caption{Exibição dos resultados utilizando a rota /results.}
+    \label{Fig:ResultsRoute}
+\end{figure}
+
+\subsubsection{POST /upload}
+
+A rota \texttt{POST /upload} gerencia o envio de arquivos CSV para o banco de dados. Esta funcionalidade é fundamental para permitir que o sistema integre dados externos de sensores, facilitando a reconciliação e o processamento.
+
+\begin{verbatim}
+// Exemplo de código para a rota de upload de arquivos CSV
+app.post('/upload', upload.single('file'), (req, res) => {
+    const csvData = req.file;
+    processCSV(csvData);
+    res.status(200).send('Upload concluído com sucesso');
+});
+\end{verbatim}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/upload_route.png}
+    \caption{Fluxo de upload de arquivos CSV na rota /upload.}
+    \label{Fig:UploadRoute}
+\end{figure}
+
+Estas rotas garantem a integração perfeita entre o \textit{front-end} e o \textit{back-end}, oferecendo ao usuário uma experiência contínua ao processar, visualizar e carregar dados para o sistema RADARE.
 
 \subsection{Services}
 
-Os \textit{services} no back-end são responsáveis por implementar a lógica de negócio, processar os dados e invocar os cálculos de reconciliação. Eles incluem:
+Os \textit{services} no \textit{back-end} são responsáveis por implementar a lógica de negócio, processar os dados e invocar os cálculos de reconciliação. Eles abstraem a complexidade do sistema, garantindo que os dados sejam processados corretamente antes de serem enviados ao banco de dados ou utilizados na interface. Abaixo estão descritos os principais \textit{services} do sistema RADARE, juntamente com exemplos de código e diagramas.
 
-\begin{itemize} \item \textbf{Reconciliation Service}: Executa o algoritmo de reconciliação de dados, garantindo que as restrições de balanço de massa e energia sejam respeitadas. \item \textbf{Data Validation Service}: Valida os dados recebidos para garantir que estejam no formato adequado antes de serem processados. \item \textbf{File Processing Service}: Processa os arquivos CSV enviados, convertendo-os em estruturas adequadas para o banco de dados e para os cálculos. \end{itemize}
+\subsubsection{Reconciliation Service}
+
+O \textit{Reconciliation Service} é o núcleo do sistema, responsável pela execução do algoritmo de reconciliação de dados. Ele aplica o método dos multiplicadores de Lagrange para garantir que as restrições de balanço de massa e energia sejam respeitadas durante a reconciliação dos dados.
+
+\begin{verbatim}
+// Exemplo de código para o Reconciliation Service
+class ReconciliationService {
+    static reconcileData(sensorData) {
+        const reconciledData = runLagrangeMultipliers(sensorData);
+        return reconciledData;
+    }
+}
+\end{verbatim}
+
+Este serviço é invocado sempre que o usuário solicita a reconciliação dos dados na interface gráfica.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/reconciliation_service.png}
+    \caption{Processo de execução do Reconciliation Service.}
+    \label{Fig:ReconciliationService}
+\end{figure}
+
+\subsubsection{Data Validation Service}
+
+O \textit{Data Validation Service} garante que os dados recebidos estejam no formato correto antes de serem processados. Ele valida se todos os campos obrigatórios estão presentes, se os tipos de dados são consistentes e se não há valores ausentes ou inválidos.
+
+\begin{verbatim}
+// Exemplo de código para o Data Validation Service
+class DataValidationService {
+    static validate(data) {
+        if (!data || !Array.isArray(data)) {
+            throw new Error('Dados inválidos');
+        }
+        // Validação adicional
+        return true;
+    }
+}
+\end{verbatim}
+
+Este serviço é executado antes da reconciliação de dados, garantindo que apenas dados válidos sejam processados.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/validation_service.png}
+    \caption{Fluxo de validação dos dados no Data Validation Service.}
+    \label{Fig:ValidationService}
+\end{figure}
+
+\subsubsection{File Processing Service}
+
+O \textit{File Processing Service} é responsável por lidar com arquivos CSV enviados pelos usuários. Ele converte os dados do arquivo em estruturas adequadas para o banco de dados e para os cálculos de reconciliação. Este serviço é crucial para integrar dados externos ao sistema RADARE.
+
+\begin{verbatim}
+// Exemplo de código para o File Processing Service
+class FileProcessingService {
+    static processCSV(file) {
+        const csvData = parseCSV(file);
+        return csvData.map(row => formatRow(row));
+    }
+}
+\end{verbatim}
+
+Este serviço é acionado sempre que um arquivo CSV é enviado para o sistema.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/file_processing_service.png}
+    \caption{Processamento de arquivos CSV no File Processing Service.}
+    \label{Fig:FileProcessingService}
+\end{figure}
+
+Os \textit{services} do \textit{back-end} do RADARE garantem que o sistema funcione de maneira eficiente e segura, abstraindo a lógica complexa dos algoritmos e permitindo que o sistema lide com grandes volumes de dados de forma robusta.
+
 
 \subsection{Models}
 
@@ -58,16 +431,79 @@ Essas subseções detalham a implementação do back-end, destacando como o sist
 
 \section{Banco de Dados}
 
-O banco de dados utilizado no sistema RADARE foi implementado em PostgreSQL e armazena todas as informações relevantes para a execução do processo de reconciliação de dados industriais. A modelagem foi feita de forma a garantir a integridade e eficiência na consulta e manipulação dos dados. A seguir, são descritas as principais colunas do banco de dados que armazenam os dados de processos e medições.
+O banco de dados utilizado no sistema RADARE foi implementado em PostgreSQL e armazena todas as informações relevantes para a execução do processo de reconciliação de dados industriais, gerenciamento de usuários e rastreamento de atividades. A modelagem foi feita de forma a garantir a integridade e eficiência na consulta e manipulação dos dados. A seguir, são descritas as principais tabelas implementadas no sistema.
+
+\subsection{Tabela de Dados de Processos}
+
+A tabela que armazena os dados de processos industriais contém as medições e os resultados da reconciliação. As principais colunas são:
 
 \begin{itemize}
     \item \textbf{id}: Coluna de identificação única para cada registro no banco de dados. Utilizada como chave primária para vincular informações em diferentes tabelas.
-    \item \textbf{user}: Armazena informações sobre o usuário que realizou o upload dos dados ou a operação de reconciliação. Permite rastrear a origem das interações no sistema.
+    \item \textbf{user}: Armazena informações sobre o usuário que realizou o upload dos dados ou a operação de reconciliação.
     \item \textbf{time}: Representa o timestamp associado ao dado, indicando o momento exato em que a medição foi realizada ou quando a reconciliação foi executada.
-    \item \textbf{tagname}: Identifica a variável medida (sensor ou ponto de coleta) no processo industrial. Cada variável é referenciada por um nome único que facilita a identificação no sistema.
-    \item \textbf{tagreconciled}: Armazena o valor reconciliado de cada variável, ou seja, o resultado do processo de reconciliação de dados, após correção de inconsistências.
-    \item \textbf{tagcorrection}: Coluna que contém o valor da correção aplicada a cada variável medida, calculada durante o processo de reconciliação para ajustar os dados medidos às restrições do sistema.
-    \item \textbf{tagmatrix}: Refere-se à matriz de correlação utilizada no processo de reconciliação para garantir que os valores reconciliados atendam às leis de conservação de massa e energia, ou outras restrições impostas.
+    \item \textbf{tagname}: Identifica a variável medida (sensor ou ponto de coleta) no processo industrial. Cada variável é referenciada por um nome único.
+    \item \textbf{tagreconciled}: Armazena o valor reconciliado de cada variável, ou seja, o resultado do processo de reconciliação de dados.
+    \item \textbf{tagcorrection}: Coluna que contém o valor da correção aplicada a cada variável medida.
+    \item \textbf{tagmatrix}: Refere-se à matriz de correlação utilizada no processo de reconciliação.
 \end{itemize}
 
-Esta estrutura de banco de dados foi desenhada para garantir a rastreabilidade e precisão dos dados processados, além de permitir que as reconciliações sejam realizadas de forma eficiente e escalável.
+\subsection{Tabela de Usuários}
+
+Esta tabela gerencia a autenticação e as permissões dos usuários no sistema. Ela permite o rastreamento de interações e garante que apenas usuários autorizados possam realizar determinadas operações, além de armazenar informações para autenticação segura.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Estrutura da tabela de usuários.}
+    \label{Tab:Users}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Coluna} & \textbf{Descrição} \\ \hline
+        id (primary key) & UUID único para cada usuário \\ \hline
+        username & Nome de usuário utilizado no login \\ \hline
+        email & Email do usuário para notificações e recuperação de senha \\ \hline
+        password\_hash & Hash da senha para garantir segurança \\ \hline
+        role & Papel do usuário (admin, operador, analista) \\ \hline
+        created\_at & Timestamp da criação da conta \\ \hline
+        last\_login & Data e hora do último login realizado \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Tabela de Logs de Atividade}
+
+Esta tabela registra as ações realizadas pelos usuários no sistema, permitindo auditoria e rastreamento de atividades como uploads de arquivos ou execuções de reconciliação de dados.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Estrutura da tabela de logs de atividade.}
+    \label{Tab:ActivityLogs}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Coluna} & \textbf{Descrição} \\ \hline
+        id (primary key) & Identificação única para cada log de atividade \\ \hline
+        user\_id & Referência ao id do usuário que realizou a ação \\ \hline
+        action & Descrição da ação realizada (ex: upload de CSV, reconciliação de dados) \\ \hline
+        timestamp & Data e hora em que a ação foi realizada \\ \hline
+        details & Detalhes adicionais sobre a ação (ex: nome do arquivo CSV carregado) \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Tabela de Configurações de Processos}
+
+Esta tabela armazena as configurações dos processos industriais, incluindo parâmetros como limites de variáveis e tipos de medições. Essa estrutura permite personalizar o comportamento do sistema para diferentes cenários industriais.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Estrutura da tabela de configurações de processos.}
+    \label{Tab:ProcessConfigurations}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Coluna} & \textbf{Descrição} \\ \hline
+        id (primary key) & Identificação única para a configuração do processo \\ \hline
+        process\_name & Nome do processo industrial \\ \hline
+        sensor\_limits & Limites definidos para as variáveis dos sensores \\ \hline
+        created\_by & ID do usuário que criou a configuração \\ \hline
+        created\_at & Timestamp de criação da configuração \\ \hline
+    \end{tabular}
+\end{table}
+
+Essa modelagem de banco de dados garante rastreabilidade, segurança e eficiência no gerenciamento de processos industriais e usuários dentro do sistema RADARE.
