@@ -5,28 +5,49 @@ Neste capítulo, são apresentados os resultados obtidos a partir da implementa�
 
 \section{Front-end}
 
-O front-end do RADARE foi desenhado para oferecer uma interface intuitiva, permitindo aos usuários interagir facilmente com a ferramenta, visualizar fluxos de dados e executar a reconciliação. As duas principais áreas do front-end são o menu e o canvas.
+O front-end do RADARE foi desenhado para oferecer uma interface intuitiva, permitindo aos usuários interagir facilmente com a ferramenta, visualizar fluxos tanto de dados como de modelos e executar a reconciliação. As duas principais áreas do front-end são o menu e o canvas.
 
 \subsection{Sessão de Menu}
 
-A sessão de menu do RADARE oferece ao usuário uma interface para adicionar componentes, controlar o fluxo de dados e gerenciar a visualização do sistema. A seguir, detalhamos cada item disponível no menu, incluindo imagens e exemplos de código que ilustram seu funcionamento e implementação.
+A sessão de menu do RADARE oferece ao usuário uma interface intuitiva para adicionar componentes, controlar o fluxo de dados e gerenciar a visualização do sistema. Cada item disponível no menu é detalhado a seguir, acompanhado de exemplos de código e imagens que ilustram sua funcionalidade e implementação no contexto da ferramenta.
+
+A biblioteca \textit{ReactFlow} \cite{reactflow} desempenha um papel central na manipulação dos nódulos dentro do \textit{canvas}, sendo amplamente adaptada para atender às necessidades específicas do projeto. Modificações foram implementadas para garantir uma usabilidade fluida e eficiente, permitindo que os usuários adicionem e conectem nódulos de forma dinâmica.
+
+Cada nódulo é constituído a partir de uma estrutura definida, onde as conexões, conhecidas como \textit{handles}, são personalizadas com características específicas, como estilos visuais e lógica de interação. Essa flexibilidade garante que a visualização e a manipulação dos fluxos de dados no \textit{canvas} sejam intuitivas, facilitando o gerenciamento de processos complexos na interface do RADARE.
+
+\begin{lstlisting}[language=Java, caption=Nódulo customizado de exemplo]
+    <>
+      <Handle
+        type="target"
+        position={Position.Left}
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      ></Handle>
+
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="b"
+        style={{ top: 20, background: "#784be8" }}
+        isConnectable={isConnectable}
+        maxConnections={maxConnections}
+      ></Handle>
+
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="a"
+        style={{ top: 75, background: "#784be8" }}
+        isConnectable={isConnectable}
+      ></Handle>
+
+      <div>{`${label}`}</div>
+    </>
+\end{lstlisting}
 
 \subsubsection{Adicionar Input}
 
-O botão "Adicionar Input" permite ao usuário inserir um novo ponto de entrada de dados no canvas. Esse input pode representar um sensor ou uma fonte de dados dentro do sistema industrial. Ao clicar no botão, um novo nó de input é adicionado ao canvas, permitindo ao usuário conectar esse ponto a outros elementos.
-
-\begin{verbatim}
-// Exemplo de código para adicionar input no ReactFlow
-const addInputNode = () => {
-    const newNode = {
-        id: `input_${Date.now()}`,
-        data: { label: 'Input' },
-        position: { x: 250, y: 5 },
-        type: 'input',
-    };
-    setElements((els) => [...els, newNode]);
-};
-\end{verbatim}
+O botão \textbf{"Adicionar Input"} permite ao usuário inserir um novo nódulo de entrada no \textit{canvas}. Esse \textit{input} representa um sensor ou uma fonte de dados do sistema industrial. Ao clicar no botão, um novo nó de \textit{input} é adicionado ao \textit{canvas}, permitindo que o usuário conecte esse ponto a outros nódulos do fluxo de dados. A lógica computacional associada a esse comportamento é fornecida pela biblioteca ReactFlow \cite{reactflow}, eliminando a necessidade de configurar comportamentos iniciais customizados.
 
 \begin{figure}[htbp]
     \centering
@@ -37,20 +58,7 @@ const addInputNode = () => {
 
 \subsubsection{Adicionar Output}
 
-O botão "Adicionar Output" permite adicionar um novo ponto de saída de dados, representando, por exemplo, um destino de dados processados. Ao ser inserido no canvas, o nó de saída pode ser conectado a outros nós, finalizando um fluxo de processamento.
-
-\begin{verbatim}
-// Exemplo de código para adicionar output no ReactFlow
-const addOutputNode = () => {
-    const newNode = {
-        id: `output_${Date.now()}`,
-        data: { label: 'Output' },
-        position: { x: 450, y: 5 },
-        type: 'output',
-    };
-    setElements((els) => [...els, newNode]);
-};
-\end{verbatim}
+O botão \textbf{"Adicionar Output"} permite ao usuário inserir um novo nódulo de saída no \textit{canvas}. Esse \textit{output} representa um destino ou ponto final para os dados no sistema industrial, como a exportação de resultados processados ou a visualização de dados reconciliados. Ao clicar no botão, um novo nó de \textit{output} é adicionado ao \textit{canvas}, permitindo que o usuário conecte este nó a outros nódulos de processamento ou entrada no fluxo de dados. Assim como o \textit{input}, a lógica necessária para a adição desse nódulo é fornecida pela biblioteca ReactFlow \cite{reactflow}, dispensando a necessidade de customização de comportamentos iniciais.
 
 \begin{figure}[htbp]
     \centering
@@ -61,20 +69,39 @@ const addOutputNode = () => {
 
 \subsubsection{Adicionar Nódulo 1-1}
 
-Este item insere um nó de processamento básico, que recebe uma entrada e gera uma saída. Esse nódulo é utilizado em fluxos simples de dados.
+O botão \textbf{"Adicionar Nódulo 1-1"} permite ao usuário inserir um novo nódulo de transição no \textit{canvas}. Esse nódulo atua como um ponto intermediário no fluxo de dados, podendo representar sensores, transformações ou outros elementos de processo. Ao clicar no botão, o nódulo é adicionado ao \textit{canvas}, permitindo ao usuário conectá-lo com outros nódulos.
 
-\begin{verbatim}
-// Exemplo de código para adicionar Nódulo 1-1 no ReactFlow
-const addNode1to1 = () => {
-    const newNode = {
-        id: `node1_1_${Date.now()}`,
-        data: { label: 'Nódulo 1-1' },
-        position: { x: 350, y: 100 },
-        type: 'default',
-    };
-    setElements((els) => [...els, newNode]);
+A lógica para adicionar esse nódulo foi construída de forma customizada, definindo o tipo de conexão, a quantidade de pontos de conexão (\textit{handles}), o estilo visual e a posição no \textit{canvas}, adaptando-se ao comportamento esperado no fluxo de dados.
+
+Abaixo está o trecho principal do código responsável pela criação desse nódulo:
+
+\begin{lstlisting}[language=Java, caption=Nódulo customizado 1-1]
+const customNodeOneOne = ({ data }) => {
+  const { label, isConnectable } = data;
+
+  return (
+    <>
+      <Handle
+        type="source"
+        id="a"
+        position={Position.Left}
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      ></Handle>
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="b"
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      ></Handle>
+      <div>{`${label}`}</div>
+    </>
+  );
 };
-\end{verbatim}
+
+export default memo(customNodeOneOne);
+\end{lstlisting}
 
 \begin{figure}[htbp]
     \centering
@@ -87,18 +114,35 @@ const addNode1to1 = () => {
 
 Este item adiciona um nó que se conecta a dois outros pontos. Isso permite dividir os dados em dois fluxos distintos para processamento paralelo.
 
-\begin{verbatim}
-// Exemplo de código para adicionar Nódulo 1-2 no ReactFlow
-const addNode1to2 = () => {
-    const newNode = {
-        id: `node1_2_${Date.now()}`,
-        data: { label: 'Nódulo 1-2' },
-        position: { x: 300, y: 200 },
-        type: 'custom',
-    };
-    setElements((els) => [...els, newNode]);
-};
-\end{verbatim}
+\begin{lstlisting}[language=Java, caption=Nódulo customizado de exemplo]
+    <>
+      <Handle
+        type="target"
+        position={Position.Left}
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      ></Handle>
+
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="b"
+        style={{ top: 20, background: "#784be8" }}
+        isConnectable={isConnectable}
+        maxConnections={maxConnections}
+      ></Handle>
+
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="a"
+        style={{ top: 75, background: "#784be8" }}
+        isConnectable={isConnectable}
+      ></Handle>
+
+      <div>{`${label}`}</div>
+    </>
+\end{lstlisting}
 
 \begin{figure}[htbp]
     \centering
