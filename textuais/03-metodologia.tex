@@ -6,7 +6,7 @@ TODO
 
 Este capítulo aborda a metodologia aplicada no desenvolvimento do \textit{software}, quais métodos de engenharia de \textit{software} foram aplicados durante o processo, desde a concepção, até a prototipação
 
-\section{Metodologia de Desenvolvimento do RADARE}
+\section{Metodologia de desenvolvimento do RADARE}
 
 O desenvolvimento do \textit{software} RADARE adotou o método ágil Scrum como estrutura principal para orientar o processo de criação e entrega do produto \cite{softwareengreq}. Ele sendo uma metodologia ágil amplamente reconhecida, escolhido devido à sua capacidade de promover uma abordagem iterativa e flexível, especialmente adequada para uma equipe com um único desenvolvedor, como é o caso do desenvolvimento do RADARE \cite{scrum}.
 
@@ -32,11 +32,11 @@ Em resumo, a escolha do método Scrum para o desenvolvimento do \textit{software
 
 O escopo do projeto define os limites do trabalho a ser realizado, garantindo que todas as atividades estejam alinhadas com os objetivos do projeto. Isso proporciona uma base sólida para o planejamento, execução e controle do desenvolvimento do \textit{software}, permitindo que a concentração nas entregas essenciais para o projeto \cite{softwareeng}.
 
-\subsection{Requisitos do Sistema}
+\subsection{Requisitos do sistema}
 
 Detalhe os requisitos funcionais e não funcionais do sistema de \textit{software}, identificados durante a fase de análise de requisitos. Explique como esses requisitos foram capturados e documentados \cite{softwareengreq}.
     
-\subsubsection{Requisitos Funcionais}
+\subsubsection{Requisitos funcionais}
 
 Os requisitos funcionais no projeto de \textit{software} desempenham um papel crucial na definição das capacidades e funcionalidades que o sistema deve fornecer para atender às necessidades dos usuários. Em suma, eles representam o "o que" o sistema deve fazer. Esses requisitos são geralmente expressos em termos de casos de uso, cenários de interação do usuário ou fluxos de trabalho \cite{softwareengreq}.
         
@@ -89,7 +89,7 @@ RF01 \\ \hline
 % \label{tab:req_funcional}
 % \end{longtable}}
         
-\subsubsection{Requisitos Não Funcionais}
+\subsubsection{Requisitos não funcionais}
 
 Os requisitos não funcionais em um projeto de \textit{software} desempenham um papel igualmente crucial, complementando os requisitos funcionais ao definir os critérios de qualidade, desempenho e restrições operacionais que o sistema deve atender. Enquanto os requisitos funcionais se concentram no "o que" o sistema deve fazer, os requisitos não funcionais delineiam "como" o sistema deve fazer isso, bem como outras características importantes que afetam sua operação e usabilidade e muitas vezes abordam características mais abstratas do sistema, como segurança, confiabilidade, escalabilidade, desempenho e usabilidade \cite{softwareengreq}. 
             
@@ -124,7 +124,7 @@ A Tabela \ref{tab:ReqNaoFuncional} demonstra os atuais requisitos não funcionai
 \label{tab:ReqNaoFuncional}
 \end{longtable}}
 
-\subsection{Temporização do Desenvolvimento do \textit{Software}}
+\subsection{Temporização do desenvolvimento do \textit{software}}
 
 O Gráfico de Gantt é uma ferramenta amplamente utilizada no gerenciamento de projetos para visualizar e acompanhar o progresso das atividades ao longo do tempo. Desenvolvido pelo engenheiro Henry Gantt na década de 1910, este gráfico fornece uma representação visual clara das tarefas do projeto, seus prazos e suas interdependências \cite{ganttchart}. 
 
@@ -155,15 +155,15 @@ Na Figura \ref{fig:ganttChart} é visível Gráfico de Gantt utilizado pelo proj
 
 Desta forma, a utilização do gráfico de Gantt foi crucial, por manter uma organização temporal da produção em razão do tempo decorrido, na qual auxiliou no planejamento e coordenação das diferentes etapas do projeto, permitindo também uma rápida avaliação do progresso do projeto, destacando visualmente as atividades concluídas, as em andamento e as pendentes. Auxiliando a identificar áreas de atraso ou potenciais gargalos, permitindo que a tomada de atitudes corretivas para manter o projeto no caminho certo.
         
-\section{Projeto de \textit{Software}}
+\section{Projeto de \textit{software}}
 
 Descreva o processo de \textit{design} do \textit{software}, incluindo a arquitetura geral do sistema, diagramas de classe, diagramas de sequência, entre outros artefatos de \textit{design}. Explica as decisões de \textit{design} tomadas e como elas estão alinhadas com os requisitos do sistema \cite{softwareeng}.
 
-\subsection{Arquitetura Geral do Sistema}
+\subsection{Arquitetura geral do sistema}
 
 Durante o desenvolvimento de um \textit{software}, é crucial o uso de representações visuais para uma compreensão mais clara das funcionalidades e estrutura do projeto. Assim, a linguagem de modelagem unificada (UML) permite a criação de diversos tipos de diagramas para representar diferentes aspectos do sistema. Para a solução deste programa, optou-se pelo uso do PlantUML \cite{plantumldoc}, que possibilita a modelagem dos processos através de código, facilitando a alteração e atualização dos diagramas \cite{softwareengreq}.
 
-\subsubsection{Diagrama de Classe}
+\subsubsection{Diagrama de classe}
 
 O diagrama de classes é uma representação visual do projeto na engenharia de \textit{software}, empregada para descrever a estrutura estática de um sistema baseado em objetos \cite{softwareenguml}. Na sua forma mais básica, um diagrama de classes consiste em classes, que são os blocos de construção de um sistema orientado a objetos, contendo os atributos que as características ou propriedades dos objetos dessa classe, enquanto os métodos indicam as operações que podem ser realizadas por esses objetos, como é o caso do diagrama da Figura \ref{fig:ClassDiagram}. Essa estrutura fornece uma representação abstrata e organizada das entidades do sistema, permitindo uma compreensão clara de sua composição e funcionalidades.
             
@@ -178,7 +178,7 @@ Adicionalmente, os relacionamentos entre as classes são destacados por meio de 
             
 Assim, um diagrama de classes torna-se uma ferramenta essencial para modelar a estrutura estática de um sistema, oferecendo uma representação visual nítida das classes, atributos, métodos e seus inter-relacionamentos, o que simplifica o processo de \textit{design}, análise e comunicação entre os integrantes da equipe de desenvolvimento de \textit{software} \cite{softwareenguml}.
             
-\subsubsection{Diagrama de Caso de Uso}
+\subsubsection{Diagrama de caso de uso}
         
 O diagrama de caso de uso é uma representação visual amplamente utilizada na engenharia de \textit{software} para descrever a interação entre um sistema e seus usuários. Ele destaca os diferentes casos de uso, que representam as diferentes maneiras pelas quais os usuários interagem com o sistema para atingir seus objetivos. Na sua forma mais básica, um diagrama de caso de uso consiste em atores, que são os usuários externos ao sistema, e de casos de uso, que são as diferentes funcionalidades ou serviços oferecidos pelo sistema, como exemplificado no diagrama da Figura \ref{fig:UseCaseDiagram}.
         
@@ -193,7 +193,7 @@ Os atores representam os diferentes tipos de usuários que interagem com o siste
         
 Assim, um diagrama de caso de uso torna-se uma ferramenta essencial para modelar a interação entre um sistema e seus usuários, oferecendo uma representação visual clara dos atores, casos de uso e seus inter-relacionamentos. Isso simplifica o processo de \textit{design}, análise e comunicação entre os membros da equipe de desenvolvimento de \textit{software}, garantindo uma implementação eficaz e orientada às necessidades dos usuários.
         
-\subsubsection{Diagrama do Banco de Dados}
+\subsubsection{Diagrama do banco de dados}
 
 O diagrama de banco de dados é uma representação visual das estruturas de dados e dos relacionamentos entre elas em um sistema de banco de dados \cite{databasedepth}, na qual visa representar a estrutura dos dados armazenados em um banco de dados e como esses dados estão relacionados entre si, como é o caso da Figura \ref{fig:DatabaseDiagram}, que representa o banco de dados do sistema.
             
@@ -216,7 +216,7 @@ O \textit{front-end} do projeto foi implementado utilizando React.js como a prin
 
 Uma outra ferramenta muito utilizada, ainda no \textit{front-end} foi a biblioteca ReactFlow, de criação de diagramas, que foi adaptada para a solução em questão.
     
-\section{Gerenciamento de Configuração e Mudança}
+\section{Gerenciamento de configuração e mudança}
 
 Durante o ciclo de vida do desenvolvimento de \textit{software}, foram adotadas diversas práticas e ferramentas para garantir um controle efetivo de versão e gerenciamento de mudanças \cite{gitevery}.
     

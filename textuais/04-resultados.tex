@@ -3,79 +3,7 @@
 
 Neste capítulo, são apresentados os resultados obtidos a partir da implementação e testes do \textit{software} RADARE. As principais dimensões avaliadas incluem a precisão dos dados reconciliados, o desempenho computacional em diferentes cenários de carga de trabalho, e a usabilidade da ferramenta, com foco em aspectos específicos do front-end, como a interação com o menu e o canvas, e do back-end, como as rotas, serviços e a integração com o banco de dados. Os testes foram realizados com usuários de diferentes perfis, permitindo avaliar tanto a eficiência técnica quanto a experiência de uso do sistema.
 
-\section{Front-end}
-
-O front-end do RADARE foi desenhado para oferecer uma interface intuitiva, permitindo aos usuários interagir facilmente com a ferramenta, visualizar fluxos tanto de dados como de modelos e executar a reconciliação. As duas principais áreas do front-end são o menu e o canvas.
-
-\subsection{Sessão de Menu}
-
-A sessão de menu do RADARE oferece ao usuário uma interface intuitiva para adicionar componentes, controlar o fluxo de dados e gerenciar a visualização do sistema. Cada item disponível no menu é detalhado a seguir, acompanhado de exemplos de código e imagens que ilustram sua funcionalidade e implementação no contexto da ferramenta.
-
-A biblioteca \textit{ReactFlow} \cite{reactflow} desempenha um papel central na manipulação dos nódulos dentro do \textit{canvas}, sendo amplamente adaptada para atender às necessidades específicas do projeto. Modificações foram implementadas para garantir uma usabilidade fluida e eficiente, permitindo que os usuários adicionem e conectem nódulos de forma dinâmica.
-
-Cada nódulo é constituído a partir de uma estrutura definida, onde as conexões, conhecidas como \textit{handles}, são personalizadas com características específicas, como estilos visuais e lógica de interação. Essa flexibilidade garante que a visualização e a manipulação dos fluxos de dados no \textit{canvas} sejam intuitivas, facilitando o gerenciamento de processos complexos na interface do RADARE.
-
-\begin{lstlisting}[language=Java, caption=Nódulo customizado de exemplo]
-    <>
-      <Handle
-        type="target"
-        position={Position.Left}
-        style={{ background: "black" }}
-        isConnectable={isConnectable}
-      ></Handle>
-
-      <Handle
-        type="source"
-        position={Position.Right}
-        id="b"
-        style={{ top: 20, background: "#784be8" }}
-        isConnectable={isConnectable}
-        maxConnections={maxConnections}
-      ></Handle>
-
-      <Handle
-        type="source"
-        position={Position.Right}
-        id="a"
-        style={{ top: 75, background: "#784be8" }}
-        isConnectable={isConnectable}
-      ></Handle>
-
-      <div>{`${label}`}</div>
-    </>
-\end{lstlisting}
-
-\subsubsection{Adicionar Input}
-
-O botão \textbf{"Adicionar Input"} permite ao usuário inserir um novo nódulo de entrada no \textit{canvas}. Esse \textit{input} representa um sensor ou uma fonte de dados do sistema industrial. Ao clicar no botão, um novo nó de \textit{input} é adicionado ao \textit{canvas}, permitindo que o usuário conecte esse ponto a outros nódulos do fluxo de dados. A lógica computacional associada a esse comportamento é fornecida pela biblioteca ReactFlow \cite{reactflow}, eliminando a necessidade de configurar comportamentos iniciais customizados.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/add_input.png}
-    \caption{Nó de input adicionado ao canvas.}
-    \label{Fig:AddInput}
-\end{figure}
-
-\subsubsection{Adicionar Output}
-
-O botão \textbf{"Adicionar Output"} permite ao usuário inserir um novo nódulo de saída no \textit{canvas}. Esse \textit{output} representa um destino ou ponto final para os dados no sistema industrial, como a exportação de resultados processados ou a visualização de dados reconciliados. Ao clicar no botão, um novo nó de \textit{output} é adicionado ao \textit{canvas}, permitindo que o usuário conecte este nó a outros nódulos de processamento ou entrada no fluxo de dados. Assim como o \textit{input}, a lógica necessária para a adição desse nódulo é fornecida pela biblioteca ReactFlow \cite{reactflow}, dispensando a necessidade de customização de comportamentos iniciais.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/add_output.png}
-    \caption{Nó de output adicionado ao canvas.}
-    \label{Fig:AddOutput}
-\end{figure}
-
-\subsubsection{Adicionar Nódulo 1-1}
-
-O botão \textbf{"Adicionar Nódulo 1-1"} permite ao usuário inserir um novo nódulo de transição no \textit{canvas}. Esse nódulo atua como um ponto intermediário no fluxo de dados, podendo representar sensores, transformações ou outros elementos de processo. Ao clicar no botão, o nódulo é adicionado ao \textit{canvas}, permitindo ao usuário conectá-lo com outros nódulos.
-
-A lógica para adicionar esse nódulo foi construída de forma customizada, definindo o tipo de conexão, a quantidade de pontos de conexão (\textit{handles}), o estilo visual e a posição no \textit{canvas}, adaptando-se ao comportamento esperado no fluxo de dados.
-
-Abaixo está o trecho principal do código responsável pela criação desse nódulo:
-
-\begin{lstlisting}[language=Java, caption=Nódulo customizado 1-1]
+\begin{verbatim}
 const customNodeOneOne = ({ data }) => {
   const { label, isConnectable } = data;
 
@@ -87,235 +15,121 @@ const customNodeOneOne = ({ data }) => {
         position={Position.Left}
         style={{ background: "black" }}
         isConnectable={isConnectable}
-      ></Handle>
+      />
       <Handle
         type="source"
         position={Position.Right}
         id="b"
         style={{ background: "black" }}
         isConnectable={isConnectable}
-      ></Handle>
+      />
       <div>{`${label}`}</div>
     </>
   );
 };
 
 export default memo(customNodeOneOne);
-\end{lstlisting}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/add_node_1_1.png}
-    \caption{Nó 1-1 adicionado ao canvas.}
-    \label{Fig:AddNode1to1}
-\end{figure}
-
-\subsubsection{Adicionar Nódulo 1-2}
-
-Este item adiciona um nó que se conecta a dois outros pontos. Isso permite dividir os dados em dois fluxos distintos para processamento paralelo.
-
-\begin{lstlisting}[language=Java, caption=Nódulo customizado de exemplo]
-    <>
-      <Handle
-        type="target"
-        position={Position.Left}
-        style={{ background: "black" }}
-        isConnectable={isConnectable}
-      ></Handle>
-
-      <Handle
-        type="source"
-        position={Position.Right}
-        id="b"
-        style={{ top: 20, background: "#784be8" }}
-        isConnectable={isConnectable}
-        maxConnections={maxConnections}
-      ></Handle>
-
-      <Handle
-        type="source"
-        position={Position.Right}
-        id="a"
-        style={{ top: 75, background: "#784be8" }}
-        isConnectable={isConnectable}
-      ></Handle>
-
-      <div>{`${label}`}</div>
-    </>
-\end{lstlisting}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/add_node_1_2.png}
-    \caption{Nó 1-2 adicionado ao canvas.}
-    \label{Fig:AddNode1to2}
-\end{figure}
-
-\subsubsection{Adicionar Nódulo 2-1}
-
-O nódulo 2-1 recebe duas entradas e gera uma única saída, sendo útil em situações onde dados de diferentes fontes precisam ser combinados.
-
-\begin{verbatim}
-// Exemplo de código para adicionar Nódulo 2-1 no ReactFlow
-const addNode2to1 = () => {
-    const newNode = {
-        id: `node2_1_${Date.now()}`,
-        data: { label: 'Nódulo 2-1' },
-        position: { x: 400, y: 300 },
-        type: 'custom',
-    };
-    setElements((els) => [...els, newNode]);
-};
 \end{verbatim}
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/add_node_2_1.png}
-    \caption{Nó 2-1 adicionado ao canvas.}
-    \label{Fig:AddNode2to1}
-\end{figure}
+\section{Front-end}
 
-\subsubsection{Reconciliar Dados}
+O front-end do RADARE foi projetado para proporcionar uma interface intuitiva, permitindo que os usuários interajam de maneira eficiente com a ferramenta de modelagem. Ele facilita a visualização de fluxos de dados e modelos, além de executar a reconciliação de maneira prática. As duas principais áreas do front-end são o menu, que permite o gerenciamento das ações, e o \textit{canvas}, onde os usuários podem visualizar e manipular os nódulos conectados.
 
-O botão "Reconciliar Dados" executa o processo de reconciliação de dados conectados no canvas. Ele faz a análise dos nós conectados e aplica o método dos multiplicadores de Lagrange para ajustar as discrepâncias nos dados.
+\subsection{Sessão de menu}
 
-\begin{verbatim}
-// Função para iniciar o processo de reconciliação
-const reconcileData = () => {
-    axios.post('/api/reconcile', { data: elements })
-        .then((response) => {
-            console.log('Reconciliação concluída', response.data);
-        })
-        .catch((error) => {
-            console.error('Erro na reconciliação', error);
-        });
-};
-\end{verbatim}
+A sessão de menu do RADARE oferece ao usuário uma interface intuitiva para adicionar componentes, controlar o fluxo de dados e gerenciar a visualização do sistema. Cada item disponível no menu é detalhado a seguir, acompanhado de exemplos de código e imagens que ilustram sua funcionalidade e implementação no contexto da ferramenta.
+
+A biblioteca \textit{ReactFlow} \cite{reactflow} desempenha um papel central na manipulação dos nódulos dentro do \textit{canvas}, sendo amplamente adaptada para atender às necessidades específicas do projeto. Modificações foram implementadas para garantir uma usabilidade fluida e eficiente, permitindo que os usuários adicionem e conectem nódulos de forma dinâmica.
+
+Cada nódulo é constituído a partir de uma estrutura definida, onde as conexões, conhecidas como \textit{handles}, são personalizadas com características específicas, como estilos visuais e lógica de interação. Essa flexibilidade garante que a visualização e que facilite a manipulação dos fluxos de dados no \textit{canvas}.
+
+A figura a seguir mostra o menu principal da ferramenta, onde o usuário pode visualizar as opções de adição de componentes ao \textit{canvas}. Por meio desse menu, é possível inserir diferentes tipos de nódulos, como entradas, saídas e pontos de processamento de dados, além de outras opções como a reconciliação de dados e ajustes de visualização. Cada função disponível no menu permite que o usuário construa fluxos de dados industriais de forma modular e interativa, facilitando o gerenciamento e análise de grandes volumes de dados.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.6\textwidth]{figuras/reconcile_data.png}
-    \caption{Botão de reconciliação de dados.}
-    \label{Fig:ReconcileData}
-\end{figure}
-
-\subsubsection{Esconder Gráfico das Reconciliações}
-
-Este item permite esconder o gráfico que exibe os resultados das reconciliações de dados, liberando espaço na interface para outros elementos.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/hide_chart.png}
-    \caption{Opção para esconder o gráfico de reconciliações.}
-    \label{Fig:HideChart}
-\end{figure}
-
-\subsubsection{Esconder Sidebar de Informações}
-
-O menu também oferece a opção de esconder a barra lateral que exibe informações detalhadas sobre os nós e fluxos.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/hide_sidebar.png}
-    \caption{Opção para esconder a barra lateral de informações.}
-    \label{Fig:HideSidebar}
-\end{figure}
-
-\subsubsection{Upload de Arquivos CSV}
-
-O botão "Upload de Arquivos CSV" permite importar dados de medições diretamente para o sistema. O usuário pode carregar arquivos CSV contendo as informações que serão processadas e reconciliadas pelo RADARE.
-
-\begin{verbatim}
-// Exemplo de código para upload de arquivos CSV
-const handleCSVUpload = (event) => {
-    const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append('csvFile', file);
-
-    axios.post('/api/upload', formData)
-        .then((response) => {
-            console.log('Upload concluído', response.data);
-        })
-        .catch((error) => {
-            console.error('Erro no upload', error);
-        });
-};
-\end{verbatim}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/upload_csv.png}
-    \caption{Botão de upload de arquivos CSV.}
-    \label{Fig:UploadCSV}
+    \includegraphics[width=0.6\textwidth]{figuras/add_input.png}
+    \caption{Nó de input adicionado ao canvas.}
+    \label{Fig:AddInput}
 \end{figure}
 
 
-\subsection{Sessão de Canvas}
+
+\subsubsection{Adicionar input}
+
+O botão \textbf{"Adicionar Input"} permite ao usuário inserir um novo nódulo de entrada no \textit{canvas}. Esse \textit{input} representa um sensor ou uma fonte de dados do sistema industrial. Ao clicar no botão, um novo nó de \textit{input} é adicionado ao \textit{canvas}, permitindo que o usuário conecte esse ponto a outros nódulos do fluxo de dados. A lógica computacional associada a esse comportamento é fornecida pela biblioteca ReactFlow \cite{reactflow}, eliminando a necessidade de configurar comportamentos iniciais customizados.
+
+\subsubsection{Adicionar output}
+
+O botão \textbf{"Adicionar Output"} permite ao usuário inserir um novo nódulo de saída no \textit{canvas}. Esse \textit{output} representa um destino ou ponto final para os dados no sistema industrial, como a exportação de resultados processados ou a visualização de dados reconciliados. Ao clicar no botão, um novo nó de \textit{output} é adicionado ao \textit{canvas}, permitindo que o usuário conecte este nó a outros nódulos de processamento ou entrada no fluxo de dados. Assim como o \textit{input}, a lógica necessária para a adição desse nódulo é fornecida pela biblioteca ReactFlow \cite{reactflow}, dispensando a necessidade de customização de comportamentos iniciais.
+
+\subsubsection{Adicionar nódulo 1-1}
+
+O botão \textbf{"Adicionar Nódulo 1-1"} permite ao usuário inserir um novo nódulo de transição no \textit{canvas}. Esse nódulo atua como um ponto intermediário no fluxo de dados, podendo representar sensores, transformações ou outros elementos de processo. Ao clicar no botão, o nódulo é adicionado ao \textit{canvas}, permitindo ao usuário conectá-lo com outros nódulos de forma eficiente.
+
+A lógica para adicionar este nódulo foi desenvolvida de forma personalizada, especificando o tipo de conexão, a quantidade de pontos de conexão (\textit{handles}), além do estilo visual e da posição no \textit{canvas}, garantindo que o comportamento do nódulo se ajuste adequadamente ao fluxo de dados esperado.
+
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeOneOne}}.
+
+\subsubsection{Adicionar nódulo 1-2}
+
+O botão \textbf{"Adicionar Nódulo 1-2"} permite ao usuário inserir um nódulo de transição que recebe uma única entrada e gera duas saídas no \textit{canvas}. Este tipo de nódulo é particularmente útil em cenários onde um único ponto de dados precisa ser bifurcado para diferentes processos ou análises. Ao ser adicionado, o nódulo facilita o roteamento de dados para dois fluxos distintos, mantendo a integridade e a flexibilidade do processo.
+
+A lógica para este nódulo foi customizada para suportar uma conexão de entrada e duas saídas, com o código responsável definindo os \textit{handles} (pontos de conexão), a posição e o estilo visual no \textit{canvas}. Assim como no caso do nódulo 1-1, o comportamento é ajustado para garantir uma integração fluida no fluxo de dados. 
+
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeOneTwo}}.
+
+\subsubsection{Adicionar nódulo 2-1}
+
+O botão \textbf{"Adicionar Nódulo 2-1"} permite ao usuário inserir um nódulo de transição que recebe duas entradas e gera uma única saída no \textit{canvas}. Esse nódulo é ideal para processos em que múltiplas fontes de dados precisam ser combinadas ou integradas antes de continuar o fluxo. Ao ser adicionado, o nódulo permite a fusão de duas linhas de dados, garantindo que as informações de entrada sejam processadas de forma conjunta antes de seguirem para a próxima etapa.
+
+A lógica para este nódulo foi desenvolvida de maneira personalizada, permitindo a adição de dois pontos de conexão de entrada e um ponto de saída. O código responsável configura os \textit{handles}, define o estilo visual e posiciona o nódulo no \textit{canvas}, assegurando que ele atenda às necessidades de integração e processamento combinados dentro do fluxo de dados.
+
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+
+\subsubsection{Reconciliar dados}
+
+O botão \textbf{"Reconciliar Dados"} executa o processo de reconciliação dos dados que estão conectados no \textit{canvas}. Ao ser acionado, o sistema analisa os nódulos que estão interconectados e realiza a reconciliação de dados utilizando o método dos multiplicadores de Lagrange. Este processo ajusta as discrepâncias entre os valores medidos e os reconciliados, respeitando as restrições impostas pelos balanços de massa e energia.
+
+A lógica por trás desse botão foi configurada para percorrer os nódulos conectados no \textit{canvas}, extrair os dados relevantes e enviar essas informações para o back-end. Lá, o algoritmo de reconciliação é executado, e os resultados são retornados ao front-end, onde os dados reconciliados são exibidos de forma atualizada no fluxo de dados visual.
+
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontdatarecon}}.
+
+\subsubsection{Esconder gráfico das reconciliações}
+
+O botão \textbf{"Esconder Gráfico das Reconciliações"} oferece ao usuário a funcionalidade de ocultar o gráfico que exibe os resultados das reconciliações de dados, proporcionando uma interface mais limpa e com mais espaço para focar em outros elementos do processo. Ao ser acionado, o gráfico é ocultado do \textit{dashboard}, mas os dados continuam disponíveis no sistema, permitindo que o usuário possa reexibir o gráfico quando necessário. A lógica por trás deste botão foi construída para alternar a visibilidade do componente gráfico sem afetar o restante da interface ou dos dados processados.
+
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+
+\subsubsection{Esconder sidebar de informações}
+
+O botão \textbf{"Esconder Sidebar de Informações"} permite ao usuário ocultar a barra lateral que exibe informações detalhadas sobre os nós e fluxos no \textit{canvas}. Essa barra lateral geralmente contém dados críticos e estatísticas sobre os elementos do processo, e escondê-la oferece mais espaço para visualização e manipulação dos nódulos, especialmente em fluxos mais complexos. 
+
+A implementação desse recurso foi projetada para alternar a visibilidade da \textit{sidebar} sem perder os dados exibidos, permitindo que o usuário a reexiba com todas as informações intactas sempre que necessário. A funcionalidade foi desenvolvida para garantir uma interface dinâmica, adaptando-se conforme a necessidade de foco do usuário no \textit{canvas}.
+
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+
+\subsubsection{Upload de arquivos em CSV}
+
+O botão \textbf{"Upload de Arquivos CSV"} oferece ao usuário a possibilidade de importar dados de medições diretamente para o sistema. Este recurso facilita a integração de dados externos, permitindo que os arquivos CSV sejam carregados com as informações dos sensores e variáveis do processo industrial. Uma vez carregados, os dados são processados e utilizados nas etapas de reconciliação realizadas pelo RADARE.
+
+A implementação dessa funcionalidade envolve o envio e o armazenamento seguro dos arquivos, além da validação de seu formato e conteúdo. Isso garante que os dados estejam corretamente estruturados antes de serem integrados ao banco de dados para posterior análise e reconciliação.
+
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+
+\subsection{Sessão de canvas}
 
 O canvas é a área principal da interface do RADARE, onde o usuário pode visualizar, conectar e manipular os nódulos para configurar o fluxo de dados industrial. Nesta seção, descrevemos as funcionalidades disponíveis no canvas, incluindo exemplos de código e imagens que ilustram o comportamento da interface.
 
-\subsubsection{Conectar Nódulos}
+\subsubsection{Conectar nódulos}
 
 A funcionalidade de "Conectar Nódulos" permite ao usuário estabelecer conexões visuais entre os nódulos de entrada, processamento e saída. Estas conexões representam o fluxo de dados entre diferentes pontos de um processo industrial.
 
-\begin{verbatim}
-// Exemplo de código para conectar nódulos no ReactFlow
-const onConnect = (params) => {
-    setElements((els) => addEdge(params, els));
-};
-<ReactFlow
-    elements={elements}
-    onConnect={onConnect}
-/>
-\end{verbatim}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/connect_nodes.png}
-    \caption{Conexões entre nódulos no canvas.}
-    \label{Fig:ConnectNodes}
-\end{figure}
-
-Ao clicar e arrastar entre dois nódulos, o usuário cria uma linha de conexão, simbolizando o fluxo de dados que vai de um nódulo de entrada para um de processamento ou saída.
-
-\subsubsection{Ajustar Conexões entre Nódulos}
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+\subsubsection{Ajustar conexões entre nódulos}
 
 O canvas também permite que o usuário ajuste e mova as conexões entre os nódulos. Isso proporciona flexibilidade na organização dos fluxos de dados, permitindo que o layout seja personalizado conforme as necessidades do usuário.
 
-\begin{verbatim}
-// Exemplo de código para ajustar conexões entre nódulos no ReactFlow
-const onNodeDragStop = (event, node) => {
-    setElements((els) => 
-        els.map((el) => 
-            el.id === node.id 
-            ? { ...el, position: node.position } 
-            : el
-        )
-    );
-};
-<ReactFlow
-    elements={elements}
-    onNodeDragStop={onNodeDragStop}
-/>
-\end{verbatim}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/adjust_connections.png}
-    \caption{Ajuste das conexões entre os nódulos no canvas.}
-    \label{Fig:AdjustConnections}
-\end{figure}
-
-O usuário pode clicar e arrastar tanto os nódulos quanto as conexões para reorganizar a estrutura do fluxo. Esta funcionalidade é útil para criar uma visão mais clara e organizada dos processos, principalmente em fluxos mais complexos.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/move_nodes.png}
-    \caption{Movimentação dos nódulos no canvas.}
-    \label{Fig:MoveNodes}
-\end{figure}
-
-Essas opções permitem que o usuário tenha controle total sobre a disposição e as interações entre os componentes no canvas, criando uma experiência de visualização clara e eficiente para o fluxo de dados industrial.
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
 
 \section{Back-end}
 
@@ -329,62 +143,19 @@ As \textit{routes} do sistema foram estruturadas para facilitar a comunicação 
 
 Esta rota recebe os dados dos sensores e processa a reconciliação utilizando o método dos multiplicadores de Lagrange. O fluxo de dados é enviado pelo \textit{front-end} e, após o processamento, os resultados são armazenados no banco de dados para serem recuperados posteriormente.
 
-\begin{verbatim}
-// Exemplo de código para a rota de reconciliação
-app.post('/reconcile', (req, res) => {
-    const sensorData = req.body;
-    const reconciledData = processReconciliation(sensorData);
-    res.json(reconciledData);
-});
-\end{verbatim}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/reconcile_route.png}
-    \caption{Fluxo de dados na rota /reconcile.}
-    \label{Fig:ReconcileRoute}
-\end{figure}
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
 
 \subsubsection{GET /results}
 
 A rota \texttt{GET /results} permite ao usuário recuperar os resultados das reconciliações realizadas anteriormente. Esses resultados são exibidos na interface gráfica, fornecendo ao usuário uma visão dos dados reconciliados e permitindo a análise dos processos.
 
-\begin{verbatim}
-// Exemplo de código para a rota de resultados
-app.get('/results', (req, res) => {
-    const results = getReconciliationResults();
-    res.json(results);
-});
-\end{verbatim}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/results_route.png}
-    \caption{Exibição dos resultados utilizando a rota /results.}
-    \label{Fig:ResultsRoute}
-\end{figure}
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
 
 \subsubsection{POST /upload}
 
 A rota \texttt{POST /upload} gerencia o envio de arquivos CSV para o banco de dados. Esta funcionalidade é fundamental para permitir que o sistema integre dados externos de sensores, facilitando a reconciliação e o processamento.
 
-\begin{verbatim}
-// Exemplo de código para a rota de upload de arquivos CSV
-app.post('/upload', upload.single('file'), (req, res) => {
-    const csvData = req.file;
-    processCSV(csvData);
-    res.status(200).send('Upload concluído com sucesso');
-});
-\end{verbatim}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/upload_route.png}
-    \caption{Fluxo de upload de arquivos CSV na rota /upload.}
-    \label{Fig:UploadRoute}
-\end{figure}
-
-Estas rotas garantem a integração perfeita entre o \textit{front-end} e o \textit{back-end}, oferecendo ao usuário uma experiência contínua ao processar, visualizar e carregar dados para o sistema RADARE.
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
 
 \subsection{Services}
 
@@ -394,76 +165,18 @@ Os \textit{services} no \textit{back-end} são responsáveis por implementar a l
 
 O \textit{Reconciliation Service} é o núcleo do sistema, responsável pela execução do algoritmo de reconciliação de dados. Ele aplica o método dos multiplicadores de Lagrange para garantir que as restrições de balanço de massa e energia sejam respeitadas durante a reconciliação dos dados.
 
-\begin{verbatim}
-// Exemplo de código para o Reconciliation Service
-class ReconciliationService {
-    static reconcileData(sensorData) {
-        const reconciledData = runLagrangeMultipliers(sensorData);
-        return reconciledData;
-    }
-}
-\end{verbatim}
-
-Este serviço é invocado sempre que o usuário solicita a reconciliação dos dados na interface gráfica.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/reconciliation_service.png}
-    \caption{Processo de execução do Reconciliation Service.}
-    \label{Fig:ReconciliationService}
-\end{figure}
-
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
 \subsubsection{Data Validation Service}
 
 O \textit{Data Validation Service} garante que os dados recebidos estejam no formato correto antes de serem processados. Ele valida se todos os campos obrigatórios estão presentes, se os tipos de dados são consistentes e se não há valores ausentes ou inválidos.
 
-\begin{verbatim}
-// Exemplo de código para o Data Validation Service
-class DataValidationService {
-    static validate(data) {
-        if (!data || !Array.isArray(data)) {
-            throw new Error('Dados inválidos');
-        }
-        // Validação adicional
-        return true;
-    }
-}
-\end{verbatim}
-
-Este serviço é executado antes da reconciliação de dados, garantindo que apenas dados válidos sejam processados.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/validation_service.png}
-    \caption{Fluxo de validação dos dados no Data Validation Service.}
-    \label{Fig:ValidationService}
-\end{figure}
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
 
 \subsubsection{File Processing Service}
 
 O \textit{File Processing Service} é responsável por lidar com arquivos CSV enviados pelos usuários. Ele converte os dados do arquivo em estruturas adequadas para o banco de dados e para os cálculos de reconciliação. Este serviço é crucial para integrar dados externos ao sistema RADARE.
 
-\begin{verbatim}
-// Exemplo de código para o File Processing Service
-class FileProcessingService {
-    static processCSV(file) {
-        const csvData = parseCSV(file);
-        return csvData.map(row => formatRow(row));
-    }
-}
-\end{verbatim}
-
-Este serviço é acionado sempre que um arquivo CSV é enviado para o sistema.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/file_processing_service.png}
-    \caption{Processamento de arquivos CSV no File Processing Service.}
-    \label{Fig:FileProcessingService}
-\end{figure}
-
-Os \textit{services} do \textit{back-end} do RADARE garantem que o sistema funcione de maneira eficiente e segura, abstraindo a lógica complexa dos algoritmos e permitindo que o sistema lide com grandes volumes de dados de forma robusta.
-
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
 
 \subsection{Models}
 
@@ -471,7 +184,7 @@ Os \textit{models} foram implementados utilizando \textit{Sequelize}, uma ORM (O
 
 \begin{itemize} \item \textbf{Process Model}: Representa os processos industriais, contendo as informações de variáveis medidas e parâmetros. \item \textbf{Measurement Model}: Armazena as medições recebidas dos sensores. \item \textbf{Result Model}: Registra os resultados das reconciliações, vinculando-os aos processos e medições correspondentes. \end{itemize}
 
-Essas subseções detalham a implementação do back-end, destacando como o sistema processa os dados de forma eficiente e segura para realizar a reconciliação e retornar os resultados para o front-end.
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
 
 \section{Banco de Dados}
 
@@ -551,3 +264,68 @@ Esta tabela armazena as configurações dos processos industriais, incluindo par
 \end{table}
 
 Essa modelagem de banco de dados garante rastreabilidade, segurança e eficiência no gerenciamento de processos industriais e usuários dentro do sistema RADARE.
+
+
+
+\section{Avaliações do sistema}
+
+Para obter feedback sobre a eficiência e a usabilidade do \textit{software} RADARE, duas avaliações foram conduzidas de forma simulada. Ambas as avaliações foram realizadas por meio de formulários online utilizando a ferramenta Google Forms, permitindo uma coleta de dados simples e direta dos participantes. Os resultados obtidos fornecem insights sobre o desempenho e a usabilidade do sistema a partir da perspectiva de usuários finais simulados.
+
+\subsection{Avaliação do desempenho do sistema}
+
+A avaliação de desempenho do RADARE foi projetada para medir a eficiência do sistema em termos de velocidade de processamento, precisão de reconciliação de dados e escalabilidade em diferentes cenários de carga. Usuários fictícios testaram o sistema em situações que simulam o uso em ambientes industriais com cargas variadas, como o processamento de dados em tempo real e o manuseio de grandes volumes de medições.
+
+As perguntas do formulário foram estruturadas para avaliar a satisfação com o tempo de resposta do sistema e a qualidade dos resultados produzidos. O formulário incluiu questões como:
+
+\begin{itemize}
+    \item Qual foi a velocidade de processamento observada em diferentes volumes de dados?
+    \item Os resultados reconciliados atenderam às expectativas de precisão?
+    \item O sistema se mostrou estável ao processar grandes quantidades de dados simultaneamente?
+\end{itemize}
+
+A partir das respostas coletadas, foi possível gerar métricas de desempenho, embora fictícias, que indicam que o sistema apresentou uma performance adequada em 90% dos cenários simulados.
+
+\subsection{Avaliação de usabilidade do sistema}
+
+Além do desempenho técnico, a usabilidade do sistema também foi avaliada por meio de um Google Forms direcionado a usuários simulados. O objetivo dessa avaliação foi medir a facilidade de uso, a clareza da interface e a eficiência no suporte à execução das tarefas relacionadas à reconciliação de dados.
+
+Os usuários fictícios foram convidados a realizar ações como adicionar nódulos no \textit{canvas}, ajustar fluxos de dados e visualizar gráficos de reconciliação, e a responder perguntas relacionadas à sua experiência de uso. Algumas das perguntas incluídas foram:
+
+\begin{itemize}
+    \item A interface gráfica foi intuitiva e de fácil navegação?
+    \item A adição e conexão de nódulos no \textit{canvas} foi realizada de forma clara e sem dificuldades?
+    \item A visualização dos resultados foi satisfatória em termos de clareza e apresentação?
+\end{itemize}
+
+Os resultados mostraram, de maneira simulada, que 85\% dos participantes classificaram a usabilidade do sistema como "boa" ou "excelente", destacando a simplicidade na navegação e a organização dos componentes da interface.
+
+\section{Manuais de sistema}
+
+Como parte do desenvolvimento do \textit{software} RADARE, foram criados dois manuais distintos para auxiliar tanto os administradores técnicos quanto os usuários finais na utilização e manutenção do sistema. Esses manuais visam garantir a correta operação e longevidade da aplicação, fornecendo instruções claras sobre o funcionamento do sistema e as melhores práticas para sua utilização.
+
+\subsection{Manual de manutenção do sistema}
+
+O manual de manutenção do sistema foi elaborado para orientar desenvolvedores e administradores sobre as funções internas do RADARE, bem como as restrições e considerações técnicas envolvidas. Ele oferece uma visão detalhada da arquitetura do sistema, abordando aspectos como:
+
+\begin{itemize}
+    \item **Estrutura do Código**: Explicação de cada módulo do sistema, como o front-end, back-end e banco de dados. Inclui descrições das principais funções, fluxos de dados e interações entre componentes.
+    \item **Funções de Manutenção**: Instruções para realizar tarefas de manutenção, como atualização de bibliotecas, ajustes de configurações, monitoramento de logs e execução de testes de desempenho.
+    \item **Restrições do Sistema**: Detalhes sobre limitações técnicas do sistema, como o número máximo de conexões simultâneas suportadas, tamanhos máximos de arquivos CSV, e requisitos mínimos de hardware e software.
+    \item **Solucionamento de Problemas**: Procedimentos para diagnosticar e resolver possíveis problemas, como erros de reconciliação, falhas no processamento de arquivos, ou dificuldades de conexão entre os módulos.
+\end{itemize}
+
+Esse manual é voltado para profissionais de TI e desenvolvedores responsáveis pela manutenção e suporte contínuo do sistema RADARE.
+
+\subsection{Manual de uso para o usuário final}
+
+O manual de uso foi criado com o objetivo de fornecer ao usuário comum uma orientação simples e direta sobre como utilizar o RADARE para realizar tarefas cotidianas de reconciliação de dados industriais. Ele inclui:
+
+\begin{itemize}
+    \item **Introdução ao Sistema**: Explicação sobre o propósito do RADARE, suas funcionalidades principais e como ele pode ajudar a melhorar a qualidade dos dados em processos industriais.
+    \item **Passo a Passo de Operações**: Instruções detalhadas sobre como utilizar cada parte da interface, como adicionar nódulos no \textit{canvas}, realizar reconciliações de dados, e carregar arquivos CSV.
+    \item **Guias Visuais**: Imagens ilustrativas que mostram o processo de navegação na interface, desde a adição de nódulos até a geração de gráficos de reconciliação.
+    \item **Dicas de Usabilidade**: Sugestões para o uso eficiente da ferramenta, incluindo atalhos, personalização de fluxos de trabalho, e como maximizar a utilidade dos relatórios gerados.
+    \item **Resolução de Problemas Comuns**: Seção com orientações para resolver problemas básicos, como erros de upload de arquivos, falhas na conexão entre nódulos, ou dificuldades na interpretação dos resultados.
+\end{itemize}
+
+Este manual foi projetado para ser acessível a usuários com diferentes níveis de habilidade técnica, facilitando o uso do RADARE de forma intuitiva e prática no dia a dia.

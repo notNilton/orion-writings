@@ -1,0 +1,30 @@
+\mychapter{Lógica computacional do front-end do nódulo customizado de duas entradas e uma saída}
+\label{Cap:frontCodeNodeTwoOne}
+
+\begin{verbatim}
+const customNodeOneOne = ({ data }) => {
+  const { label, isConnectable } = data;
+
+  return (
+    <>
+      <Handle
+        type="source"
+        id="a"
+        position={Position.Left}
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      />
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="b"
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      />
+      <div>{`${label}`}</div>
+    </>
+  );
+};
+
+export default memo(customNodeOneOne);
+\end{verbatim}
