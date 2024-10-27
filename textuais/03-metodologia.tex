@@ -1,24 +1,15 @@
-TODO
-- Adicionar pesquisa sobre paleta de cores e resultados
-
 \mychapter{Metodologia}
 \label{Cap:Metodologia}
 
 Este capítulo aborda a metodologia aplicada no desenvolvimento do \textit{software}, quais métodos de engenharia de \textit{software} foram aplicados durante o processo, desde a concepção, até a prototipação
 
-\section{Metodologia de desenvolvimento do RADARE}
+% -------------------------
+\section{Metodologia de desenvolvimento do \textit{software} RADARE}
 
 O desenvolvimento do \textit{software} RADARE adotou o método ágil Scrum como estrutura principal para orientar o processo de criação e entrega do produto \cite{softwareengreq}. Ele sendo uma metodologia ágil amplamente reconhecida, escolhido devido à sua capacidade de promover uma abordagem iterativa e flexível, especialmente adequada para uma equipe com um único desenvolvedor, como é o caso do desenvolvimento do RADARE \cite{scrum}.
 
-\subsection{Descrição do método Scrum}
-
-Scrum é uma metodologia ágil de desenvolvimento de \textit{software} que enfatiza a entrega iterativa e incremental de funcionalidades. Apesar de ter sido projetado para equipes multidisciplinares, pode ser adaptado para uma equipe de um só desenvolvedor devido aos seus princípios flexíveis e foco na entrega contínua de valor \cite{scrumlove}.
-        
-No Scrum, o trabalho é dividido em ciclos de desenvolvimento chamados de \textit{sprints}, geralmente com duração de duas a quatro semanas. Cada \textit{sprints} começa com uma reunião de planejamento, onde o desenvolvedor define as metas e prioridades do \textit{sprints} com base nas necessidades do projeto \cite{scrummic}. Durante o \textit{sprint}, o desenvolvedor trabalha na implementação das funcionalidades definidas no planejamento. O progresso é monitorado diariamente em reuniões curtas chamadas de \textit{daily scrums}, onde o desenvolvedor atualiza a equipe sobre o seu progresso, identifica quaisquer impedimentos e ajusta o plano conforme necessário. Ao final de cada \textit{sprint}, o desenvolvedor realiza uma revisão do \textit{sprint}, demonstrando as funcionalidades concluídas à equipe ou ao cliente, e uma retrospectiva do \textit{sprint}, identificando o que funcionou bem e o que pode ser melhorado no próximo \textit{sprint} \cite{scrumproj}.
-        
-Esse método de desenvolvimento de \textit{software} é funcional mesmo para equipes de um só desenvolvedor, promovendo uma abordagem colaborativa, adaptativa e transparente, permitindo que o desenvolvedor mantenha um alto nível de visibilidade e controle sobre o progresso do projeto. A abordagem iterativa e incremental do Scrum também facilita a adaptação a mudanças nos requisitos do projeto e permite que o desenvolvedor entregue continuamente valor de forma mais rápida e frequente ao cliente, ou orientador, no caso do RADARE \cite{scrum}.
-        
-\subsubsection{Aplicação do método Scrum no Desenvolvimento do \textit{Software} RADARE}
+% -------------------------
+\subsection{Aplicação do método Scrum no desenvolvimento do \textit{software} RADARE}
 
 Ao utilizar o Scrum, o desenvolvedor pôde organizar o trabalho em ciclos curtos e mensuráveis, conhecidos como "\textit{sprint}". Cada \textit{sprint}, com duração definida, permite ao desenvolvedor focar em metas claras e alcançáveis, priorizadas com base nas necessidades do projeto. Essa abordagem iterativa possibilitou uma resposta rápida a mudanças nos requisitos e uma entrega contínua de funcionalidades ao longo do desenvolvimento.
         
@@ -28,15 +19,13 @@ A aplicação do método Scrum no desenvolvimento do \textit{software} RADARE n�
         
 Em resumo, a escolha do método Scrum para o desenvolvimento do \textit{software} RADARE demonstrou ser uma decisão acertada. Sua flexibilidade, foco na entrega de valor e capacidade de adaptação o tornaram uma escolha ideal para uma equipe de um único desenvolvedor, permitindo o desenvolvimento eficiente e eficaz de um produto de alta qualidade.
         
+% -------------------------
 \section{Escopo do \textit{software}}
 
 O escopo do projeto define os limites do trabalho a ser realizado, garantindo que todas as atividades estejam alinhadas com os objetivos do projeto. Isso proporciona uma base sólida para o planejamento, execução e controle do desenvolvimento do \textit{software}, permitindo que a concentração nas entregas essenciais para o projeto \cite{softwareeng}.
-
-\subsection{Requisitos do sistema}
-
-Detalhe os requisitos funcionais e não funcionais do sistema de \textit{software}, identificados durante a fase de análise de requisitos. Explique como esses requisitos foram capturados e documentados \cite{softwareengreq}.
     
-\subsubsection{Requisitos funcionais}
+% -------------------------
+\subsection{Requisitos funcionais do sistema}
 
 Os requisitos funcionais no projeto de \textit{software} desempenham um papel crucial na definição das capacidades e funcionalidades que o sistema deve fornecer para atender às necessidades dos usuários. Em suma, eles representam o "o que" o sistema deve fazer. Esses requisitos são geralmente expressos em termos de casos de uso, cenários de interação do usuário ou fluxos de trabalho \cite{softwareengreq}.
         
@@ -61,35 +50,9 @@ RF01 \\ \hline
 \caption{Tabela modelo dos requisitos funcionais.}
 \label{tab:req_funcional}
 \end{table}
-            
-% {\fontsize{10}{12}\selectfont \begin{longtable}
-%     {| p{.15\textwidth} | p{.35\textwidth} | p{.20\textwidth} |  p{.20\textwidth} |} 
-%     \hline
-%     \textbf{Identificador} & \textbf{Descrição} & \textbf{Prioridade} & \textbf{Requisitos Relacionados} \\
-%     \hline
-%     RF01 & O sistema deve permitir que os usuários modelarem a dinâmica dos sensores presentes em uma planta industrial. & Alta & RF02 \\
-%     \hline
-%     RF02 & Os usuários devem ser capazes de alimentar o sistema com os dados gerados pelos sensores. & Alta & RF01 \\
-%     \hline
-%     RF03 & O sistema deve oferecer uma interface de usuário intuitiva e acessível. & Média & - \\
-%     \hline
-%     RF04 & O sistema deve realizar cálculos de reconciliação de dados de forma ágil e rápida. & Alta & RF01, RF02 \\
-%     \hline
-%     RF05 & O sistema deve garantir a compatibilidade de dados, mesmo com formatos heterogêneos. & Alta & RF01, RF02, RF03 \\
-%     \hline
-%     RF06 & Os usuários devem poder exportar os resultados da reconciliação de dados para diferentes formatos de arquivo. & Média & RF01, RF02, RF03, RF04, RF05 \\
-%     \hline
-%     RF07 & O sistema deve permitir aos usuários configurar alertas para notificar sobre eventos importantes relacionados aos dados dos sensores. & Alta & RF01, RF02 \\
-%     \hline
-%     RF08 & O sistema deve fornecer funcionalidades de visualização de dados em tempo real, incluindo gráficos e relatórios personalizáveis. & Alta & RF02, RF05 \\
-%     \hline
-%     RF09 & O sistema deve permitir a integração com outros sistemas de monitoramento industrial, facilitando a troca de dados e informações. & Alta & RF05, RF06 \\
-%     \hline
-% \caption{Tabela de Requisitos Funcionais} % needs to go inside longtable environment
-% \label{tab:req_funcional}
-% \end{longtable}}
-        
-\subsubsection{Requisitos não funcionais}
+
+% -------------------------
+\subsection{Requisitos não funcionais do sistema}
 
 Os requisitos não funcionais em um projeto de \textit{software} desempenham um papel igualmente crucial, complementando os requisitos funcionais ao definir os critérios de qualidade, desempenho e restrições operacionais que o sistema deve atender. Enquanto os requisitos funcionais se concentram no "o que" o sistema deve fazer, os requisitos não funcionais delineiam "como" o sistema deve fazer isso, bem como outras características importantes que afetam sua operação e usabilidade e muitas vezes abordam características mais abstratas do sistema, como segurança, confiabilidade, escalabilidade, desempenho e usabilidade \cite{softwareengreq}. 
             
@@ -124,6 +87,7 @@ A Tabela \ref{tab:ReqNaoFuncional} demonstra os atuais requisitos não funcionai
 \label{tab:ReqNaoFuncional}
 \end{longtable}}
 
+% -------------------------
 \subsection{Temporização do desenvolvimento do \textit{software}}
 
 O Gráfico de Gantt é uma ferramenta amplamente utilizada no gerenciamento de projetos para visualizar e acompanhar o progresso das atividades ao longo do tempo. Desenvolvido pelo engenheiro Henry Gantt na década de 1910, este gráfico fornece uma representação visual clara das tarefas do projeto, seus prazos e suas interdependências \cite{ganttchart}. 
@@ -155,6 +119,7 @@ Na Figura \ref{fig:ganttChart} é visível Gráfico de Gantt utilizado pelo proj
 
 Desta forma, a utilização do gráfico de Gantt foi crucial, por manter uma organização temporal da produção em razão do tempo decorrido, na qual auxiliou no planejamento e coordenação das diferentes etapas do projeto, permitindo também uma rápida avaliação do progresso do projeto, destacando visualmente as atividades concluídas, as em andamento e as pendentes. Auxiliando a identificar áreas de atraso ou potenciais gargalos, permitindo que a tomada de atitudes corretivas para manter o projeto no caminho certo.
         
+% -------------------------
 \section{Projeto de \textit{software}}
 
 Descreva o processo de \textit{design} do \textit{software}, incluindo a arquitetura geral do sistema, diagramas de classe, diagramas de sequência, entre outros artefatos de \textit{design}. Explica as decisões de \textit{design} tomadas e como elas estão alinhadas com os requisitos do sistema \cite{softwareeng}.
@@ -208,6 +173,7 @@ No diagrama de banco de dados, as entidades são representadas por tabelas, onde
             
 Desta forma, um diagrama de banco de dados é uma ferramenta vital para modelar a estrutura dos dados em um sistema de banco de dados, oferecendo uma representação visual clara das tabelas, colunas e relacionamentos entre elas. Isso facilita o projeto, análise e comunicação entre os membros da equipe de desenvolvimento de \textit{software}, garantindo uma implementação eficiente e eficaz do sistema de banco de dados.
     
+% -------------------------
 \section{Implementação}
 
 O projeto utilizou-se da ferramenta Node.js para gerenciamento de pacotes, permitindo uma gestão eficiente das dependências do projeto. Também foram empregados diversos \textit{plugins} e bibliotecas complementares para facilitar o desenvolvimento e melhorar a experiência do usuário.
@@ -215,17 +181,17 @@ O projeto utilizou-se da ferramenta Node.js para gerenciamento de pacotes, permi
 O \textit{front-end} do projeto foi implementado utilizando React.js como a principal biblioteca de desenvolvimento de interfaces de usuário. Para estilização, foram empregados arquivos CSS com metodologia BEM (Block Element Modifier) para garantir uma estrutura de estilo escalável e modular. Além disso, o projeto se beneficiou do uso de diversos componentes reutilizáveis para manter um código limpo e organizado \cite{eloquentjavascript}.
 
 Uma outra ferramenta muito utilizada, ainda no \textit{front-end} foi a biblioteca ReactFlow, de criação de diagramas, que foi adaptada para a solução em questão.
-    
-\section{Gerenciamento de configuração e mudança}
 
-Durante o ciclo de vida do desenvolvimento de \textit{software}, foram adotadas diversas práticas e ferramentas para garantir um controle efetivo de versão e gerenciamento de mudanças \cite{gitevery}.
+\subsection{Implementação do Typescript no desenvolvimento do front-end}
+Text
+
+\subsection{Implementação do Python no desenvolvimento do back-end}
+Text
     
-Para controle de versão, o Git foi escolhido como sistema de controle de versão distribuído. A plataforma Github \cite{github} foi utilizada para armazenar os repositórios do código-fonte do \textit{software}, o código LaTeX da Trabalho de Conclusão de Curso e da Apresentação. Isso permitiu que a existência de um histórico detalhado de todas as alterações realizadas no código.
+\subsection{Implementação do PostgreSQL no desenvolvimento do banco de dados}
+Text
+
     
-Além disso, foram estabelecidas políticas de \textit{branches} no Git, como o uso de \textit{branches} de \textit{feature}, \textit{develop} e \textit{main}, para organizar o fluxo de trabalho e facilitar a integração contínua. As alterações no código eram revisadas antes de serem mescladas nos \textit{branches} principais, garantindo a qualidade e consistência do código.
+\subsection{Implementação de versionamento no desenvolvimento do software}
+Text
     
-Para o gerenciamento de mudanças, uma abordagem baseada em metodologias ágeis foi adotada, utilizando o Scrum. Isso permitiu que as mudanças fossem gerenciadas de forma iterativa e incremental, com entregas frequentes e \textit{feedback} contínuo ao orientador do trabalho.
-    
-Além disso, foi se utilizado o Trello como ferramenta de rastreamento de problemas \textit{(issue tracking)}, para registrar e acompanhar as mudanças, correções de \textit{bugs} e novas funcionalidades ao longo do desenvolvimento. Isso proporcionou uma visão clara do progresso do projeto e facilitou a comunicação dentro da equipe.
-    
-Desta forma, o controle de versão e gerenciamento de mudanças foram fundamentais para garantir a integridade, rastreabilidade e qualidade do \textit{software} ao longo de seu desenvolvimento, permitindo uma um comportamento eficaz da e uma entrega de progresso contínua no desenvolvimento do \textit{software}.
