@@ -5,11 +5,13 @@ Neste capítulo, são apresentados os resultados da implementação e testes do 
 
 Para facilitar a leitura e não quebrar a dinâmica do texto principal, todos os códigos desenvolvidos para o RADARE foram incluídos nos Apêndices. Devido à sua extensão, a decisão de alocar os trechos de código nos Apêndices permite uma melhor fluidez no corpo do trabalho. Sempre que um código for citado ao longo do texto, será indicada a referência ao apêndice correspondente para consulta detalhada.
 
-\section{Front-end} 
+% -------------------------
+\section{Resultados do desenvolvimento do \textit{front-end}} 
 
 O \textit{front-end} do projeto  foi desenvolvido com foco em oferecer uma interface intuitiva, visando otimizar a interação dos usuários com a ferramenta de modelagem. A interface facilita a visualização dos fluxos de dados e dos modelos, além de permitir a execução da reconciliação. O  \textit{front-end} do sistema é estruturado em duas áreas principais: o menu, responsável pelo gerenciamento das ações e funcionalidades, e o \textit{canvas}, onde os nódulos conectados podem ser visualizados e manipulados diretamente pelos usuários.
 
-\subsection{Sessão de menu} 
+% -------------------------
+\subsection{Menu de controle da interface gráfica} 
 
 A sessão de menu do RADARE apresenta ao usuário uma interface de fácil interação, permitindo a adição de componentes, o controle do fluxo de dados e o gerenciamento da visualização geral do sistema. Cada funcionalidade disponível no menu é descrita de maneira detalhada nas subseções a seguir, acompanhada por exemplos de código e imagens que ilustram sua implementação no contexto da ferramenta.
 
@@ -35,7 +37,7 @@ A Figura \ref{Fig:AddInputButton} ilustra o botão "Adicionar Input" na interfac
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{figuras/add-input-button.png}
-    \caption{Botão de adicionar input no menu.}
+    \caption{Botão de adicionar input no menu (Fonte: próprio autor, 2024).}
     \label{Fig:AddInputButton}
 \end{figure}
 
@@ -49,7 +51,7 @@ A Figura \ref{Fig:AddOutputButton} mostra o botão "Adicionar Output" na interfa
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{figuras/add-output-button.png}
-    \caption{Botão de adicionar output no menu.}
+    \caption{Botão de adicionar output no menu (Fonte: próprio autor, 2024).}
     \label{Fig:AddOutputButton}
 \end{figure}
 
@@ -66,7 +68,7 @@ A Figura \ref{Fig:AddNodeOneOneButton} ilustra o botão "Adicionar Nódulo 1-1" 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{figuras/add-node11-button.png}
-    \caption{Botão de adicionar Nódulo 1-1 no menu.}
+    \caption{Botão de adicionar Nódulo 1-1 no menu (Fonte: próprio autor, 2024).}
     \label{Fig:AddNodeOneOneButton}
 \end{figure}
 
@@ -84,7 +86,7 @@ A Figura \ref{Fig:AddNodeOneTwoButton} ilustra o botão "Adicionar Nódulo 1-2" 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{figuras/add-node12-button.png}
-    \caption{Botão de adicionar Nódulo 1-2 no menu.}
+    \caption{Botão de adicionar Nódulo 1-2 no menu (Fonte: próprio autor, 2024).}
     \label{Fig:AddNodeOneTwoButton}
 \end{figure}
 
@@ -101,7 +103,7 @@ A Figura \ref{Fig:AddNodeTwoOneButton} mostra o botão "Adicionar Nódulo 2-1" p
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{figuras/add-node21-button.png}
-    \caption{Botão de adicionar Nódulo 2-1 no menu.}
+    \caption{Botão de adicionar Nódulo 2-1 no menu (Fonte: próprio autor, 2024).}
     \label{Fig:AddNodeTwoOneButton}
 \end{figure}
 
@@ -116,7 +118,7 @@ A Figura \ref{Fig:ReconcileButton} ilustra o botão "Reconciliar Dados" na inter
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{figuras/reconcile-data-button.png}
-    \caption{Botão de reconciliar dados no menu.}
+    \caption{Botão de reconciliar dados no menu (Fonte: próprio autor, 2024).}
     \label{Fig:ReconcileButton}
 \end{figure}
 
@@ -129,7 +131,7 @@ A Figura \ref{Fig:HideGraphButton} ilustra o botão "Esconder Gráfico das Recon
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{figuras/hide-graphbar-button.png}
-    \caption{Botão de esconder gráfico das reconciliações.}
+    \caption{Botão de esconder gráfico das reconciliações (Fonte: próprio autor, 2024).}
     \label{Fig:HideGraphButton}
 \end{figure}
 
@@ -144,7 +146,7 @@ A Figura \ref{Fig:HideSidebarButton} ilustra o botão "Esconder Sidebar de Infor
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{figuras/hide-sidebar-button.png}
-    \caption{Botão de esconder a sidebar de informações.}
+    \caption{Botão de esconder a sidebar de informações (Fonte: próprio autor, 2024).}
     \label{Fig:HideSidebarButton}
 \end{figure}
 
@@ -159,11 +161,12 @@ A Figura \ref{Fig:UploadCSVButton} mostra o botão "Upload de Arquivos CSV" na i
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{figuras/upload-csv-button.png}
-    \caption{Botão de upload de arquivos CSV.}
+    \caption{Botão de upload de arquivos CSV (Fonte: próprio autor, 2024).}
     \label{Fig:UploadCSVButton}
 \end{figure}
 
-\subsection{Sessão de canvas}
+% -------------------------
+\subsection{\textit{Canvas} do sistema}
 
 O \textit{canvas} é a área principal da interface do RADARE, onde o usuário pode visualizar, conectar e manipular os nódulos para configurar o fluxo de dados industrial. É nesse espaço que o usuário constrói e ajusta os fluxos de trabalho, interligando entradas, saídas e pontos de processamento. A interação no \textit{canvas} é dinâmica e permite a personalização dos fluxos conforme as necessidades do processo.
 
@@ -172,11 +175,11 @@ A Figura \ref{Fig:CanvasArea} mostra um exemplo do \textit{canvas} com vários n
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{figuras/empty-canvas.png}
-    \caption{Exemplo da área de trabalho no canvas do RADARE.}
+    \caption{Exemplo da área de trabalho no canvas do RADARE (Fonte: próprio autor, 2024).}
     \label{Fig:CanvasArea}
 \end{figure}
 
-\subsubsection{Conectar nódulos e modificar suas conexões}
+\subsubsection{Lógica de conexão entre os nódulos no \textit{canvas}}
 
 O sistema permite que o usuário estabeleça conexões visuais entre os nódulos, representando o fluxo de dados entre diferentes pontos de um processo industrial. Essas conexões são fundamentais para garantir que os dados fluam corretamente entre os elementos do \textit{canvas}, como entradas, saídas e pontos de processamento.
 
@@ -187,12 +190,13 @@ O trecho principal do código responsável pela criação desse nódulo pode ser
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{figuras/node-connection-example.png}
-    \caption{Exemplo de conexão entre nódulos no \textit{canvas}.}
+    \caption{Exemplo de conexão entre nódulos no \textit{canvas} (Fonte: próprio autor, 2024).}
     \label{Fig:NodeConnections}
 \end{figure}
 
 
-\subsection{Sessão dos gráficos de resultados}
+% -------------------------
+\subsection{Interface de gráfico de reconciliação de dados}
 
 O \textit{canvas} é a área principal da interface do RADARE, onde o usuário pode visualizar, conectar e manipular os nódulos para configurar o fluxo de dados industrial. É nesse espaço que o usuário constrói e ajusta os fluxos de trabalho, interligando entradas, saídas e pontos de processamento. A interação no \textit{canvas} é dinâmica e permite a personalização dos fluxos conforme as necessidades do processo.
 
@@ -201,11 +205,13 @@ A Figura \ref{Fig:CanvasArea} mostra um exemplo do \textit{canvas} com vários n
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{figuras/empty-canvas.png}
-    \caption{Exemplo da área de trabalho no canvas do RADARE.}
+    \caption{Exemplo da área de trabalho no canvas do RADARE (Fonte: próprio autor, 2024).}
     \label{Fig:CanvasArea}
 \end{figure}
 
-\subsection{Sessão de menu de auxílio}
+
+% -------------------------
+\subsection{Interface de \textit{sidebar} de informações do sistema}
 
 O \textit{canvas} é a área principal da interface do RADARE, onde o usuário pode visualizar, conectar e manipular os nódulos para configurar o fluxo de dados industrial. É nesse espaço que o usuário constrói e ajusta os fluxos de trabalho, interligando entradas, saídas e pontos de processamento. A interação no \textit{canvas} é dinâmica e permite a personalização dos fluxos conforme as necessidades do processo.
 
@@ -214,11 +220,12 @@ A Figura \ref{Fig:CanvasArea} mostra um exemplo do \textit{canvas} com vários n
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{figuras/empty-canvas.png}
-    \caption{Exemplo da área de trabalho no canvas do RADARE.}
+    \caption{Exemplo da área de trabalho no canvas do RADARE (Fonte: próprio autor, 2024).}
     \label{Fig:CanvasArea}
 \end{figure}
 
-\subsection{Visualização completa do Front-end}
+% -------------------------
+\subsection{Resultados finais do front-end em sua visualização completa}
 
 O \textit{canvas} é a área principal da interface do RADARE, onde o usuário pode visualizar, conectar e manipular os nódulos para configurar o fluxo de dados industrial. É nesse espaço que o usuário constrói e ajusta os fluxos de trabalho, interligando entradas, saídas e pontos de processamento. A interação no \textit{canvas} é dinâmica e permite a personalização dos fluxos conforme as necessidades do processo.
 
@@ -229,40 +236,51 @@ A seguir, exploraremos em detalhes as funcionalidades disponíveis no \textit{ca
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{figuras/empty-canvas.png}
-    \caption{Exemplo da área de trabalho no canvas do RADARE.}
+    \caption{Exemplo da área de trabalho no canvas do RADARE (Fonte: próprio autor, 2024).}
     \label{Fig:CanvasArea}
 \end{figure}
 
-\section{Back-end}
+% -------------------------
+\section{Resultados do desenvolvimento do \textit{back-end}}
 
-O back-end do RADARE foi desenvolvido em \textit{Node.js}, com foco em desempenho, escalabilidade e segurança. Ele é responsável por gerenciar as requisições da interface, processar os dados submetidos e realizar os cálculos de reconciliação utilizando o método dos multiplicadores de Lagrange, além de retornar os resultados para o front-end de forma otimizada.
+O \textit{back-end} do RADARE foi desenvolvido em \textit{Python} utilizando o \textit{framework} Flask. Essa camada gerencia as requisições da interface, processa os dados submetidos pelo usuário e realiza os cálculos de reconciliação utilizando o método dos multiplicadores de Lagrange. A estrutura foi configurada para responder de maneira eficiente às operações do \textit{front-end}, enviando os resultados dos cálculos e garantindo uma comunicação ágil entre as partes do sistema.
 
-\subsection{Routes}
+Além de realizar a reconciliação de dados, o \textit{back-end} também gerencia a autenticação e o armazenamento seguro dos dados processados. Com essa estrutura, foi possível assegurar a integridade dos dados e a consistência nos processos realizados, resultando em um sistema robusto e preparado para operações contínuas e de alta demanda.
 
-As \textit{routes} do sistema foram estruturadas para facilitar a comunicação entre a interface gráfica e a API, garantindo que as requisições de dados e os processos de reconciliação sejam executados de maneira eficiente. Abaixo estão descritas as principais rotas implementadas no sistema, com exemplos de código e uma explicação detalhada de cada funcionalidade.
+% -------------------------
+\subsection{Desenvolvimento das interfaces RESTful de comunicação entre os sistemas}
 
-\subsubsection{POST /reconcile}
+As interfaces RESTful foram projetadas para garantir uma comunicação eficiente e segura entre o \textit{front-end} e o \textit{back-end} do sistema RADARE. Cada rota foi cuidadosamente estruturada para facilitar o envio e recebimento de dados, bem como a execução dos processos de reconciliação. Abaixo, são descritas as rotas implementadas, com exemplos de código e explicações detalhadas sobre cada funcionalidade, destacando a importância de cada \textit{endpoint} na integração dos componentes do sistema.
 
-Esta rota recebe os dados dos sensores e processa a reconciliação utilizando o método dos multiplicadores de Lagrange. O fluxo de dados é enviado pelo \textit{front-end} e, após o processamento, os resultados são armazenados no banco de dados para serem recuperados posteriormente.
+% -------------------------
+\subsubsection{Interface RESTful POST /reconcile}
 
-O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+A rota \texttt{POST /reconcile} é responsável por receber os dados dos sensores enviados pelo \textit{front-end} e realizar a reconciliação utilizando o método dos multiplicadores de Lagrange. Após a entrada dos dados, o \textit{back-end} processa as informações e aplica o método para ajustar os valores conforme as restrições impostas, garantindo a consistência dos dados reconciliados. Os resultados obtidos são então armazenados no banco de dados, permitindo a sua recuperação e visualização pelo sistema conforme necessário.
 
-\subsubsection{GET /results}
+O código completo que implementa essa funcionalidade pode ser consultado no \textbf{Anexo \ref{Anexo:CodigoRouteReconcile}}.
 
-A rota \texttt{GET /results} permite ao usuário recuperar os resultados das reconciliações realizadas anteriormente. Esses resultados são exibidos na interface gráfica, fornecendo ao usuário uma visão dos dados reconciliados e permitindo a análise dos processos.
+% -------------------------
+\subsubsection{Interface RESTful GET /results}
 
-O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+A rota \texttt{GET /results} foi implementada para possibilitar que o usuário recupere os resultados das reconciliações de dados realizadas anteriormente. Ao ser acionada, essa rota consulta o banco de dados e retorna os valores reconciliados, que são então exibidos na interface gráfica, permitindo que o usuário visualize e analise os dados ajustados de forma clara e organizada.
 
-\subsubsection{POST /upload}
+O processo de recuperação desses dados envolve uma consulta ao banco de dados, onde as informações resultantes das reconciliações são armazenadas após o processamento inicial. Esses resultados incluem os valores corrigidos e ajustados por meio do método dos multiplicadores de Lagrange, aplicados durante a fase de reconciliação.
 
-A rota \texttt{POST /upload} gerencia o envio de arquivos CSV para o banco de dados. Esta funcionalidade é fundamental para permitir que o sistema integre dados externos de sensores, facilitando a reconciliação e o processamento.
+Para mais detalhes sobre o código completo desta rota, consulte o \textbf{Anexo \ref{Anexo:CodigoRouteResults}}, onde é apresentada a implementação completa, incluindo as especificidades da consulta ao banco de dados e a formatação dos dados antes de serem enviados para o \textit{front-end}.
 
-O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+% -------------------------
+\subsubsection{Interface RESTful POST /upload}
 
+A rota \texttt{POST /upload} é essencial para o funcionamento do RADARE, pois permite o envio de arquivos CSV contendo dados externos, como leituras de sensores industriais, que serão posteriormente integrados ao banco de dados do sistema. Esses dados servem de base para os processos de reconciliação, possibilitando uma análise precisa e consistente das informações coletadas.
+
+Quando um arquivo é enviado através desta rota, ele é processado no \textit{back-end} para extrair as informações contidas no CSV. Em seguida, os dados são armazenados no banco de dados, ficando disponíveis para as etapas de reconciliação e visualização no \textit{front-end}. Esse fluxo garante que o sistema possa ser atualizado com dados de múltiplas fontes, permitindo uma integração contínua e ampliando a capacidade de análise do RADARE.
+
+O código completo da implementação da rota \texttt{POST /upload} está disponível no \textbf{Anexo \ref{Anexo:CodigoRouteUpload}}.
+
+% -------------------------
 \subsection{Serviços}
 
 Os serviços, comumente chamados de \textit{services} no \textit{back-end} são responsáveis por implementar a lógica de negócio, processar os dados e invocar os cálculos de reconciliação. Eles abstraem a complexidade do sistema, garantindo que os dados sejam processados corretamente antes de serem enviados ao banco de dados ou utilizados na interface. Abaixo estão descritos os principais \textit{services} do sistema RADARE, juntamente com exemplos de código e diagramas.
-
 
 
 \subsubsection{Serviço de validação de dados}
@@ -291,7 +309,8 @@ Os \textit{models} foram implementados utilizando \textit{Sequelize}, uma ORM (O
 
 O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
 
-\section{Banco de Dados}
+% -------------------------
+\section{Resultados do desenvolvimento do banco de dados}
 
 O banco de dados utilizado no sistema RADARE foi implementado em PostgreSQL e armazena todas as informações relevantes para a execução do processo de reconciliação de dados industriais, gerenciamento de usuários e rastreamento de atividades. A modelagem foi feita de forma a garantir a integridade e eficiência na consulta e manipulação dos dados. A seguir, são descritas as principais tabelas implementadas no sistema.
 
@@ -370,6 +389,7 @@ Esta tabela armazena as configurações dos processos industriais, incluindo par
 
 Essa modelagem de banco de dados garante rastreabilidade, segurança e eficiência no gerenciamento de processos industriais e usuários dentro do sistema RADARE.
 
+% -------------------------
 \section{Manuais de sistema}
 
 Como parte do desenvolvimento do \textit{software} RADARE, foram criados dois manuais distintos para auxiliar tanto os administradores técnicos quanto os usuários finais na utilização e manutenção do sistema. Esses manuais visam garantir a correta operação e longevidade da aplicação, fornecendo instruções claras sobre o funcionamento do sistema e as melhores práticas para sua utilização.
