@@ -55,15 +55,15 @@ A Figura \ref{Fig:AddOutputButton} mostra o botão "Adicionar Output" na interfa
     \label{Fig:AddOutputButton}
 \end{figure}
 
+% -------------------------
 \subsubsection{Adicionar nódulo 1-1}
 
 O botão \textbf{"Adicionar Nódulo 1-1"} permite ao usuário inserir um novo nódulo de transição no \textit{canvas}. Esse nódulo atua como um ponto intermediário no fluxo de dados, podendo representar sensores, transformações ou outros elementos de processo. Ao clicar no botão, o nódulo é adicionado ao \textit{canvas}, permitindo ao usuário conectá-lo com outros nódulos de forma eficiente.
 
 A lógica para adicionar este nódulo foi desenvolvida de forma personalizada, especificando o tipo de conexão, a quantidade de pontos de conexão (\textit{handles}), além do estilo visual e da posição no \textit{canvas}, garantindo que o comportamento do nódulo se ajuste adequadamente ao fluxo de dados esperado.
 
-O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeOneOne}}.
-
-A Figura \ref{Fig:AddNodeOneOneButton} ilustra o botão "Adicionar Nódulo 1-1" disponível no menu do sistema.
+O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Anexo:frontCodeNodeOneOne}}.
+ulo 1-1" disponível no menu do sistema.
 
 \begin{figure}[htbp]
     \centering
@@ -72,14 +72,14 @@ A Figura \ref{Fig:AddNodeOneOneButton} ilustra o botão "Adicionar Nódulo 1-1" 
     \label{Fig:AddNodeOneOneButton}
 \end{figure}
 
-
+% -------------------------
 \subsubsection{Adicionar nódulo 1-2}
 
 O botão \textbf{"Adicionar Nódulo 1-2"} permite ao usuário inserir um nódulo de transição que recebe uma única entrada e gera duas saídas no \textit{canvas}. Este tipo de nódulo é particularmente útil em cenários onde um único ponto de dados precisa ser bifurcado para diferentes processos ou análises. Ao ser adicionado, o nódulo facilita o roteamento de dados para dois fluxos distintos, mantendo a integridade e a flexibilidade do processo.
 
 A lógica para este nódulo foi customizada para suportar uma conexão de entrada e duas saídas, com o código responsável definindo os \textit{handles} (pontos de conexão), a posição e o estilo visual no \textit{canvas}. Assim como no caso do nódulo 1-1, o comportamento é ajustado para garantir uma integração fluida no fluxo de dados.
 
-O trecho principal do código responsável pela criação desse nódulo pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeOneTwo}}.
+O trecho principal do código responsável pela criação desse nódulo pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Anexo:frontCodeNodeOneTwo}}.
 
 A Figura \ref{Fig:AddNodeOneTwoButton} ilustra o botão "Adicionar Nódulo 1-2" disponível no menu do sistema.
 
@@ -96,7 +96,7 @@ O botão \textbf{"Adicionar Nódulo 2-1"} permite ao usuário inserir um nódulo
 
 A lógica para este nódulo foi desenvolvida de maneira personalizada, permitindo a adição de dois pontos de conexão de entrada e um ponto de saída. O código responsável configura os \textit{handles}, define o estilo visual e posiciona o nódulo no \textit{canvas}, assegurando que ele atenda às necessidades de integração e processamento combinados dentro do fluxo de dados.
 
-O trecho principal do código responsável pela criação desse nódulo pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+O trecho principal do código responsável pela criação desse nódulo pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Cap:NodeTwoOneCode}}.
 
 A Figura \ref{Fig:AddNodeTwoOneButton} mostra o botão "Adicionar Nódulo 2-1" presente no menu da interface do sistema.
 
@@ -106,12 +106,13 @@ A Figura \ref{Fig:AddNodeTwoOneButton} mostra o botão "Adicionar Nódulo 2-1" p
     \caption{Botão de adicionar Nódulo 2-1 no menu (Fonte: próprio autor, 2024).}
     \label{Fig:AddNodeTwoOneButton}
 \end{figure}
-
 \subsubsection{Reconciliar dados}
 
 O botão \textbf{"Reconciliar Dados"} executa o processo de reconciliação dos dados conectados no \textit{canvas}. Ao ser acionado, o sistema analisa os nódulos interconectados e realiza a reconciliação dos dados utilizando o método dos multiplicadores de Lagrange. Esse processo ajusta as discrepâncias entre os valores medidos e os valores reconciliados, garantindo que as restrições impostas pelos balanços de massa e energia sejam respeitadas.
 
 A lógica por trás desse botão foi desenvolvida para percorrer os nódulos conectados no \textit{canvas}, extrair os dados necessários e enviá-los ao back-end. No back-end, o algoritmo de reconciliação é executado, processando os dados conforme as regras definidas, e os resultados são retornados ao front-end, onde os dados reconciliados são exibidos no fluxo visual do \textit{canvas}.
+
+O trecho principal do código responsável por essa funcionalidade pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Cap:ReconcileDataCode}}.
 
 A Figura \ref{Fig:ReconcileButton} ilustra o botão "Reconciliar Dados" na interface do sistema.
 
@@ -124,7 +125,7 @@ A Figura \ref{Fig:ReconcileButton} ilustra o botão "Reconciliar Dados" na inter
 
 \subsubsection{Esconder gráfico das reconciliações}
 
-O botão \textbf{"Esconder Gráfico das Reconciliações"} permite ao usuário ocultar o gráfico que exibe os resultados das reconciliações de dados, proporcionando uma interface mais organizada e com maior espaço para outros elementos do processo. Ao ativar essa função, o gráfico é temporariamente removido do \textit{dashboard}, mas os dados reconciliados permanecem disponíveis no sistema, permitindo que o usuário possa reexibi-los quando necessário. A lógica implementada para esse botão alterna a visibilidade do gráfico sem interferir nos demais componentes ou no fluxo dos dados processados.
+O botão \textbf{"Esconder Gráfico das Reconciliações"} permite ao usuário ocultar o gráfico que exibe os resultados das reconciliações de dados, proporcionando uma interface mais organizada e com maior espaço para outros elementos do processo. Ao ativar essa função, o gráfico é temporariamente removido do \textit{dashboard}, mas os dados reconciliados permanecem disponíveis no sistema, permitindo que o usuário possa reexibi-los quando necessário. A lógica implementada para esse botão alterna a visibilidade do gráfico sem interferir nos demais componentes ou no fluxo dos dados processados. O código responsável por essa funcionalidade pode ser encontrado no \textbf{Anexo \ref{Anexo:HideGraphLogic}}.
 
 A Figura \ref{Fig:HideGraphButton} ilustra o botão "Esconder Gráfico das Reconciliações" na interface gráfica.
 
@@ -135,11 +136,11 @@ A Figura \ref{Fig:HideGraphButton} ilustra o botão "Esconder Gráfico das Recon
     \label{Fig:HideGraphButton}
 \end{figure}
 
-\subsubsection{Esconder sidebar de informações}
+\subsubsection{Esconder \textit{sidebar} de informações}
 
 O botão \textbf{"Esconder Sidebar de Informações"} permite ao usuário ocultar a barra lateral que exibe informações detalhadas sobre os nódulos e fluxos no \textit{canvas}. Essa barra lateral geralmente contém dados importantes e estatísticas sobre os elementos do processo, sendo especialmente útil para diagnósticos e ajustes detalhados. Ao escondê-la, o usuário ganha mais espaço no \textit{canvas} para manipulação visual, o que é fundamental em fluxos mais complexos, onde a clareza e o espaço visual são prioridades.
 
-A lógica desse recurso foi implementada para alternar a visibilidade da \textit{sidebar} sem que os dados exibidos sejam perdidos. O usuário pode reexibi-la a qualquer momento, com as informações ainda intactas, proporcionando uma interface flexível e adaptável às necessidades específicas de visualização e operação.
+A lógica desse recurso foi implementada para alternar a visibilidade da \textit{sidebar} sem que os dados exibidos sejam perdidos. O usuário pode reexibi-la a qualquer momento, com as informações ainda intactas, proporcionando uma interface flexível e adaptável às necessidades específicas de visualização e operação. O código responsável por essa funcionalidade pode ser encontrado no \textbf{Anexo \ref{Anexo:HideSidebarLogic}}.
 
 A Figura \ref{Fig:HideSidebarButton} ilustra o botão "Esconder Sidebar de Informações" na interface gráfica do sistema.
 
@@ -170,22 +171,23 @@ A Figura \ref{Fig:UploadCSVButton} mostra o botão "Upload de Arquivos CSV" na i
 
 O \textit{canvas} é a área principal da interface do RADARE, onde o usuário pode visualizar, conectar e manipular os nódulos para configurar o fluxo de dados industrial. É nesse espaço que o usuário constrói e ajusta os fluxos de trabalho, interligando entradas, saídas e pontos de processamento. A interação no \textit{canvas} é dinâmica e permite a personalização dos fluxos conforme as necessidades do processo.
 
-A Figura \ref{Fig:CanvasArea} mostra um exemplo do \textit{canvas} com vários nódulos conectados, oferecendo uma visão geral de como os elementos podem ser arranjados e manipulados visualmente. Nos próximos tópicos, exploraremos em detalhes as funcionalidades disponíveis no \textit{canvas}, com exemplos de código e explicações sobre a interação com os nódulos.
+A Figura \ref{Fig:EmptyCanvas} mostra um exemplo do \textit{canvas} com vários nódulos conectados, oferecendo uma visão geral de como os elementos podem ser arranjados e manipulados visualmente. Nos próximos tópicos, exploraremos em detalhes as funcionalidades disponíveis no \textit{canvas}, com exemplos de código e explicações sobre a interação com os nódulos.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.8\textwidth]{figuras/empty-canvas.png}
     \caption{Exemplo da área de trabalho no canvas do RADARE (Fonte: próprio autor, 2024).}
-    \label{Fig:CanvasArea}
+    \label{Fig:EmptyCanvas}
 \end{figure}
 
+% -------------------------
 \subsubsection{Lógica de conexão entre os nódulos no \textit{canvas}}
 
-O sistema permite que o usuário estabeleça conexões visuais entre os nódulos, representando o fluxo de dados entre diferentes pontos de um processo industrial. Essas conexões são fundamentais para garantir que os dados fluam corretamente entre os elementos do \textit{canvas}, como entradas, saídas e pontos de processamento.
+O sistema permite que o usuário estabeleça conexões visuais entre os nódulos, representando o fluxo de dados entre diferentes pontos de um processo industrial. Essas conexões são fundamentais para assegurar que os dados fluam corretamente entre os elementos do \textit{canvas}, como entradas, saídas e pontos de processamento.
 
 A Figura \ref{Fig:NodeConnections} ilustra a conexão de dois nódulos no \textit{canvas}, demonstrando como o usuário pode arrastar e soltar as conexões de forma intuitiva. O usuário também pode ajustar e mover essas conexões entre os nódulos, proporcionando flexibilidade na organização dos fluxos de dados e permitindo a personalização do layout conforme as necessidades do processo.
 
-O trecho principal do código responsável pela criação desse nódulo pode ser encontrado no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}. Cada conexão entre os nódulos possui um valor e uma tolerância associados, que podem ser modificados diretamente com um duplo clique na linha de conexão. Isso permite ao usuário ajustar os parâmetros conforme necessário. Além disso, as conexões recebem nomes gerados automaticamente para facilitar a distinção entre as diferentes tags.
+O trecho principal do código responsável pela criação dessa funcionalidade está disponível no \textbf{Anexo \ref{Anexo:frontCodeNodeTwoOne}}. Cada conexão entre os nódulos possui um valor e uma tolerância associados, que podem ser modificados diretamente com um duplo clique na linha de conexão, permitindo ao usuário ajustar os parâmetros conforme necessário. Além disso, as conexões recebem nomes gerados automaticamente para facilitar a distinção entre as diferentes tags.
 
 \begin{figure}[htbp]
     \centering
@@ -193,7 +195,6 @@ O trecho principal do código responsável pela criação desse nódulo pode ser
     \caption{Exemplo de conexão entre nódulos no \textit{canvas} (Fonte: próprio autor, 2024).}
     \label{Fig:NodeConnections}
 \end{figure}
-
 
 % -------------------------
 \subsection{Interface de gráfico de reconciliação de dados}
@@ -278,132 +279,155 @@ Quando um arquivo é enviado através desta rota, ele é processado no \textit{b
 O código completo da implementação da rota \texttt{POST /upload} está disponível no \textbf{Anexo \ref{Anexo:CodigoRouteUpload}}.
 
 % -------------------------
-\subsection{Serviços}
+\subsection{Serviços desenvolvidos para o sistema}
 
 Os serviços, comumente chamados de \textit{services} no \textit{back-end} são responsáveis por implementar a lógica de negócio, processar os dados e invocar os cálculos de reconciliação. Eles abstraem a complexidade do sistema, garantindo que os dados sejam processados corretamente antes de serem enviados ao banco de dados ou utilizados na interface. Abaixo estão descritos os principais \textit{services} do sistema RADARE, juntamente com exemplos de código e diagramas.
 
-
+% -------------------------
 \subsubsection{Serviço de validação de dados}
 
-A validação de dados garante que os dados recebidos estejam no formato correto antes de serem processados. Ele valida se todos os campos obrigatórios estão presentes, se os tipos de dados são consistentes e se não há valores ausentes ou inválidos.
+O serviço de validação de dados assegura que as informações recebidas estejam no formato apropriado antes de seguirem para o processamento no sistema. Ele verifica a presença de todos os campos obrigatórios, assegura a consistência dos tipos de dados e identifica quaisquer valores ausentes ou inválidos que possam comprometer a integridade do processo de reconciliação. Essa camada de validação é essencial para prevenir erros e garantir que apenas dados confiáveis sejam considerados no cálculo dos resultados.
 
-O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+O trecho principal do código que implementa o serviço de validação de dados pode ser consultado integralmente no \textbf{Anexo \ref{Anexo:CodigoValidacaoDados}}.
 
+% -------------------------
 \subsubsection{Serviço de processamento de dados}
 
-O processamento de dados é responsável por lidar com arquivos CSV enviados pelos usuários. Ele converte os dados do arquivo em estruturas adequadas para o banco de dados e para os cálculos de reconciliação. Este serviço é crucial para integrar dados externos ao sistema RADARE.
+O serviço de processamento de dados é responsável por manipular arquivos CSV enviados pelos usuários, convertendo as informações contidas nesses arquivos em estruturas apropriadas para armazenamento no banco de dados e para execução dos cálculos de reconciliação. Este serviço é essencial para garantir que os dados externos sejam integrados ao sistema RADARE de maneira eficaz e que estejam no formato correto para serem processados e analisados.
 
-O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+A validação e transformação dos dados incluem a verificação da consistência dos valores, adequação das colunas conforme os requisitos do banco de dados e conversão dos tipos de dados necessários para as operações de cálculo. Qualquer dado inconsistente ou fora do padrão esperado é tratado antes de ser persistido, assegurando que apenas dados válidos sejam integrados ao sistema.
 
-\subsubsection{Serviço de reconciliação de dados}
+O trecho principal do código responsável pela criação desse serviço pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Anexo:CodigoProcessamentoDados}}.
 
-A reconciliação de dados é o núcleo do sistema, responsável pela execução do algoritmo de reconciliação de dados. Ele aplica o método dos multiplicadores de Lagrange para garantir que as restrições de balanço de massa e energia sejam respeitadas durante a reconciliação dos dados.
+% -------------------------
+\subsubsection{Serviço de Reconciliação de Dados}
 
-O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+O serviço de reconciliação de dados é uma das funcionalidades centrais do sistema RADARE, sendo responsável por executar o algoritmo de reconciliação utilizando o método dos multiplicadores de Lagrange. Esse método matemático garante que as restrições de balanço de massa e energia sejam rigorosamente respeitadas, assegurando a consistência dos dados processados. Durante a reconciliação, o serviço analisa e ajusta os dados coletados de sensores e outros pontos de entrada, alinhando-os às condições impostas e reduzindo discrepâncias.
 
-\subsection{Models}
+Para cada execução, o serviço recebe dados brutos e aplica o algoritmo de reconciliação, retornando valores ajustados que atendem às restrições estabelecidas. Esse processamento permite ao sistema RADARE gerar dados confiáveis e coerentes, essenciais para a análise de processos industriais. 
 
-Os \textit{models} foram implementados utilizando \textit{Sequelize}, uma ORM (Object-Relational Mapping) para \textit{Node.js}, que facilita a comunicação com o banco de dados PostgreSQL. Os principais modelos incluem:
+O código principal deste serviço, detalhado no \textbf{Anexo \ref{Anexo:CodigoReconciliacaoDados}}, exemplifica a implementação do método de reconciliação e a integração com o banco de dados para o armazenamento dos resultados.
 
-\begin{itemize} \item \textbf{Process Model}: Representa os processos industriais, contendo as informações de variáveis medidas e parâmetros. \item \textbf{Measurement Model}: Armazena as medições recebidas dos sensores. \item \textbf{Result Model}: Registra os resultados das reconciliações, vinculando-os aos processos e medições correspondentes. \end{itemize}
+% -------------------------
+\subsection{Modelos desenvolvidos para o sistema}
 
-O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Apêndice \ref{Cap:frontCodeNodeTwoOne}}.
+Os \textit{models} foram implementados utilizando uma ORM (Object-Relational Mapping) em \textit{Python} para facilitar a comunicação com o banco de dados PostgreSQL. Esse método permite mapear objetos do código para tabelas no banco de dados, tornando o desenvolvimento mais ágil e a manutenção mais eficiente. Os principais modelos implementados no sistema incluem:
+
+\begin{itemize}
+    \item \textbf{Process Model}: Representa os processos industriais, contendo as informações de variáveis medidas e parâmetros relevantes.
+    \item \textbf{Measurement Model}: Armazena as medições recebidas dos sensores, assegurando que cada registro seja associado ao respectivo processo.
+    \item \textbf{Result Model}: Registra os resultados das reconciliações, vinculando-os aos processos e medições correspondentes para consulta futura.
+\end{itemize}
+
+O trecho principal do código responsável pela criação desses modelos pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Anexo:CodigoModelo}}.
 
 % -------------------------
 \section{Resultados do desenvolvimento do banco de dados}
 
 O banco de dados utilizado no sistema RADARE foi implementado em PostgreSQL e armazena todas as informações relevantes para a execução do processo de reconciliação de dados industriais, gerenciamento de usuários e rastreamento de atividades. A modelagem foi feita de forma a garantir a integridade e eficiência na consulta e manipulação dos dados. A seguir, são descritas as principais tabelas implementadas no sistema.
 
+% -------------------------
 \subsection{Tabela de Dados de Processos}
 
-A tabela que armazena os dados de processos industriais contém as medições e os resultados da reconciliação. As principais colunas são:
+A tabela de dados de processos industriais (\autoref{tab:processDataTable}) armazena informações essenciais para o funcionamento do sistema RADARE, incluindo medições de sensores e os resultados das reconciliações de dados. Esta estrutura permite uma organização clara e precisa dos dados, garantindo que cada registro seja identificado de forma única e possa ser associado a operações de reconciliação específicas.
 
-\begin{itemize}
-    \item \textbf{id}: Coluna de identificação única para cada registro no banco de dados. Utilizada como chave primária para vincular informações em diferentes tabelas.
-    \item \textbf{user}: Armazena informações sobre o usuário que realizou o upload dos dados ou a operação de reconciliação.
-    \item \textbf{time}: Representa o timestamp associado ao dado, indicando o momento exato em que a medição foi realizada ou quando a reconciliação foi executada.
-    \item \textbf{tagname}: Identifica a variável medida (sensor ou ponto de coleta) no processo industrial. Cada variável é referenciada por um nome único.
-    \item \textbf{tagreconciled}: Armazena o valor reconciliado de cada variável, ou seja, o resultado do processo de reconciliação de dados.
-    \item \textbf{tagcorrection}: Coluna que contém o valor da correção aplicada a cada variável medida.
-    \item \textbf{tagmatrix}: Refere-se à matriz de correlação utilizada no processo de reconciliação.
-\end{itemize}
+\begin{table}[htbp]
+    \centering
+    \caption{Descrição das colunas da tabela de dados de processos industriais.}
+    \label{tab:processDataTable}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Coluna} & \textbf{Descrição} \\ \hline
+        \textbf{id} & Identificação única do registro, usada como chave primária. \\ \hline
+        \textbf{user} & Identifica o usuário responsável pela reconciliação. \\ \hline
+        \textbf{time} & Horário da reconciliação, para referência temporal. \\ \hline
+        \textbf{tagname} & Nome da variável medida (sensor ou ponto de coleta). \\ \hline
+        \textbf{tagreconciled} & Valor reconciliado da variável após ajustes. \\ \hline
+        \textbf{tagcorrection} & Valor da correção aplicada à variável medida. \\ \hline
+        \textbf{tagmatrix} & Matriz de correlação usada na reconciliação. \\ \hline
+    \end{tabular}
+\end{table}
 
+
+% -------------------------
 \subsection{Tabela de Usuários}
 
-Esta tabela gerencia a autenticação e as permissões dos usuários no sistema. Ela permite o rastreamento de interações e garante que apenas usuários autorizados possam realizar determinadas operações, além de armazenar informações para autenticação segura.
+A tabela de usuários (\autoref{Tab:Users}) é essencial para gerenciar a autenticação, as permissões e o rastreamento de atividades dos usuários no sistema RADARE. Essa estrutura não apenas assegura que apenas usuários autorizados possam acessar determinadas funcionalidades, mas também facilita a auditoria e a segurança do sistema, mantendo informações sensíveis e essenciais para o controle de acesso.
 
 \begin{table}[htbp]
     \centering
-    \caption{Estrutura da tabela de usuários.}
+    \caption{Estrutura da tabela de usuários no sistema RADARE.}
     \label{Tab:Users}
-    \begin{tabular}{|c|c|}
+    \begin{tabular}{|l|p{10cm}|}
         \hline
         \textbf{Coluna} & \textbf{Descrição} \\ \hline
-        id (primary key) & UUID único para cada usuário \\ \hline
-        username & Nome de usuário utilizado no login \\ \hline
-        email & Email do usuário para notificações e recuperação de senha \\ \hline
-        password\_hash & Hash da senha para garantir segurança \\ \hline
-        role & Papel do usuário (admin, operador, analista) \\ \hline
-        created\_at & Timestamp da criação da conta \\ \hline
-        last\_login & Data e hora do último login realizado \\ \hline
+        \textbf{id} & UUID único para cada usuário (chave primária). \\ \hline
+        \textbf{username} & Nome de usuário para login (deve ser único). \\ \hline
+        \textbf{email} & Endereço de email para notificações. \\ \hline
+        \textbf{password\_hash} & Hash da senha para segurança. \\ \hline
+        \textbf{role} & Função do usuário (e.g., admin, operador, analista). \\ \hline
+        \textbf{created\_at} & Data e hora da criação da conta. \\ \hline
+        \textbf{last\_login} & Data e hora do último acesso. \\ \hline
     \end{tabular}
 \end{table}
 
+% -------------------------
 \subsection{Tabela de Logs de Atividade}
 
-Esta tabela registra as ações realizadas pelos usuários no sistema, permitindo auditoria e rastreamento de atividades como uploads de arquivos ou execuções de reconciliação de dados.
+A tabela de logs de atividade (Tabela \ref{Tab:ActivityLogs}) armazena registros detalhados das ações realizadas pelos usuários no sistema, permitindo auditoria e rastreamento de atividades como uploads de arquivos ou execuções de reconciliação de dados. Essa estrutura auxilia no monitoramento e na segurança, facilitando a análise das interações dos usuários com o sistema.
 
 \begin{table}[htbp]
     \centering
-    \caption{Estrutura da tabela de logs de atividade.}
+    \caption{Estrutura da tabela de logs de atividade no sistema RADARE.}
     \label{Tab:ActivityLogs}
-    \begin{tabular}{|c|c|}
+    \begin{tabular}{|l|p{10cm}|}
         \hline
         \textbf{Coluna} & \textbf{Descrição} \\ \hline
-        id (primary key) & Identificação única para cada log de atividade \\ \hline
-        user\_id & Referência ao id do usuário que realizou a ação \\ \hline
-        action & Descrição da ação realizada (ex: upload de CSV, reconciliação de dados) \\ \hline
-        timestamp & Data e hora em que a ação foi realizada \\ \hline
-        details & Detalhes adicionais sobre a ação (ex: nome do arquivo CSV carregado) \\ \hline
+        \textbf{id} & Identificação única para cada log de atividade. \\ \hline
+        \textbf{user\_id} & Referência ao ID do usuário que realizou a ação. \\ \hline
+        \textbf{action} & Descrição da ação realizada. \\ \hline
+        \textbf{timestamp} & Data e hora da realização da ação. \\ \hline
+        \textbf{details} & Informações adicionais sobre a ação. \\ \hline
     \end{tabular}
 \end{table}
 
+% -------------------------
 \subsection{Tabela de Configurações de Processos}
 
-Esta tabela armazena as configurações dos processos industriais, incluindo parâmetros como limites de variáveis e tipos de medições. Essa estrutura permite personalizar o comportamento do sistema para diferentes cenários industriais.
+A tabela de configurações de processos industriais (Tabela \ref{Tab:ProcessConfigurations}) armazena parâmetros essenciais para a personalização do sistema, incluindo limites de variáveis e especificações de medições. Essa estrutura permite adaptar o comportamento do sistema a diferentes cenários industriais, proporcionando flexibilidade na definição de cada processo.
 
 \begin{table}[htbp]
     \centering
-    \caption{Estrutura da tabela de configurações de processos.}
+    \caption{Estrutura da tabela de configurações de processos no sistema RADARE.}
     \label{Tab:ProcessConfigurations}
-    \begin{tabular}{|c|c|}
+    \begin{tabular}{|l|p{10cm}|}
         \hline
         \textbf{Coluna} & \textbf{Descrição} \\ \hline
-        id (primary key) & Identificação única para a configuração do processo \\ \hline
-        process\_name & Nome do processo industrial \\ \hline
-        sensor\_limits & Limites definidos para as variáveis dos sensores \\ \hline
-        created\_by & ID do usuário que criou a configuração \\ \hline
-        created\_at & Timestamp de criação da configuração \\ \hline
+        \textbf{id} & Identificação única para cada configuração de processo. \\ \hline
+        \textbf{process\_name} & Nome do processo industrial específico. \\ \hline
+        \textbf{sensor\_limits} & Limites definidos para as variáveis dos sensores. \\ \hline
+        \textbf{created\_by} & ID do usuário responsável pela criação da configuração. \\ \hline
+        \textbf{created\_at} & Data e hora em que a configuração foi registrada no sistema. \\ \hline
     \end{tabular}
 \end{table}
-
-Essa modelagem de banco de dados garante rastreabilidade, segurança e eficiência no gerenciamento de processos industriais e usuários dentro do sistema RADARE.
 
 % -------------------------
 \section{Manuais de sistema}
 
 Como parte do desenvolvimento do \textit{software} RADARE, foram criados dois manuais distintos para auxiliar tanto os administradores técnicos quanto os usuários finais na utilização e manutenção do sistema. Esses manuais visam garantir a correta operação e longevidade da aplicação, fornecendo instruções claras sobre o funcionamento do sistema e as melhores práticas para sua utilização.
 
+% -------------------------
 \subsection{Manual de manutenção do sistema}
 
-O manual de manutenção do sistema foi elaborado para orientar desenvolvedores e administradores sobre as funções internas do RADARE, assim como as restrições e considerações técnicas envolvidas. Ele oferece uma visão detalhada da arquitetura do sistema, explicando cada módulo, como o *front-end*, *back-end* e banco de dados, além de descrever as principais funções, fluxos de dados e interações entre os componentes. O manual também fornece instruções para realizar tarefas de manutenção, como atualização de bibliotecas, ajustes de configurações, monitoramento de logs e execução de testes de desempenho. São abordadas as limitações técnicas do sistema, incluindo o número máximo de conexões simultâneas suportadas, tamanhos máximos de arquivos *CSV* e requisitos mínimos de hardware e software. Além disso, o manual traz procedimentos detalhados para diagnosticar e resolver possíveis problemas, como erros de reconciliação, falhas no processamento de arquivos e dificuldades de conexão entre os módulos. 
+O manual de manutenção do sistema fornece orientações para desenvolvedores e administradores sobre as funções internas do RADARE, incluindo detalhes sobre o *front-end*, *back-end* e banco de dados. Ele descreve as principais funções, fluxos de dados e interações entre os componentes, além de instruções para manutenção, como atualização de bibliotecas, ajustes de configurações, monitoramento de logs e execução de testes de desempenho. Também aborda limitações técnicas, como número máximo de conexões simultâneas e requisitos mínimos de hardware. Procedimentos para diagnóstico e resolução de problemas comuns, como erros de reconciliação e falhas no processamento de arquivos, são apresentados.
 
-O manual completo com todos os detalhes estará disponível no \textbf{Apêndice \ref{Cap:manualManutencao}}, facilitando o acesso e consulta a informações detalhadas sobre a manutenção do sistema.
+O manual completo está disponível no \textbf{Anexo \ref{Cap:manualManutencao}}, facilitando a consulta detalhada sobre a manutenção do sistema.
 
+% -------------------------
 \subsection{Manual de uso para o usuário final}
 
-O manual de uso foi criado com o objetivo de fornecer ao usuário comum uma orientação simples e direta sobre como utilizar o *RADARE* para realizar tarefas cotidianas de reconciliação de dados industriais. Ele inclui uma introdução ao sistema, explicando o propósito do *RADARE*, suas funcionalidades principais e como ele pode contribuir para a melhoria da qualidade dos dados nos processos industriais. Em seguida, apresenta um passo a passo detalhado de operações, com instruções sobre como utilizar cada parte da interface, como adicionar nódulos no *canvas*, realizar reconciliações de dados e carregar arquivos *CSV*.
+O manual de uso foi elaborado para orientar o usuário nas tarefas de reconciliação de dados industriais com o *RADARE*. Ele apresenta uma introdução ao sistema, explicando seu propósito e principais funcionalidades. Em seguida, descreve o passo a passo das operações, incluindo instruções para adicionar nódulos no \textit{canvas}, realizar reconciliações e carregar arquivos CSV.
 
-O manual também oferece guias visuais com imagens ilustrativas que mostram o processo de navegação na interface, desde a adição de nódulos até a geração de gráficos de reconciliação. Há dicas de usabilidade que ajudam a utilizar a ferramenta de maneira mais eficiente, sugerindo atalhos, formas de personalizar fluxos de trabalho e como maximizar a utilidade dos relatórios gerados. Além disso, inclui uma seção de resolução de problemas comuns, abordando erros de upload de arquivos, falhas na conexão entre nódulos e dificuldades na interpretação dos resultados.
+O manual inclui guias visuais e dicas de usabilidade, auxiliando na navegação e no uso eficiente da interface, além de oferecer soluções para problemas comuns, como erros de upload e falhas de conexão entre nódulos. 
 
-Este manual foi projetado para ser acessível a usuários com diferentes níveis de habilidade técnica, facilitando o uso do *RADARE* de forma intuitiva e prática no dia a dia. O manual completo pode ser consultado no \textbf{Apêndice \ref{Cap:manualUsuario}}, onde são fornecidos todos os detalhes e instruções.
+O manual completo está disponível para consulta no \textbf{Anexo \ref{Anexo:manualUsuario}}, com todos os detalhes necessários para o uso do sistema.

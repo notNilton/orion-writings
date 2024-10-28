@@ -1,12 +1,3 @@
-\mychapter{Termo de Autorização do Autor}
-\label{Cap:anexo}
-
-A principal diferença entre anexo e apêndice é que os apêndices são textos criados pelo próprio autor para complementar sua argumentação, enquanto os anexos são documentos criados por terceiros e usados pelo autor.
-
-Tanto o apêndice quanto o anexo devem estar presentes no sumário dos trabalhos científicos. Os apêndices devem aparecer depois das referências e os anexos depois dos apêndices.
-
-\includepdf[pages=-]{textuais/anexo/termo_de_autorizacao.pdf}
-
 \mychapter{Configuração da Máquina de Desenvolvimento}
 \label{Ap:configuracaoMaquina}
 
@@ -41,11 +32,259 @@ Este apêndice apresenta as especificações de hardware e software da máquina 
 
 Essas configurações e ferramentas foram essenciais para assegurar um fluxo de trabalho eficiente, com suporte adequado para o desenvolvimento e teste do \textit{software} RADARE.
 
+\mychapter{Código Completo do Nódulo Adicionar Nódulo 1-1}
+\label{Anexo:frontCodeNodeOneOne}
+
+\begin{minted}[linenos, breaklines, fontsize=\small]{typescript}
+const addNodeOneOne = ({ data }) => {
+  const { label, isConnectable } = data;
+
+  return (
+    <>
+      <Handle
+        type="source"
+        id="a"
+        position={Position.Left}
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      />
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="b"
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      />
+      <div>{`${label}`}</div>
+    </>
+  );
+};
+
+export default memo(addNodeOneOne);
+\end{minted}
+
+Este anexo apresenta o código completo da implementação do nódulo "Adicionar Nódulo 1-1", que é responsável pela criação de um ponto de transição no \textit{canvas}. O código configura as conexões (\textit{handles}) e estiliza o nódulo de acordo com o fluxo de dados, conforme descrito na seção correspondente.
+
+\mychapter{Código Completo para o Nódulo 1-2}
+\label{Anexo:frontCodeNodeOneTwo}
+
+\begin{minted}[linenos, breaklines, tabsize=2]{typescript}
+const CustomNodeOneTwo = ({ data }) => {
+  const { label, isConnectable } = data;
+
+  return (
+    <>
+      <Handle
+        type="target"
+        position={Position.Top}
+        id="a"
+        style={{ background: "blue" }}
+        isConnectable={isConnectable}
+      />
+      <div>{label}</div>
+      <Handle
+        type="source"
+        position={Position.BottomLeft}
+        id="b1"
+        style={{ background: "green" }}
+        isConnectable={isConnectable}
+      />
+      <Handle
+        type="source"
+        position={Position.BottomRight}
+        id="b2"
+        style={{ background: "green" }}
+        isConnectable={isConnectable}
+      />
+    </>
+  );
+};
+
+export default CustomNodeOneTwo;
+\end{minted}
+
+Este código demonstra a estrutura do nódulo "1-2", que recebe uma única entrada e gera duas saídas. Os \textit{handles} são configurados para permitir a conexão nos pontos específicos do nódulo, permitindo a bifurcação do fluxo de dados.
+
+\chapter{Código Completo para Adicionar Nódulo 2-1}
+\label{Cap:NodeTwoOneCode}
+
+\begin{minted}[linenos, breaklines, fontsize=\small]{typescript}
+import React, { memo } from 'react';
+import { Handle, Position } from 'react-flow-renderer';
+
+const NodeTwoOne = ({ data }) => {
+  const { label, isConnectable } = data;
+
+  return (
+    <>
+      <Handle
+        type="target"
+        position={Position.Left}
+        id="input1"
+        style={{ background: 'black' }}
+        isConnectable={isConnectable}
+      />
+      <Handle
+        type="target"
+        position={Position.Top}
+        id="input2"
+        style={{ background: 'black' }}
+        isConnectable={isConnectable}
+      />
+      <div>{label}</div>
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="output"
+        style={{ background: 'black' }}
+        isConnectable={isConnectable}
+      />
+    </>
+  );
+};
+
+export default memo(NodeTwoOne);
+\end{minted}
+
+Este código mostra a implementação do componente "Nódulo 2-1" no \textit{canvas} do sistema RADARE. Ele define dois pontos de entrada e um ponto de saída, permitindo a integração de múltiplas fontes de dados em um único fluxo, conforme discutido no texto.
+
+\chapter{Código Completo da Lógica de Visibilidade do Gráfico de Reconciliações no Front-End}
+\label{Anexo:HideGraphLogic}
+
+\begin{minted}[fontsize=\small, breaklines=true, linenos]{typescript}
+// Função para alternar a visibilidade do gráfico de reconciliações
+import { useState } from 'react';
+
+const ReconciliationGraph = () => {
+    const [isVisible, setIsVisible] = useState(true);
+
+    // Função para esconder/mostrar o gráfico
+    const toggleGraphVisibility = () => {
+        setIsVisible(!isVisible);
+    };
+
+    return (
+        <div>
+            <button onClick={toggleGraphVisibility}>
+                {isVisible ? 'Esconder Gráfico das Reconciliações' : 'Mostrar Gráfico das Reconciliações'}
+            </button>
+
+            {isVisible && (
+                <div id="reconciliation-graph">
+                    {/* Componente do gráfico de reconciliações */}
+                    <ReconciliationGraphComponent />
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default ReconciliationGraph;
+\end{minted}
+
+O código apresentado no Anexo \ref{Anexo:HideGraphLogic} implementa a lógica para alternar a visibilidade do gráfico de reconciliações na interface do usuário. A função `toggleGraphVisibility` controla a exibição do gráfico sem afetar os dados ou outros componentes no \textit{dashboard}.
+
+
+\chapter{Código Completo da Lógica de Visibilidade do Sidebar de Reconciliações no Front-End}
+\label{Anexo:HideSidebarLogic}
+
+\begin{minted}[fontsize=\small, breaklines=true, linenos]{typescript}
+// Função para alternar a visibilidade do gráfico de reconciliações
+import { useState } from 'react';
+
+const ReconciliationGraph = () => {
+    const [isVisible, setIsVisible] = useState(true);
+
+    // Função para esconder/mostrar o gráfico
+    const toggleGraphVisibility = () => {
+        setIsVisible(!isVisible);
+    };
+
+    return (
+        <div>
+            <button onClick={toggleGraphVisibility}>
+                {isVisible ? 'Esconder Gráfico das Reconciliações' : 'Mostrar Gráfico das Reconciliações'}
+            </button>
+
+            {isVisible && (
+                <div id="reconciliation-graph">
+                    {/* Componente do gráfico de reconciliações */}
+                    <ReconciliationGraphComponent />
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default ReconciliationGraph;
+\end{minted}
+
+O código apresentado no Anexo \ref{Anexo:HideSidebarLogic} implementa a lógica para alternar a visibilidade do gráfico de reconciliações na interface do usuário. A função `toggleGraphVisibility` controla a exibição do gráfico sem afetar os dados ou outros componentes no \textit{dashboard}.
+
+
+\chapter{Código Completo da Reconcialiação de Dados no Front-End}
+\label{Cap:ReconcileDataCode}
+
+\begin{minted}[fontsize=\small, breaklines=true, linenos]{typescript}
+// Função de reconciliação de dados utilizando o método dos multiplicadores de Lagrange
+import { Node, Edge } from 'react-flow-renderer';
+import { calculateLagrangeReconciliation } from './reconciliationUtils';
+
+type ReconciliationInput = {
+    nodes: Node[];
+    edges: Edge[];
+};
+
+// Função principal que realiza a reconciliação dos dados
+export const reconcileData = async (input: ReconciliationInput) => {
+    try {
+        const { nodes, edges } = input;
+
+        // Extração dos dados dos nós conectados no canvas
+        const dataToSend = nodes.map(node => ({
+            id: node.id,
+            value: node.data.value,
+            type: node.type,
+        }));
+
+        // Envio dos dados para o back-end para execução da reconciliação
+        const response = await fetch('/reconcile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ nodes: dataToSend, edges }),
+        });
+
+        if (response.ok) {
+            const reconciledData = await response.json();
+
+            // Atualização dos valores reconciliados no front-end
+            reconciledData.nodes.forEach(reconciledNode => {
+                const node = nodes.find(n => n.id === reconciledNode.id);
+                if (node) {
+                    node.data.value = reconciledNode.reconciledValue;
+                }
+            });
+
+            return { status: 'success', data: reconciledData };
+        } else {
+            throw new Error('Erro na reconciliação de dados no back-end');
+        }
+    } catch (error) {
+        console.error('Erro na reconciliação de dados:', error);
+        return { status: 'error', message: error.message };
+    }
+};
+\end{minted}
+
+Este anexo apresenta o código completo da função de reconciliação de dados no front-end. Ele ilustra como os dados são extraídos dos nós conectados, enviados ao back-end para processamento, e como os valores reconciliados são atualizados e exibidos na interface do usuário.
+
 
 \mychapter{Código Completo da Rota POST /reconcile}
 \label{Anexo:CodigoRouteReconcile}
 
-\begin{minted}[fontsize=\small, linenos, frame=single, caption={Implementação da Rota POST /reconcile}]{python}
+\begin{minted}[fontsize=\small, linenos]{python}
 from flask import Flask, request, jsonify
 from your_database_module import store_reconciled_data
 from your_reconciliation_module import perform_lagrange_reconciliation
@@ -146,3 +385,301 @@ if __name__ == '__main__':
 \end{minted}
 
 Este código descreve a implementação da rota \texttt{POST /upload}, responsável pelo processamento de arquivos CSV enviados pelo \textit{front-end}. Os dados do arquivo são lidos, processados e armazenados no banco de dados, permitindo que sejam utilizados nas etapas subsequentes de reconciliação e análise.
+
+\mychapter{Código Completo do Serviço de Validação de Dados}
+\label{Anexo:CodigoValidacaoDados}
+
+\begin{minted}[fontsize=\footnotesize, breaklines]{python}
+def validate_data(data):
+    """
+    Função para validar os dados recebidos antes do processamento.
+    Verifica se todos os campos obrigatórios estão presentes, se os tipos de dados são consistentes
+    e se não há valores ausentes ou inválidos.
+    """
+    required_fields = ['sensor_id', 'timestamp', 'value']
+    
+    # Verifica se todos os campos obrigatórios estão presentes
+    for field in required_fields:
+        if field not in data:
+            raise ValueError(f"Campo obrigatório ausente: {field}")
+    
+    # Valida o tipo de cada campo
+    if not isinstance(data['sensor_id'], int):
+        raise TypeError("O campo 'sensor_id' deve ser um número inteiro.")
+    if not isinstance(data['timestamp'], str):
+        raise TypeError("O campo 'timestamp' deve ser uma string.")
+    if not isinstance(data['value'], (int, float)):
+        raise TypeError("O campo 'value' deve ser um número.")
+    
+    # Verifica se o valor está dentro de um intervalo aceitável (exemplo)
+    if data['value'] < 0 or data['value'] > 1000:
+        raise ValueError("O valor do campo 'value' está fora do intervalo permitido.")
+    
+    return True
+\end{minted}
+
+Este código implementa a validação dos dados recebidos, garantindo que os campos obrigatórios estejam presentes, que os tipos de dados estejam corretos e que os valores estejam dentro de um intervalo aceitável. Qualquer violação resulta em uma exceção, impedindo que dados inconsistentes sejam processados.
+
+\mychapter{Código Completo do Serviço de Processamento de Dados}
+\label{Anexo:CodigoProcessamentoDados}
+
+\begin{minted}[fontsize=\footnotesize, linenos, breaklines, tabsize=4]{python}
+import csv
+from your_database_module import store_data_in_database
+
+def process_csv(file_path):
+    try:
+        # Abre o arquivo CSV
+        with open(file_path, mode='r') as file:
+            csv_reader = csv.DictReader(file)
+            processed_data = []
+
+            # Processa cada linha do CSV
+            for row in csv_reader:
+                # Conversão de dados e validação de tipos
+                data_entry = {
+                    "sensor_id": int(row["sensor_id"]),
+                    "value": float(row["value"]),
+                    "timestamp": row["timestamp"]
+                }
+                processed_data.append(data_entry)
+
+            # Armazena os dados processados no banco de dados
+            store_data_in_database(processed_data)
+            return {"status": "success", "message": "Dados processados e armazenados com sucesso"}
+
+    except Exception as e:
+        # Em caso de erro, retorna uma mensagem de erro
+        return {"status": "error", "message": str(e)}
+\end{minted}
+
+Este código demonstra como o serviço de processamento de dados manipula arquivos CSV enviados pelo usuário, validando e convertendo os dados para o formato adequado antes de armazená-los no banco de dados do sistema RADARE.
+
+\mychapter{Código Completo do Serviço de Reconciliação de Dados}
+\label{Anexo:CodigoReconciliacaoDados}
+
+\begin{minted}[fontsize=\footnotesize, linenos, breaklines, tabsize=2]{python}
+from your_database_module import store_reconciled_data
+from flask import Flask, request, jsonify
+from your_reconciliation_module import perform_lagrange_reconciliation
+
+app = Flask(__name__)
+
+@app.route('/reconcile', methods=['POST'])
+def reconcile_data():
+    try:
+        # Recebe os dados do front-end em formato JSON
+        data = request.get_json()
+
+        # Executa o processo de reconciliação utilizando o método dos multiplicadores de Lagrange
+        reconciled_data = perform_lagrange_reconciliation(data)
+
+        # Armazena os dados reconciliados no banco de dados
+        store_reconciled_data(reconciled_data)
+
+        # Retorna uma resposta de sucesso ao front-end com os dados reconciliados
+        return jsonify({"status": "success", "reconciled_data": reconciled_data}), 200
+
+    except Exception as e:
+        # Em caso de erro, retorna uma mensagem de erro
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
+\end{minted}
+
+Este código implementa o serviço de reconciliação de dados do sistema RADARE, aplicando o método dos multiplicadores de Lagrange para ajustar os dados recebidos e garantir consistência de acordo com as restrições impostas. Ele também armazena os resultados reconciliados no banco de dados, permitindo consultas futuras.
+
+\mychapter{Código Completo dos Modelos do Sistema}
+\label{Anexo:CodigoModelo}
+
+\section*{Process Model}
+\begin{minted}[linenos, breaklines, fontsize=\small]{python}
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy.orm import relationship
+from database import Base
+
+class Process(Base):
+    __tablename__ = 'processes'
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    description = Column(String)
+
+    measurements = relationship("Measurement", back_populates="process")
+    results = relationship("Result", back_populates="process")
+\end{minted}
+
+\section*{Measurement Model}
+\begin{minted}[linenos, breaklines, fontsize=\small]{python}
+from sqlalchemy import Column, Integer, Float, ForeignKey
+from sqlalchemy.orm import relationship
+from database import Base
+
+class Measurement(Base):
+    __tablename__ = 'measurements'
+    id = Column(Integer, primary_key=True, index=True)
+    process_id = Column(Integer, ForeignKey('processes.id'))
+    value = Column(Float)
+    unit = Column(String)
+
+    process = relationship("Process", back_populates="measurements")
+\end{minted}
+
+\section*{Result Model}
+\begin{minted}[linenos, breaklines, fontsize=\small]{python}
+from sqlalchemy import Column, Integer, Float, ForeignKey
+from sqlalchemy.orm import relationship
+from database import Base
+
+class Result(Base):
+    __tablename__ = 'results'
+    id = Column(Integer, primary_key=True, index=True)
+    process_id = Column(Integer, ForeignKey('processes.id'))
+    reconciled_value = Column(Float)
+    discrepancy = Column(Float)
+
+    process = relationship("Process", back_populates="results")
+\end{minted}
+
+Este anexo apresenta o código completo dos modelos desenvolvidos para o sistema RADARE, que foram implementados utilizando SQLAlchemy como a ORM em Python para a interação com o banco de dados PostgreSQL. Cada modelo representa uma entidade essencial para o funcionamento do sistema, garantindo a integridade e o gerenciamento adequado dos dados do projeto.
+
+\mychapter{Código Principal para a Lógica de Conexão entre Nódulos no \textit{Canvas}}
+\label{Anexo:frontCodeNodeTwoOne}
+
+\begin{minted}[linenos,breaklines,fontsize=\small]{typescript}
+// Função para estabelecer conexão entre nódulos no canvas
+function connectNodes(nodeA: Node, nodeB: Node, canvas: Canvas) {
+    // Verifica se os nódulos são compatíveis para conexão
+    if (isValidConnection(nodeA, nodeB)) {
+        // Cria a linha de conexão entre os nódulos
+        const connection = createConnection(nodeA, nodeB);
+
+        // Define propriedades da conexão, como valor e tolerância padrão
+        connection.value = getDefaultValue(nodeA, nodeB);
+        connection.tolerance = getDefaultTolerance(nodeA, nodeB);
+
+        // Adiciona a conexão ao canvas
+        canvas.addConnection(connection);
+
+        // Atribui um nome aleatório para fácil identificação
+        connection.name = generateRandomName();
+
+        // Configura a interação de duplo clique para ajustar valor e tolerância
+        connection.onDoubleClick(() => {
+            const newValue = prompt("Digite o novo valor para a conexão:");
+            const newTolerance = prompt("Digite a nova tolerância:");
+            if (newValue !== null) connection.value = parseFloat(newValue);
+            if (newTolerance !== null) connection.tolerance = parseFloat(newTolerance);
+        });
+    } else {
+        console.error("Conexão inválida entre nódulos.");
+    }
+}
+
+// Função para validar se a conexão entre os nódulos é permitida
+function isValidConnection(nodeA: Node, nodeB: Node): boolean {
+    // Exemplo de validação básica entre tipos de nódulos
+    return nodeA.outputType === nodeB.inputType;
+}
+
+// Função para criar um objeto de conexão
+function createConnection(nodeA: Node, nodeB: Node): Connection {
+    return {
+        source: nodeA.id,
+        target: nodeB.id,
+        value: 0,
+        tolerance: 0,
+        name: ""
+    };
+}
+
+// Função para gerar um nome aleatório para a conexão
+function generateRandomName(): string {
+    return `Conexao-${Math.random().toString(36).substr(2, 9)}`;
+}
+\end{minted}
+
+Este código implementa a lógica principal para criar e gerenciar conexões entre nódulos no \textit{canvas}, incluindo a configuração de valores e tolerâncias ajustáveis diretamente pela interface, conforme descrito na seção correspondente.
+
+\mychapter{Manual de Manutenção do Sistema}
+\label{Cap:manualManutencao}
+
+\section*{Manual de Manutenção do Sistema RADARE}
+
+Este manual foi elaborado para guiar desenvolvedores e administradores nas operações de manutenção do sistema RADARE. Ele cobre os aspectos principais de cada módulo, incluindo *front-end*, *back-end* e banco de dados, e descreve as instruções para atualização, monitoramento e solução de problemas.
+
+\subsection*{Estrutura do Sistema}
+
+O RADARE é dividido em três módulos principais:
+\begin{itemize}
+    \item \textbf{Front-end}: Responsável pela interface de usuário e pela interação com os dados no *canvas*.
+    \item \textbf{Back-end}: Lida com a lógica de negócios, o processamento dos dados e a reconciliação usando os multiplicadores de Lagrange.
+    \item \textbf{Banco de dados}: Armazena informações críticas, como dados de sensores, resultados de reconciliação e logs de atividade.
+\end{itemize}
+
+\subsection*{Tarefas de Manutenção}
+
+\begin{itemize}
+    \item \textbf{Atualização de Bibliotecas}: Verifique periodicamente por atualizações de dependências do sistema e realize os ajustes necessários.
+    \item \textbf{Ajustes de Configurações}: Mantenha as configurações de sistema atualizadas para suportar o máximo de eficiência e compatibilidade.
+    \item \textbf{Monitoramento de Logs}: Examine regularmente os logs de atividade para identificar e resolver possíveis falhas no sistema.
+    \item \textbf{Execução de Testes de Desempenho}: Realize testes de desempenho após grandes atualizações para garantir a estabilidade do sistema.
+\end{itemize}
+
+\subsection*{Limitações Técnicas}
+
+O sistema possui algumas restrições:
+\begin{itemize}
+    \item \textbf{Conexões simultâneas}: Suporta um número limitado de conexões simultâneas, variável conforme a infraestrutura.
+    \item \textbf{Tamanho dos arquivos *CSV*}: Limite para importação de arquivos de dados.
+    \item \textbf{Requisitos de Hardware}: Especificações mínimas para o servidor, incluindo memória e capacidade de processamento.
+\end{itemize}
+
+\subsection*{Procedimentos para Resolução de Problemas}
+
+Este manual também oferece orientações para solução de problemas comuns:
+\begin{itemize}
+    \item \textbf{Erros de Reconciliação}: Verifique os dados de entrada e a lógica de reconciliação caso ocorram inconsistências.
+    \item \textbf{Falhas no Processamento de Arquivos}: Certifique-se de que os arquivos seguem o formato especificado.
+    \item \textbf{Problemas de Conexão entre Módulos}: Revise as configurações de rede e as dependências entre o *front-end* e o *back-end*.
+\end{itemize}
+
+Este manual fornece uma referência completa para garantir a continuidade e o desempenho do sistema RADARE.
+
+\chapter{Manual de Uso para o Usuário Final}
+\label{Anexo:manualUsuario}
+
+Este manual fornece instruções detalhadas para o uso do sistema *RADARE* em tarefas cotidianas de reconciliação de dados industriais. Ele abrange uma introdução ao sistema, guias passo a passo de operações e soluções para problemas comuns.
+
+\section*{1. Introdução ao Sistema}
+
+O *RADARE* é uma ferramenta voltada para a reconciliação de dados em processos industriais, facilitando a análise e ajuste de dados obtidos de diversas fontes, como sensores e sistemas de monitoramento.
+
+\section*{2. Passo a Passo das Operações}
+
+\subsection*{Adicionar Nódulos no \textit{Canvas}}
+
+Para adicionar nódulos, selecione o tipo de nódulo desejado no menu e arraste-o para o \textit{canvas}. Esses nódulos podem representar entradas de dados, pontos de processamento ou saídas. 
+
+\subsection*{Realizar Reconciliação de Dados}
+
+Após conectar os nódulos, clique no botão de "Reconciliar Dados" para executar o processo de reconciliação, que ajustará os dados de acordo com os critérios de balanço estabelecidos.
+
+\subsection*{Carregar Arquivos CSV}
+
+Para importar dados, utilize a função de upload para carregar arquivos CSV no sistema. Os dados serão processados e integrados ao fluxo de reconciliação.
+
+\section*{3. Guias Visuais e Dicas de Usabilidade}
+
+O manual inclui imagens de cada funcionalidade, mostrando as operações principais, como navegação na interface e geração de relatórios. Além disso, oferece dicas para maximizar a eficiência no uso do sistema, incluindo atalhos e personalização de fluxos de trabalho.
+
+\section*{4. Resolução de Problemas Comuns}
+
+Esta seção abrange soluções para problemas frequentes, como:
+\begin{itemize}
+    \item Erros de upload de arquivos: Verifique o formato e o conteúdo do arquivo CSV.
+    \item Falhas na conexão entre nódulos: Assegure que os nódulos estejam corretamente conectados no \textit{canvas}.
+    \item Dificuldades na interpretação dos resultados: Consulte as dicas de usabilidade para obter orientações sobre análise de dados.
+\end{itemize}
+
+Este manual visa fornecer uma experiência de uso intuitiva, facilitando o acesso às funcionalidades do *RADARE*.
