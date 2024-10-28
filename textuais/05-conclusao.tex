@@ -1,55 +1,63 @@
+% ------------------------- REVISADO
 \mychapter{Conclusão}
 \label{Cap:Conclusao}
 
-Este trabalho desenvolveu o \textit{webapp} RADARE, uma ferramenta dedicada à reconciliação de dados em processos industriais, baseada no método dos multiplicadores de Lagrange. O sistema provou ser eficaz ao corrigir erros de medição, respeitando leis de conservação e fornecendo resultados consistentes. A interface \textit{web}, construída com tecnologias modernas como \textit{React} e \textit{ReactFlow}, proporcionou uma experiência interativa e acessível para os usuários, permitindo a manipulação de nódulos e fluxos de dados diretamente no \textit{canvas}. No \textit{back-end}, a arquitetura modular em \textit{Python} garantiu a escalabilidade e adaptação do sistema para diferentes cenários industriais.
-
+% ------------------------- REVISADO
 \section{Pontos Positivos}
 
 O RADARE cumpriu os objetivos propostos, destacando-se em vários aspectos:
 
 \begin{itemize}
-    \item \textbf{Integração Eficiente}: A integração entre \textit{front-end} e \textit{back-end} foi realizada de forma eficiente, proporcionando uma experiência de uso fluida e sem interrupções para os usuários.
-    
-    \item \textbf{Interface Intuitiva}: A interface gráfica se mostrou intuitiva e funcional, facilitando a visualização de dados e conexões no \textit{canvas}, o que torna a interação do usuário mais natural e produtiva.
-    
-    \item \textbf{Estrutura Modular}: A arquitetura modular do sistema facilita futuras expansões, permitindo a adição de novos métodos de reconciliação e funcionalidades, garantindo que o RADARE possa evoluir conforme as necessidades da indústria.
-    
-    \item \textbf{Flexibilidade}: O sistema se adaptou bem a diferentes cenários de uso, sendo capaz de lidar com cargas de dados variáveis, um aspecto essencial para sua aplicação em ambientes industriais que demandam escalabilidade.
+    \item \textbf{Fácil Construção de Modelos de Processos}: O sistema permite que os usuários construam e configurem modelos de processos de forma simples, agilizando o mapeamento e a organização dos fluxos de dados.
+
+    \item \textbf{Rápida e Precisa Reconciliação}: A reconciliação dos dados é realizada de maneira eficiente, corrigindo rapidamente os erros de medição e garantindo resultados confiáveis.
+
+    \item \textbf{Interface Intuitiva}: A interface gráfica facilita a interação com o sistema, permitindo a visualização clara dos fluxos de dados e dos modelos, o que torna o uso mais direto e produtivo.
 \end{itemize}
 
-
+% ------------------------- REVISADO
 \section{Pontos Negativos}
 
-Para aprimorar o RADARE e ampliar suas possibilidades de uso, algumas melhorias podem ser implementadas, organizadas da seguinte forma:
+Para aprimorar o RADARE e ampliar suas possibilidades de uso, algumas melhorias podem ser implementadas, conforme descrito a seguir:
 
 \begin{itemize}
-    \item \textbf{Versão Offline}: Desenvolver uma versão do sistema que possa ser executada sem a necessidade de conexão com a internet, permitindo seu uso em ambientes industriais remotos ou com conectividade limitada.
-    
-    \item \textbf{Novos Métodos de Reconciliação}: Incorporar outros métodos de reconciliação de dados, como a filtragem de Kalman, o que proporcionaria maior flexibilidade ao sistema para lidar com processos dinâmicos e cenários com maior variabilidade.
-    
-    \item \textbf{Análise e Predição de Dados}: Adicionar técnicas de análise preditiva para antecipar falhas e otimizar a tomada de decisões, utilizando medições reconciliadas, o que promoveria uma otimização mais eficiente dos processos industriais.
-    
-    \item \textbf{Otimização do Front-End}: Implementar melhorias no \textit{front-end} para aumentar a performance, assegurando carregamento mais rápido e manipulação eficiente de grandes volumes de dados e conexões no \textit{canvas}.
-    
-    \item \textbf{Hospedagem em Ambiente de Produção}: Colocar o sistema em um ambiente de produção adequado para que as indústrias possam acessar o RADARE de forma contínua e confiável, possibilitando sua aplicação em tempo real.
+    \item \textbf{Falta de Contas de Usuário e Histórico de Reconciliações}: A ausência de um sistema de contas impede o registro de um histórico de reconciliações por usuário, dificultando o acompanhamento e a rastreabilidade das operações realizadas.
+
+    \item \textbf{Falta de Hospedagem Online}: O sistema não está hospedado em um ambiente online, o que limita seu acesso e dificulta a aplicação em tempo real por indústrias.
+
+    \item \textbf{Falta de Customização da Interface Gráfica}: O sistema não permite que o usuário personalize a interface gráfica de acordo com suas preferências, o que poderia melhorar a experiência de uso e adaptação ao ambiente de trabalho.
 \end{itemize}
 
-Essas melhorias poderão consolidar o RADARE como uma ferramenta apropriada para a reconciliação de dados industriais, ampliando sua aplicação em diversos setores do mercado industrial brasileiro.
-
+% ------------------------- REVISADO
 \section{Propostas de Melhorias}
 
-Para aprimorar o RADARE e ampliar suas possibilidades de uso, algumas melhorias podem ser implementadas, organizadas da seguinte forma:
+Para aprimorar o RADARE e ampliar suas possibilidades de uso, algumas melhorias podem ser implementadas, conforme descrito a seguir:
 
 \begin{itemize}
-    \item \textbf{Versão Offline}: Desenvolver uma versão do sistema que possa ser executada sem a necessidade de conexão com a internet, permitindo seu uso em ambientes industriais remotos ou com conectividade limitada.
-    
-    \item \textbf{Novos Métodos de Reconciliação}: Incorporar outros métodos de reconciliação de dados, como a filtragem de Kalman, o que proporcionaria maior flexibilidade ao sistema para lidar com processos dinâmicos e cenários com maior variabilidade.
-    
-    \item \textbf{Análise e Predição de Dados}: Adicionar técnicas de análise preditiva para antecipar falhas e otimizar a tomada de decisões, utilizando medições reconciliadas, o que promoveria uma otimização mais eficiente dos processos industriais.
-    
-    \item \textbf{Otimização do Front-End}: Implementar melhorias no \textit{front-end} para aumentar a performance, assegurando carregamento mais rápido e manipulação eficiente de grandes volumes de dados e conexões no \textit{canvas}.
-    
-    \item \textbf{Hospedagem em Ambiente de Produção}: Colocar o sistema em um ambiente de produção adequado para que as indústrias possam acessar o RADARE de forma contínua e confiável, possibilitando sua aplicação em tempo real.
+    \item \textbf{Implementação de Contas de Usuário e Histórico de Reconciliações}: Adicionar um sistema de contas para que cada usuário tenha seu próprio histórico de reconciliações. Isso melhoraria a rastreabilidade e permitiria um acompanhamento mais preciso das atividades de cada operador.
+
+    \item \textbf{Hospedagem em Ambiente de Produção}: Colocar o sistema em um ambiente de produção online, possibilitando que as indústrias acessem o RADARE de forma contínua e em tempo real, o que facilitaria sua aplicação prática e integração em ambientes industriais.
+
+    \item \textbf{Customização da Interface Gráfica}: Permitir que os usuários personalizem a interface gráfica, adaptando o layout e os elementos de acordo com suas preferências, para uma experiência de uso mais flexível e intuitiva.
+
+    \item \textbf{Incorporação de Novos Métodos de Reconciliação}: Adicionar outras técnicas de reconciliação de dados, como a filtragem de Kalman, para aumentar a flexibilidade do sistema e possibilitar a adaptação a diferentes tipos de processos e cenários dinâmicos.
+
+    \item \textbf{Análise e Predição de Dados}: Implementar técnicas de predição de dados, usando medições reconciliadas para antecipar possíveis falhas e otimizar o processo, promovendo uma análise preditiva que auxilie na tomada de decisões.
+
+    \item \textbf{Versão Offline}: Desenvolver uma versão do sistema que funcione sem necessidade de internet, permitindo o uso em locais com conectividade limitada, o que é essencial para ambientes industriais remotos.
+
+    \item \textbf{Otimização do Front-End}: Melhorar a performance do \textit{front-end} para garantir carregamento mais rápido e manipulação eficiente de grandes volumes de dados e fluxos complexos no \textit{canvas}.
 \end{itemize}
 
-Essas melhorias poderão consolidar o RADARE como uma ferramenta robusta e versátil para a reconciliação de dados industriais, ampliando sua aplicação em diversos setores do mercado industrial brasileiro.
+Essas melhorias consolidariam o RADARE como uma ferramenta robusta e versátil para a reconciliação de dados industriais, ampliando sua aplicação em diversos setores do mercado
+
+% ------------------------- REVISADO
+\section{Conclusão Final}
+
+Este trabalho resultou no desenvolvimento do \textit{software} RADARE, uma ferramenta de reconciliação de dados para processos industriais, baseada no método dos multiplicadores de Lagrange. O sistema corrige erros de medição, respeitando leis de conservação e gerando resultados consistentes. A interface \textit{web}, criada com \textit{React} e \textit{ReactFlow}, oferece uma experiência interativa, permitindo a manipulação de nódulos e fluxos de dados no \textit{canvas}, enquanto o \textit{back-end}, implementado em \textit{Python} com uma arquitetura modular, facilita o desenvolvimento e a manutenção do sistema.
+
+Este projeto representou um desafio significativo para o autor, proporcionando uma oportunidade de aprendizado em diferentes áreas da programação, desde a criação de interfaces interativas até a implementação de algoritmos complexos para a reconciliação de dados. A construção do RADARE exigiu um entendimento aprofundado tanto da lógica de negócios quanto dos aspectos técnicos necessários para um sistema de reconciliação de dados industriais eficiente.
+
+Embora o RADARE esteja em um estágio funcional de protótipo, ele já demonstra um grande potencial. A ferramenta oferece uma funcionalidade única ao integrar técnicas de reconciliação de dados em uma interface acessível e interativa, trazendo melhorias nos processos industriais. O projeto cumpre seus objetivos iniciais e abre caminho para futuras expansões, consolidando-se como uma base promissora para uma solução completa e aplicável em larga escala.
+
+Em resumo, o desenvolvimento do RADARE foi uma experiência valiosa de aprendizado, proporcionando ao autor uma visão abrangente sobre o desenvolvimento de \textit{software} para aplicações industriais, com um possível impacto potencial significativo para a área de reconciliação de dados.

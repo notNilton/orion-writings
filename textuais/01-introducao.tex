@@ -9,111 +9,127 @@ Além disso, o desenvolvimento \textit{web} tem experimentado um notável cresci
 
 Portanto, a criação de uma ferramenta que unifique esses aspectos tecnológicos torna-se imperativa. Ao integrar a teoria de reconciliação de dados com as técnicas modernas de desenvolvimento de \textit{software}, o RADARE não só representa um avanço significativo no enfrentamento dos desafios industriais, mas também se beneficia das vantagens proporcionadas pelo ambiente \textit{web}, oferecendo uma plataforma flexível e adaptável. Este cenário fomenta a excelência operacional e impulsiona o desenvolvimento tecnológico no Brasil \cite{industry4status}.
 
+% ------------------------- REVISADO
 \section{Objetivos}
+
+% ------------------------- REVISADO
 \subsection{\textit{Objetivo geral}}
 
 Desenvolver e implementar um \textit{software web} para a reconciliação de dados oriundos de processos industriais, utilizando o método dos multiplicadores de Lagrange, com o objetivo de aumentar a qualidade, a confiabilidade das informações e otimizar a tomada de decisões nos processos industriais.
 
+% ------------------------- REVISADO
 \subsection{\textit{Objetivos específicos}}
 
 Para atingir o objetivo geral, os seguintes objetivos específicos foram definidos:
 
 \begin{itemize}
-    \item Pesquisar o estado da arte sobre as principais técnicas e ferramentas de validação, limpeza e reconciliação de dados, identificando práticas e tendências recentes.
-    \item Analisar metodologias e algoritmos de reconciliação de dados, destacando suas aplicações, vantagens e limitações, para uma escolha fundamentada dos métodos a serem implementados.
-    \item Selecionar e adaptar as tecnologias mais adequadas para a implementação da ferramenta \textit{online}, considerando linguagens de programação, \textit{frameworks}, escalabilidade, segurança e eficiência.
-    \item Projetar a arquitetura da ferramenta, definindo os componentes principais, suas interações e lógica de funcionamento para garantir a eficácia e facilitar futuras atualizações.
-    \item Desenvolver a ferramenta \textit{online}, implementando os algoritmos e funcionalidades identificados, assegurando a usabilidade, a integridade dos dados e a eficiência do sistema.
-    \item Realizar testes abrangentes de integração, segurança e simulações práticas, a fim de validar a eficácia e confiabilidade da ferramenta em diferentes cenários e volumes de dados, garantindo sua aplicabilidade em ambientes reais de produção.
-    \item Elaborar uma documentação completa, cobrindo o processo de desenvolvimento e instruções de uso, para facilitar a manutenção e futuras implementações da ferramenta.
+	\item \textbf{Pesquisa do estado da arte}: Investigar as principais técnicas e ferramentas de reconciliação de dados, identificando práticas e tendências recentes para embasar o desenvolvimento.
+
+	\item \textbf{Análise de metodologias e algoritmos}: Examinar metodologias e algoritmos de reconciliação de dados, destacando suas aplicações, vantagens e limitações. Essa análise fundamentará a escolha dos métodos a serem implementados.
+
+	\item \textbf{Seleção e adaptação de tecnologias}: Identificar e adaptar as tecnologias mais adequadas para a implementação da ferramenta \textit{online}, levando em consideração linguagens de programação, \textit{frameworks}, escalabilidade, segurança e eficiência.
+
+	\item \textbf{Projeto da arquitetura da ferramenta}: Definir os componentes principais da ferramenta e suas interações, estabelecendo uma lógica de funcionamento que garanta a eficácia e facilite futuras atualizações.
+
+	\item \textbf{Desenvolvimento da ferramenta \textit{online}}: Implementar os algoritmos e funcionalidades planejados, assegurando a usabilidade, a integridade dos dados e a eficiência do sistema.
+
+	\item \textbf{Testes abrangentes e validação}: Realizar testes de integração, segurança e simulações práticas para validar a eficácia e confiabilidade da ferramenta em diferentes cenários e volumes de dados, garantindo sua aplicabilidade em ambientes de produção reais.
+
+	\item \textbf{Documentação completa}: Elaborar uma documentação detalhada, incluindo o processo de desenvolvimento e instruções de uso, visando facilitar a manutenção e futuras implementações da ferramenta.
 \end{itemize}
 
-
+% ------------------------- REVISADO
 \section{Estado da Arte}
 
 Em meio ao processo de elaboração do trabalho de conclusão de curso, um aspecto fundamental que merece destaque é a investigação das tendências tecnológicas emergentes nas áreas relevantes para o estudo. Essa pesquisa não apenas fornece uma visão abrangente do cenário atual, mas também ajuda a identificar oportunidades para inovação e melhoria.
 
 As tendências tecnológicas são indicadores poderosos do progresso em qualquer campo de estudo e podem ser representadas tanto na área comercial direta, como na indústria química, nas áreas adjacentes, como em conceitos de contabilidade, além de pesquisas cientificas. Elas refletem os avanços mais recentes e as direções futuras que a tecnologia pode tomar. Portanto, é essencial estar ciente dessas tendências ao realizar qualquer pesquisa acadêmica ou científica.
 
+% ------------------------- REVISADO
 \subsection{Aplicação na indústria química}
 
-No contexto da indústria química, há várias empresas com soluções similares à proposta neste trabalho, e a investigação das tendências tecnológicas emergentes é um aspecto crucial durante o processo de elaboração dessa ferramenta (RADARE). 
+No contexto da indústria química, há várias empresas com soluções similares à proposta neste trabalho, e a investigação das tendências tecnológicas emergentes é um aspecto crucial durante o processo de elaboração da ferramenta RADARE.
 
+% ------------------------- REVISADO
 \subsubsection{Software RECON da empresa ChemPlant Technology}
 
-A ChemPlant Technology, s.r.o, fundada em 1991 é uma empresa situada na Republica Checa, especializada em fornecer soluções tecnológicas avançadas para indústrias de processos (principalmente, processos químico, petróleo e gás, geração e distribuição de energia) \cite{reconset}. Uma de suas inovações mais notáveis é a ferramenta de reconciliação de dados chamada RECON. Esta ferramenta é fundamentada nos sólidos princípios físicos de balanço de massa e energia, um \textit{software} interativo abrangente que oferece uma plataforma robusta para modelagem de complexas plantas industriais químicas e energéticas. Ele realiza uma variedade de cálculos, incluindo balanceamento de massa, energia e momento, bem como cálculos termodinâmicos. O principal objetivo da solução é validar dados que já foram obtidos de processos operacionais. No entanto, a ferramenta, exposta na Figura \ref{fig:RECONSET} também pode ser utilizada para simular o comportamento da planta sob diferentes condições.
+A ChemPlant Technology, fundada em 1991 é uma empresa situada na Republica Checa, especializada em fornecer soluções tecnológicas avançadas para indústrias de processos (principalmente, processos químico, petróleo e gás, geração e distribuição de energia) \cite{reconset}. Uma de suas inovações mais notáveis é a ferramenta de reconciliação de dados chamada RECONSET. Esta ferramenta é fundamentada nos sólidos princípios físicos de balanço de massa e energia, um \textit{software} interativo abrangente que oferece uma plataforma robusta para modelagem de complexas plantas industriais químicas e energéticas. Ele realiza uma variedade de cálculos, incluindo balanceamento de massa, energia e momento, bem como cálculos termodinâmicos. O principal objetivo da solução é validar dados que já foram obtidos de processos operacionais. No entanto, a ferramenta, exposta na Figura \ref{fig:RECONSET} também pode ser utilizada para simular o comportamento da planta sob diferentes condições.
 
-\begin{figure}[htbp!] 
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/RECONSET.jpg}
-    \caption{Tela Principal da ferramenta RECONSET. Fonte: Chemplant Techonology (2024).}
-    \label{fig:RECONSET}
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figuras/RECONSET.jpg}
+	\caption{Tela Principal da ferramenta RECONSET. Fonte: Chemplant Techonology (2024).}
+	\label{fig:RECONSET}
 \end{figure}
 
 O \textit{software} é orientado para PC e possui uma interface de usuário gráfica interativa, tornando-o fácil de usar. Os usuários definem problemas (ou tarefas) interativamente por meio desta interface. O RECON é capaz de equilibrar materiais e energia de componentes únicos ou múltiplos de sistemas complexos, seja em estado estacionário ou instável (dinâmico), com ou sem reações químicas (balanceamento de reatores). Além disso, ele pode realizar balanceamento de momento com base em cálculos hidráulicos de vazão em sistemas de dutos. O RECON reconcilia vazões medidas, concentrações, temperaturas e outras variáveis de processo, e calcula variáveis não medidas. Para definir um problema (ou tarefa), os usuários geralmente criam um fluxograma de processo e definem variáveis de processo, como taxas de fluxo, temperaturas, pressões, etc. O fluxograma inclui nós, fluxos de massa e energia, e trocadores de calor. Se necessário, os usuários também podem complementar (ou até mesmo substituir) o modelo de balanceamento com suas próprias equações.
 
-\subsubsection{BILCO}
+% ------------------------- REVISADO
+\subsubsection{Software BILCO da empresa CASPEO}
 
-CASPEO é uma empresa francesa fundada em 2004, especializada em engenharia de processos e soluções tecnológicas. Originada do 
-Departamento de Pesquisas Geológicas e Minerais da França. Ela foi criada para oferecer à indústria de mineração métodos e ferramentas computacionais resultantes de anos de pesquisa e tornou-se uma referência na indústria de processamento mineral, atendendo a vários mercados, como mineração e metalurgia, processamento de biomassa e alimentos, tratamento de resíduos sólidos e outras indústrias de processamento \cite{bilco}.
+CASPEO é uma empresa francesa fundada em 2004, especializada em engenharia de processos e soluções tecnológicas. Originada do Departamento de Pesquisas Geológicas e Minerais da França. Ela foi criada para oferecer à indústria de mineração métodos e ferramentas computacionais resultantes de anos de pesquisa e tornou-se uma referência na indústria de processamento mineral, atendendo a vários mercados, como mineração e metalurgia, processamento de biomassa e alimentos, tratamento de resíduos sólidos e outras indústrias de processamento \cite{bilco}.
 
 Uma das suas inovações é o \textit{software} de reconciliação de dados BILCO, projetado para derivar um balanço de material coerente e total a partir de todos os dados disponíveis (medições, análises, estimativas) para todas as correntes de processo. Ele é uma ferramenta poderosa que permite aos usuários reconciliar dados de qualquer planta de processamento, a Figura \ref{fig:BILCO}, demonstra a tela inicial do \textit{software}.
 
-\begin{figure}[htbp!] 
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/BILCOCASPEOP.png}
-    \caption{Tela Principal da ferramenta BILCO (Fonte: BRGM - Pesquisa Geológica Francesa, 2024).}
-    \label{fig:BILCO}
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figuras/BILCOCASPEOP.png}
+	\caption{Tela Principal da ferramenta BILCO (Fonte: BRGM - Pesquisa Geológica Francesa, 2024).}
+	\label{fig:BILCO}
 \end{figure}
 
 Ele tem a capacidade de se incorporar à duas outras ferramentas facilmente, no caso, à um simulador de processos, denominado USIM PAC e à um \textit{software} de contabilidade metalúrgica, INVETEO; e, dessa forma, fornece cálculos de balanço precisos e gera um conjunto de estimadores coerentes que estão em conformidades com as restrições da lei de conservação de energia, além de calcular seus erros relativos. Ele também é capaz de determinar, em quantidade e qualidade, a composição de cada corrente de processo. É um dos poucos \textit{softwares} de balanço de massa capaz de calcular toda a composição da corrente (taxas de fluxo, classes de tamanho, tipos de partículas, massa molar, etc.) em um único cálculo.
 
 Essa solução também oferece uma única interface para gerenciar todo o processo. Consiste numa interface gráfica fácil de usar, tornando-a acessível tanto para novos usuários quanto para os mais experientes. Uma das características mais úteis do BILCO é a possibilidade de exportar os resultados para o Excel, permitindo uma análise mais profunda dos dados. Ele fornece resultados detalhados, incluindo uma planilha de comparação e uma planilha global, para uma visão completa do balanço de material.
 
+% ------------------------- REVISADO
 \subsubsection{Software PIMSOFT da empresa Sigmafine}
 
 A Sigmafine, fundada na Itália, é uma empresa que desenvolve e integra soluções voltadas para a qualidade de dados e reconciliação em indústrias de processos. Seu principal produto, o \textit{PIMSOFT}, foi originalmente lançado em 2002 pela Sigmafine.
 
 O \textit{PIMSOFT} é uma solução voltada para a reconciliação de dados e controle de qualidade, amplamente utilizada em setores como petróleo, gás e manufatura. A ferramenta utiliza princípios de conservação, estatísticas e padrões de engenharia para validar, corrigir e estruturar dados de processos industriais, oferecendo uma base confiável para análises e tomadas de decisão. A Sigmafine continua a expandir e aprimorar o PIMSOFT.
 
-\begin{figure}[htbp!] 
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/sigmafine-pimsoft.png}
-    \caption{Tela Principal da ferramenta PIMSoft (Fonte: Sigmafine, 2023).}
-    \label{fig:Sigmafine}
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figuras/sigmafine-pimsoft.png}
+	\caption{Tela Principal da ferramenta PIMSoft (Fonte: Sigmafine, 2023).}
+	\label{fig:Sigmafine}
 \end{figure}
 
+% ------------------------- REVISADO
 \subsubsection{Software AspenTech da empresa Aspentech}
 
 A AspenTech foi fundada a partir do Projeto ASPEN, uma iniciativa conjunta entre o MIT e o Departamento de Energia dos EUA nos anos 1980, com o objetivo de desenvolver tecnologia avançada de modelagem e simulação para a indústria de processos químicos. A AspenTech se consolidou como uma empresa líder em soluções de otimização industrial, oferecendo softwares especializados para diversos setores, incluindo geração de energia, mineração, química e farmacêutica, entre outros \cite{aspen}.
 
 O software \textit{AspenTech} foi desenvolvido para auxiliar na reconciliação de dados e otimização de processos industriais, com funcionalidades que permitem o monitoramento em tempo real e a análise de desempenho dos ativos. Essa ferramenta facilita a redução de perdas de material, o monitoramento de emissões e a gestão de balanços de massa e energia, contribuindo para um uso mais eficiente dos recursos.
 
-\begin{figure}[htbp!] 
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/aspen-aspentech.png}
-    \caption{Tela do software AspenTech (Fonte: AspenTech, 2024).}
-    \label{fig:AspenTech}
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figuras/aspen-aspentech.png}
+	\caption{Tela do software AspenTech (Fonte: AspenTech, 2024).}
+	\label{fig:AspenTech}
 \end{figure}
 
-
+% ------------------------- REVISADO
 \subsection{Aplicação na contabilidade}
 
 Paralelamente à disciplina de Reconciliação de Dados na área industrial química, há uma outra área na qual investe bastante nesse campo, a de soluções contábeis. E a investigação das tendências tecnológicas emergentes é um aspecto crucial durante o processo de desenvolvimento de uma solução mais dinâmica e que consegue resolver problemas já solucionados por outras áreas da ciência.
 
+% ------------------------- REVISADO
 \subsubsection{Software AutoRec da empresa FloQast}
 
 A FloQast é uma empresa fundada em 2013, especializada em contabilidade operacional na nuvem, com foco na automação e gestão contábil. Uma de suas soluções é o \textit{AutoRec}, uma ferramenta de reconciliação de dados voltada para contabilidade, parte da plataforma FloQast Reconciliation Management. Essa solução avançada de automação de fluxo de trabalho permite o gerenciamento de reconciliações de contas de ponta a ponta, otimizando o fechamento financeiro e reduzindo o risco de declarações incorretas \cite{floqast}.
 
 O \textit{software} permite que controladores e suas equipes automatizem e gerenciem o processo de reconciliação em uma plataforma centralizada, amplamente confiável por contadores e auditores em todo o mundo.
 
-\begin{figure}[htbp!] 
-    \centering
-    \includegraphics[width=0.6\textwidth]{figuras/floqast-autorec.png}
-    \caption{Tela principal da ferramenta AutoRec (Fonte: FloQast, 2024).}
-    \label{fig:AutoRec}
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figuras/floqast-autorec.png}
+	\caption{Tela principal da ferramenta AutoRec (Fonte: FloQast, 2024).}
+	\label{fig:AutoRec}
 \end{figure}
 
+% ------------------------- REVISADO
 \subsubsection{Software AURA da empresa Aspentech}
 
 O \textit{AURA} (Aspen Unified Reconciliation Accounting), desenvolvido pela Aspentech, é uma solução destinada à reconciliação de dados em processos industriais, com foco na minimização de perdas materiais e na otimização de margens por meio de um balanceamento eficiente de massa e volume. A ferramenta fornece suporte à tomada de decisões baseadas em dados validados e reconciliados, apresentando uma arquitetura escalável que permite rápida implantação em ambientes de nuvem.
@@ -122,40 +138,40 @@ O sistema utiliza o \textit{Smart Solver}, um algoritmo proprietário que ajusta
 
 Devido à indisponibilidade pública, imagens do \textit{AURA} não foram incluídas neste trabalho.
 
-% ------
+% ------------------------- REVISADO
 \subsection{Pesquisas sendo desenvolvidas}
 
 O objetivo do RADARE é incorporar avanços tecnológicos de diversas áreas, com foco não apenas nas técnicas aplicadas diretamente à reconciliação de dados, mas também em áreas adjacentes que possam contribuir para o aprimoramento da ferramenta. Dessa forma, é fundamental estar alinhado com as pesquisas mais recentes em reconciliação de dados computacional, bem como explorar como elas podem ser aplicadas no contexto industrial brasileiro.
 
 Pesquisas em outras áreas de aplicação, como o processamento mineral e a distribuição de gás, também oferecem contribuições valiosas para o desenvolvimento do RADARE, especialmente na aplicação de técnicas de reconciliação de dados em diferentes cenários industriais.
 
+% ------------------------- REVISADO
 \subsubsection{Controle e Supervisão de Processamento Mineral}
 
-A pesquisa apresentada por Daniel Hoduin \cite{danielhoduin} foca nas restrições de conservação de massa e energia, que servem como base para o desenvolvimento de estratégias de medição, atualização do valor medido por meio de técnicas de filtragem de erros de medição e estimativa de variáveis de processo não medidas. Nas unidades de processamento mineral, as principais variáveis são geralmente as vazões e concentrações, e a reconciliação desses dados com as leis de conservação de massa é essencial para manter a precisão dos processos.
+A pesquisa apresentada por Daniel Hoduin \cite{danielhoduin} foca nas restrições de conservação de massa e energia, que servem como base para o desenvolvimento de estratégias de medição, atualização do valor medido por meio de técnicas de filtragem de erros de medição e estimativa de variáveis de processo não medidas. Afonso e Silveira \cite{afonsosilveira2015} destacam a importância dessas restrições, especialmente em unidades de processamento mineral, para assegurar a precisão dos dados.
 
-Os métodos de reconciliação propostos utilizam técnicas clássicas, como os mínimos quadrados usuais, que minimizam os erros entre os valores observados e os valores estimados. Além disso, a filtragem de Kalman, um algoritmo de estimação recursiva, é empregada para estimar variáveis de estado de processos dinâmicos e com ruído. São sugeridas ferramentas para três tipos de regimes operacionais: regime estacionário, quase-estacionário e dinâmico.
+Nas unidades de processamento mineral, as principais variáveis são geralmente as vazões e concentrações, e a reconciliação desses dados com as leis de conservação de massa é essencial para manter a precisão dos processos. Segundo García et al. \cite{garcia2018}, o uso de algoritmos como a filtragem de Kalman pode melhorar a precisão de variáveis de estado em sistemas com variabilidade operacional.
 
-As ferramentas propostas para diferentes regimes operacionais de processamento mineral podem ser adaptadas para o RADARE, permitindo que ele lide com cenários variáveis de fluxo de dados e oferecendo maior flexibilidade no tratamento de dados de processos industriais com características dinâmicas.
+Os métodos de reconciliação propostos utilizam técnicas clássicas, como os mínimos quadrados usuais \cite{limapereira2019}, que minimizam os erros entre os valores observados e os valores estimados. Além disso, a filtragem de Kalman, um algoritmo de estimação recursiva, é empregada para estimar variáveis de estado de processos dinâmicos e com ruído, conforme ilustrado por Souza et al. \cite{souza2021}.
 
+As ferramentas propostas para diferentes regimes operacionais de processamento mineral, como abordado por Castro \cite{castro2020}, podem ser adaptadas para o RADARE, permitindo que ele lide com cenários variáveis de fluxo de dados e oferecendo maior flexibilidade no tratamento de dados de processos industriais com características dinâmicas.
+
+% ------------------------- REVISADO
 \subsubsection{Balanços de Materiais em Rede de Distribuição de Gás}
 
-O desenvolvimento realizado por Jesús David Badillo Herrera, Arlex Chaves e José Augusto Fuentes Osorio \cite{balancecontrol}, foca em uma solução prática para enfrentar os desafios apresentados por erros em sistemas de distribuição de gás natural. A ferramenta combina técnicas numéricas e estatísticas, como a Reconciliação de Dados (DR) e a Detecção de Erros Brutos (GED), para melhorar a precisão das medições e garantir a conformidade com as leis de conservação de massa.
-
-Essa abordagem não apenas aprimora a acurácia das medições, mas também identifica e corrige erros grosseiros, proporcionando maior confiabilidade nos dados. A validação da ferramenta com problemas da literatura e sua aplicação em uma rede de distribuição real demonstram sua eficácia em fornecer resultados reconciliados com alta precisão.
-
-A abordagem combinada de Reconciliação de Dados (DR) e Detecção de Erros Brutos (GED), utilizada na distribuição de gás natural, foi ser integrada ao RADARE para garantir maior precisão nas medições e identificar rapidamente inconsistências ou erros em sistemas industriais.
-
-% ---
+O desenvolvimento realizado por Jesús David Badillo Herrera, Arlex Chaves e José Augusto Fuentes Osorio \cite{datareconherrera}, foca em uma solução prática para enfrentar os desafios apresentados por erros em s5
+% ------------------------- REVISADO
 \section{Justificativa}
 
-O setor industrial brasileiro, responsável por uma parcela significativa da economia nacional, enfrenta desafios críticos relacionados à qualidade e confiabilidade dos dados gerados em processos produtivos. A falta de precisão nas medições e a ausência de ferramentas eficazes para a reconciliação de dados comprometem a eficiência operacional e a competitividade das indústrias. Dessa forma, torna-se urgente o desenvolvimento de soluções tecnológicas que possam superar essas limitações, sendo o \textit{software} RADARE uma proposta que visa preencher essa lacuna com inovação e eficácia.
+O setor industrial brasileiro, responsável por uma parcela significativa da economia nacional, enfrenta desafios críticos relacionados à qualidade e confiabilidade dos dados gerados em processos produtivos \cite{govbr}. A falta de precisão nas medições e a ausência de ferramentas eficazes para a reconciliação de dados comprometem a eficiência operacional e a competitividade das indústrias \cite{cni2024}. Dessa forma, torna-se urgente o desenvolvimento de soluções tecnológicas que possam superar essas limitações, sendo o \textit{software} RADARE uma proposta que visa preencher essa lacuna com inovação e eficácia.
 
-A escolha por desenvolver o RADARE como uma aplicação \textit{web} é estratégica, pois o ambiente web oferece diversas vantagens essenciais para o setor industrial. Entre elas, a interoperabilidade eficiente entre sistemas permite integrar o \textit{software} com outras ferramentas já utilizadas nas plantas industriais. O acesso remoto possibilita que engenheiros e operadores possam monitorar e controlar os processos de qualquer localidade, reduzindo tempos de inatividade e melhorando a resposta a problemas. Além disso, a facilidade de uso da plataforma, associada à alta acessibilidade para indivíduos com necessidades especiais, amplia o alcance da solução, garantindo que o sistema possa ser adotado por uma gama diversa de usuários.
+A escolha por desenvolver o RADARE como uma aplicação \textit{web} é estratégica, pois o ambiente web oferece diversas vantagens essenciais para o setor industrial. Entre elas, a interoperabilidade eficiente entre sistemas permite integrar o \textit{software} com outras ferramentas já utilizadas nas plantas industriais \cite{apiimportance}. O acesso remoto possibilita que engenheiros e operadores possam monitorar e controlar os processos de qualquer localidade, reduzindo tempos de inatividade e melhorando a resposta a problemas \cite{webusage}. Além disso, a facilidade de uso da plataforma, associada à alta acessibilidade para indivíduos com necessidades especiais, amplia o alcance da solução, garantindo que o sistema possa ser adotado por uma gama diversa de usuários.
 
-O projeto RADARE visa atender a uma demanda crescente por soluções no setor industrial brasileiro, onde a competitividade global exige maior eficiência e qualidade nas operações. O contexto brasileiro apresenta desafios específicos, como a falta de ferramentas acessíveis e adaptadas à realidade das indústrias locais. O RADARE se diferencia por ser uma solução criada para o contexto nacional, ao mesmo tempo em que incorpora tecnologias de ponta e metodologias comprovadas internacionalmente, como o método dos multiplicadores de Lagrange, aplicado de forma inovadora em uma plataforma web de fácil acesso e integração.
+O projeto RADARE visa atender a uma demanda crescente por soluções no setor industrial brasileiro, onde a competitividade global exige maior eficiência e qualidade nas operações \cite{govbr}. O contexto brasileiro apresenta desafios específicos, como a falta de ferramentas acessíveis e adaptadas à realidade das indústrias locais. O RADARE se diferencia por ser uma solução criada para o contexto nacional, ao mesmo tempo em que incorpora tecnologias de ponta e metodologias comprovadas internacionalmente, como o método dos multiplicadores de Lagrange \cite{lagrangebio}, aplicado de forma inovadora em uma plataforma web de fácil acesso e integração.
 
 O RADARE representa uma inovação ao unir teorias avançadas de reconciliação de dados com tecnologias modernas de desenvolvimento \textit{web}. Ao criar uma solução que é tanto acessível quanto adaptável às necessidades do setor industrial, o RADARE tem o potencial de impactar diretamente a eficiência das operações industriais no Brasil, promovendo o desenvolvimento tecnológico e aumentando a competitividade das empresas brasileiras no cenário global.
 
+% ------------------------- REVISADO
 \subsection{Organização do trabalho de conclusão de curso}
 
-Este trabalho está estruturado da seguinte forma: no \textbf{Capítulo 1}, apresenta-se a introdução, contextualizando o problema e destacando os objetivos principais e secundários da pesquisa. O \textbf{Capítulo 2} oferece o referencial teórico, com definições e descrições das principais teorias que embasam a solução proposta. No \textbf{Capítulo 3}, descrevem-se os métodos e técnicas utilizados para o desenvolvimento do sistema, assim como o cronograma de atividades apresentado por meio do diagrama de Gantt. No \textbf{Capítulo 4}, são apresentados os resultados obtidos e uma análise dos dados obtidos ao longo do desenvolvimento. Por fim, no \textbf{Capítulo 5}, são apresentadas as conclusões, destacando o aprendizado adquirido, as reflexões sobre o desenvolvimento futuro do projeto e as contribuições gerais do trabalho.
+Este trabalho está estruturado da seguinte forma: no \textbf{Capítulo 1}, apresenta-se a introdução, contextualizando o problema e destacando os objetivos principais e secundários da pesquisa. O \textbf{Capítulo 2} oferece o referencial teórico, com definições e descrições das principais teorias que embasam a solução proposta. No \textbf{Capítulo 3}, descrevem-se os métodos e técnicas utilizados para o desenvolvimento do sistema. No \textbf{Capítulo 4}, são apresentados os resultados obtidos ao longo do desenvolvimento. Por fim, no \textbf{Capítulo 5}, são apresentadas as conclusões, destacando o aprendizado adquirido, as reflexões sobre o desenvolvimento futuro do projeto e as contribuições gerais do trabalho.
