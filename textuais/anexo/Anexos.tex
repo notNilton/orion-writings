@@ -683,3 +683,134 @@ Esta seção abrange soluções para problemas frequentes, como:
 \end{itemize}
 
 Este manual visa fornecer uma experiência de uso intuitiva, facilitando o acesso às funcionalidades do *RADARE*.
+
+
+\chapter{Código para Exibição do Gráfico de Reconciliação de Dados}
+\label{Anexo:graphDisplayCode}
+
+\begin{minted}[fontsize=\small, breaklines, linenos]{typescript}
+// Exemplo de implementação de um gráfico de reconciliação de dados no RADARE
+
+import React, { useEffect, useRef } from 'react';
+import { Chart } from 'chart.js';
+
+const ReconciliationGraph = ({ data }) => {
+    const chartRef = useRef(null);
+
+    useEffect(() => {
+        if (chartRef.current) {
+            const ctx = chartRef.current.getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.interactions, // Labels baseadas nas interações
+                    datasets: [
+                        {
+                            label: 'Valores Reconciliados',
+                            data: data.reconciledValues,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            fill: false,
+                        },
+                        {
+                            label: 'Valores Medidos',
+                            data: data.measuredValues,
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            fill: false,
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Interações'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Valores'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                    },
+                },
+            });
+        }
+    }, [data]);
+
+    return (
+        <div>
+            <canvas ref={chartRef}></canvas>
+        </div>
+    );
+};
+
+export default ReconciliationGraph;
+\end{minted}
+
+Este código cria um gráfico de linha com duas séries de dados: "Valores Reconciliados" e "Valores Medidos". A funcionalidade foi implementada usando a biblioteca \texttt{Chart.js}, proporcionando uma visualização clara das variações entre os dados medidos e reconciliados em função das interações.
+
+\chapter{Código para a Lógica da \textit{Sidebar} de Informações do Sistema}
+\label{Anexo:CodigoSidebar}
+
+\begin{minted}[fontsize=\small, breaklines, linenos]{typescript}
+// Exemplo de implementação da lógica da \textit{sidebar} de informações no RADARE
+
+import React, { useState, useEffect } from 'react';
+
+interface NodeInfo {
+    id: string;
+    name: string;
+    status: string;
+    details: string;
+}
+
+const Sidebar = ({ selectedNode }) => {
+    const [nodeInfo, setNodeInfo] = useState<NodeInfo | null>(null);
+
+    useEffect(() => {
+        // Atualiza as informações da \textit{sidebar} sempre que o nó selecionado mudar
+        if (selectedNode) {
+            fetchNodeInfo(selectedNode.id).then(info => setNodeInfo(info));
+        }
+    }, [selectedNode]);
+
+    const fetchNodeInfo = async (nodeId: string): Promise<NodeInfo> => {
+        // Simulação de busca de dados do nó selecionado
+        const response = await fetch(`/api/nodes/${nodeId}`);
+        const data = await response.json();
+        return {
+            id: data.id,
+            name: data.name,
+            status: data.status,
+            details: data.details,
+        };
+    };
+
+    return (
+        <div className="sidebar">
+            {nodeInfo ? (
+                <>
+                    <h2>{nodeInfo.name}</h2>
+                    <p>Status: {nodeInfo.status}</p>
+                    <p>{nodeInfo.details}</p>
+                </>
+            ) : (
+                <p>Selecione um nó para visualizar as informações.</p>
+            )}
+        </div>
+    );
+};
+
+export default Sidebar;
+\end{minted}
+
+Este código implementa a lógica do componente de \textit{sidebar} no RADARE. A \textit{sidebar} exibe as informações detalhadas sobre um nó selecionado no \textit{canvas}, incluindo seu nome, status e detalhes. A funcionalidade é implementada em \texttt{React} e \texttt{TypeScript}, com uma função assíncrona que recupera as informações do nó selecionado ao consultar uma API REST. Assim, a \textit{sidebar} é atualizada automaticamente ao selecionar diferentes nódulos, permitindo uma visualização dinâmica e informativa para o usuário.

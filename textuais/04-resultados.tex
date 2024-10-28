@@ -187,7 +187,7 @@ O sistema permite que o usuário estabeleça conexões visuais entre os nódulos
 
 A Figura \ref{Fig:NodeConnections} ilustra a conexão de dois nódulos no \textit{canvas}, demonstrando como o usuário pode arrastar e soltar as conexões de forma intuitiva. O usuário também pode ajustar e mover essas conexões entre os nódulos, proporcionando flexibilidade na organização dos fluxos de dados e permitindo a personalização do layout conforme as necessidades do processo.
 
-O trecho principal do código responsável pela criação dessa funcionalidade está disponível no \textbf{Anexo \ref{Anexo:frontCodeNodeTwoOne}}. Cada conexão entre os nódulos possui um valor e uma tolerância associados, que podem ser modificados diretamente com um duplo clique na linha de conexão, permitindo ao usuário ajustar os parâmetros conforme necessário. Além disso, as conexões recebem nomes gerados automaticamente para facilitar a distinção entre as diferentes tags.
+O trecho principal do código responsável pela criação dessa funcionalidade está disponível no \textbf{Anexo \ref{Anexo:frontCodeNodeTwoOne}}. Cada conexão entre os nódulos possui um valor e uma tolerância associados, que podem ser modificados diretamente com um duplo clique na linha de conexão, permitindo ao usuário ajustar os parâmetros conforme necessário. Além disso, as conexões recebem nomes gerados automaticamente para facilitar a distinção entre as diferentes \textit{tags}.
 
 \begin{figure}[htbp]
     \centering
@@ -197,46 +197,47 @@ O trecho principal do código responsável pela criação dessa funcionalidade e
 \end{figure}
 
 % -------------------------
-\subsection{Interface de gráfico de reconciliação de dados}
+\subsection{Interface de Gráfico de Reconciliação de Dados}
 
-O \textit{canvas} é a área principal da interface do RADARE, onde o usuário pode visualizar, conectar e manipular os nódulos para configurar o fluxo de dados industrial. É nesse espaço que o usuário constrói e ajusta os fluxos de trabalho, interligando entradas, saídas e pontos de processamento. A interação no \textit{canvas} é dinâmica e permite a personalização dos fluxos conforme as necessidades do processo.
+A interface de gráfico de reconciliação de dados no RADARE permite ao usuário analisar as interações entre variáveis ao longo do processo de reconciliação. Este gráfico exibe os valores reconciliados e medidos, facilitando a comparação direta entre os dados ajustados e os dados originais. O objetivo é fornecer uma visualização clara e precisa das variações dos dados em função das interações realizadas, permitindo que o usuário identifique rapidamente discrepâncias e avalie a precisão dos dados reconciliados.
 
-A Figura \ref{Fig:CanvasArea} mostra um exemplo do \textit{canvas} com vários nódulos conectados, oferecendo uma visão geral de como os elementos podem ser arranjados e manipulados visualmente. Nos próximos tópicos, exploraremos em detalhes as funcionalidades disponíveis no \textit{canvas}, com exemplos de código e explicações sobre a interação com os nódulos.
+A Figura \ref{Fig:ReconciliationGraph} apresenta um exemplo de gráfico de interações versus valores na interface do RADARE. Esse gráfico ilustra como os valores das variáveis mudam em resposta às diferentes interações, oferecendo ao usuário uma ferramenta visual para monitorar e ajustar o processo de reconciliação de dados.
+
+O código principal responsável pela funcionalidade de exibição desse gráfico pode ser encontrado no \textbf{Anexo \ref{Anexo:graphDisplayCode}}.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{figuras/empty-canvas.png}
-    \caption{Exemplo da área de trabalho no canvas do RADARE (Fonte: próprio autor, 2024).}
-    \label{Fig:CanvasArea}
+    \includegraphics[width=1\textwidth]{figuras/interface-grafico.png}
+    \caption{Exemplo do gráfico de reconciliações por interação (Fonte: próprio autor, 2024).}
+    \label{Fig:ReconciliationGraph}
 \end{figure}
 
-
 % -------------------------
-\subsection{Interface de \textit{sidebar} de informações do sistema}
+\subsection{Interface da \textit{sidebar} de informações do sistema}
 
-O \textit{canvas} é a área principal da interface do RADARE, onde o usuário pode visualizar, conectar e manipular os nódulos para configurar o fluxo de dados industrial. É nesse espaço que o usuário constrói e ajusta os fluxos de trabalho, interligando entradas, saídas e pontos de processamento. A interação no \textit{canvas} é dinâmica e permite a personalização dos fluxos conforme as necessidades do processo.
+A \textit{sidebar} de informações do sistema no RADARE serve como um painel auxiliar para exibir informações detalhadas sobre os nódulos e fluxos configurados no \textit{canvas}. Ela permite ao usuário acessar dados adicionais e propriedades de cada elemento, facilitando o monitoramento e o ajuste preciso dos componentes do fluxo de trabalho industrial. A \textit{sidebar} também possibilita uma navegação rápida entre os nódulos e fornece opções para personalização, promovendo uma experiência de uso intuitiva e eficiente.
 
-A Figura \ref{Fig:CanvasArea} mostra um exemplo do \textit{canvas} com vários nódulos conectados, oferecendo uma visão geral de como os elementos podem ser arranjados e manipulados visualmente. Nos próximos tópicos, exploraremos em detalhes as funcionalidades disponíveis no \textit{canvas}, com exemplos de código e explicações sobre a interação com os nódulos.
+A Figura \ref{Fig:SidebarInterface} mostra um exemplo da \textit{sidebar} com detalhes de nódulos selecionados, destacando como as informações são organizadas para facilitar a edição e o monitoramento dos elementos visuais do \textit{canvas}. Nos próximos tópicos, aprofundaremos as funcionalidades oferecidas pela \textit{sidebar}, incluindo exemplos de código e explicações sobre a personalização dos nódulos e fluxos. O código que rege a lógica por trás deste componente está disponível no \textbf{Anexo \ref{Anexo:CodigoSidebar}}.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{figuras/empty-canvas.png}
-    \caption{Exemplo da área de trabalho no canvas do RADARE (Fonte: próprio autor, 2024).}
-    \label{Fig:CanvasArea}
+    \includegraphics[width=0.4\textwidth]{figuras/interface-sidebar.png}
+    \caption{Exemplo da \textit{sidebar} de informações do sistema no RADARE, exibindo dados e opções de configuração de nódulos (Fonte: próprio autor, 2024).}
+    \label{Fig:SidebarInterface}
 \end{figure}
 
 % -------------------------
 \subsection{Resultados finais do front-end em sua visualização completa}
 
-O \textit{canvas} é a área principal da interface do RADARE, onde o usuário pode visualizar, conectar e manipular os nódulos para configurar o fluxo de dados industrial. É nesse espaço que o usuário constrói e ajusta os fluxos de trabalho, interligando entradas, saídas e pontos de processamento. A interação no \textit{canvas} é dinâmica e permite a personalização dos fluxos conforme as necessidades do processo.
+O desenvolvimento do front-end do RADARE culminou em uma tela inicial funcional e intuitiva, integrando todas as funcionalidades discutidas anteriormente para oferecer uma solução prática e eficiente ao usuário. A área do \textit{canvas} serve como o núcleo da interface, permitindo que o usuário visualize, conecte e manipule os nódulos para configurar o fluxo de dados industrial de maneira personalizada. É nesse espaço que os fluxos de trabalho são estruturados, com entradas, saídas e pontos de processamento conectados em harmonia para atender às necessidades específicas dos processos industriais.
 
-A Figura \ref{Fig:CanvasArea} apresenta um exemplo da área de trabalho do \textit{canvas} com vários nódulos conectados, permitindo uma visualização clara de como os elementos podem ser arranjados e manipulados visualmente. Cada nódulo representa uma função específica no processo, e as conexões entre eles ilustram o fluxo de dados que é tratado e reconciliado pelo sistema.
+A Figura \ref{Fig:CanvasArea} apresenta o \textit{canvas} com vários nódulos interligados, proporcionando uma visão abrangente de como os elementos podem ser organizados e ajustados para criar um fluxo de trabalho viável e eficiente. Cada nódulo desempenha uma função distinta dentro do sistema, e as conexões entre eles representam o fluxo de dados que o RADARE processa e reconcilia. 
 
-A seguir, exploraremos em detalhes as funcionalidades disponíveis no \textit{canvas}, incluindo a adição de nódulos, a conexão entre eles, a modificação de parâmetros, e a execução de tarefas de reconciliação de dados, sempre com exemplos práticos de código e interação no ambiente.
-
+Nas seções seguintes, exploraremos as funcionalidades disponíveis no \textit{canvas} de forma detalhada, incluindo a adição de novos nódulos, a interconexão entre eles, a modificação de parâmetros, e a execução de tarefas de reconciliação de dados. Serão apresentados exemplos práticos de código e interações no ambiente, ilustrando como todas essas funcionalidades trabalham em conjunto para oferecer uma solução robusta e eficaz.
+ 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{figuras/empty-canvas.png}
+    \includegraphics[width=0.8\textwidth]{figuras/interface-completa.png}
     \caption{Exemplo da área de trabalho no canvas do RADARE (Fonte: próprio autor, 2024).}
     \label{Fig:CanvasArea}
 \end{figure}
