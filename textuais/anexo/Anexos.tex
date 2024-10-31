@@ -307,7 +307,7 @@ export const reconciliarApi = async (
 \end{minted}
 
 % ---
-\chapter{Código Principal para a Lógica de Conexão entre Nódulos no \textit{Canvas}}
+\chapter{Código lógica de conexão entre nódulos}
 \label{Anexo:frontCodeNodeTwoOne}
 
 \begin{minted}[linenos,breaklines,fontsize=\small]{typescript}
@@ -366,7 +366,7 @@ function generateRandomName(): string {
 Este código implementa a lógica principal para criar e gerenciar conexões entre nódulos no \textit{canvas}, incluindo a configuração de valores e tolerâncias ajustáveis diretamente pela interface, conforme descrito na seção correspondente.
 
 % ---
-\chapter{Código do serviço \texttt{get\_reconciled\_data}}
+\chapter{Código do serviço get\_reconciled\_data}
 \label{Anexo:CodigoFunctionGetReconciledData}
 
 \begin{minted}[fontsize=\small, breaklines, linenos]{python}
@@ -513,7 +513,7 @@ def reconcile_data_service(payload):
 
 Esta função \texttt{reconcile\_data\_service} processa dados de sensores utilizando uma matriz de incidência, realizando cálculos de reconciliação baseados no método dos multiplicadores de Lagrange. Os dados reconciliados são inseridos no banco de dados PostgreSQL, permitindo a análise posterior dos resultados ajustados.
 % ---
-\chapter{Código da funcionalidade \texttt{UploadCSVLogic}}
+\chapter{Código da funcionalidade UploadCSVLogic}
 \label{Anexo:UploadCSVLogic}
 
 \begin{minted}[fontsize=\small, breaklines, linenos]{typescript}
@@ -541,7 +541,7 @@ const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
 
 Este código mostra a implementação da funcionalidade de upload de arquivos CSV no RADARE. A função \texttt{handleFileUpload} lida com a seleção do arquivo, gera a matriz de adjacência e os nomes das arestas a partir dos dados dos nódulos e arestas, e chama a API de reconciliação (\texttt{reconciliarApi}) para processar o arquivo carregado.
 % ---
-\chapter{Código do Componente \texttt{ReconciliationGraph}}
+\chapter{Código do Componente ReconciliationGraph}
 \label{Anexo:ReconciliationGraph}
 
 
@@ -586,7 +586,7 @@ const GraphComponent: React.FC = () => {
 export default React.memo(GraphComponent);
 \end{minted}
 % ---
-\chapter{Código do Componente \texttt{SidebarComponent}}
+\chapter{Código do Componente SidebarComponent}
 \label{Anexo:CodigoSidebar}
 
 Este código define o componente \texttt{SidebarComponent} em \texttt{React} e uma série de subcomponentes. Ele verifica a existência de dados, módulos, conexões e banco de dados, exibindo-os quando disponíveis ou mostrando mensagens informativas caso estejam indisponíveis.

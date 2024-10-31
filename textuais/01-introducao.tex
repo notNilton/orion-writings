@@ -1,9 +1,9 @@
 \mychapter{Introdução}
 \label{Cap:Introducao}
 
-O setor industrial brasileiro, responsável por cerca de 20\% do PIB e 70\% das exportações \cite{cni2024}, enfrenta desafios constantes, sendo crucial para a economia nacional. A necessidade de inovação e investimentos em tecnologia apresenta ser um dos pilares da evolução do setor industrial brasileiro \cite{produtividadeindustria}. Nesse cenário, o \textit{software} de reconciliação de dados \textit{online}, denominado RADARE, foi desenvolvido como uma proposta inovadora para aprimorar a qualidade e confiabilidade dos dados nos processos industriais, enquanto oferta uma interface gráfica de fácil uso e com funcionalidades de uma API (\textit{Application Programming Interface}) que permite adaptações para atender a diferentes aplicações industriais.
+O setor industrial brasileiro, responsável por cerca de 20\% do PIB e 70\% das exportações \cite{cni2024}, enfrenta desafios constantes, sendo crucial para a economia nacional. A necessidade de inovação e investimentos em tecnologia apresenta ser um dos pilares da evolução do setor industrial brasileiro \cite{produtividadeindustria}. Nesse cenário, o \textit{software} de reconciliação de dados \textit{online}, denominado RADARE \textit{(Reconciliation and Data Analysis in a Responsive Environment)}, foi desenvolvido como uma proposta de inovação para aprimorar a qualidade e confiabilidade dos dados nos processos industriais, enquanto oferta uma interface gráfica de fácil uso e com funcionalidades de uma API (\textit{Application Programming Interface}) que permite adaptações para atender a diferentes aplicações industriais.
 
-A precisão dos dados de processo nas indústrias químicas/petroquímicas desempenha um papel crucial no desempenho operacional e nos ganhos financeiros provenientes da utilização de diversos \textit{softwares} para monitoramento de processos, otimização \textit{online} e controle \cite{datarecshakar}. Entretanto, as medições realizadas na planta frequentemente apresentam imprecisões causadas por erros aleatórios ou sistemáticos que comprometem o modelo de processo utilizado para otimização e controle. E, para resolver problemas dessa natureza, foi desenvolvida a área de conhecimento da reconciliação de dados que faz uso de equações de processos, relações de equilíbrio e leis de conservação de massa e energia \cite{reformulationdatarecon}. De todos os possíveis métodos a serem aplicados no \textit{software} RADARE, o escolhido foi o de minimização de funções multivariáveis utilizando o método dos multiplicadores de Lagrange.
+A precisão dos dados de processo nas indústrias químicas/petroquímicas desempenha um papel crucial no desempenho operacional e nos ganhos financeiros provenientes da utilização de diversos \textit{softwares} para monitoramento de processos, otimização \textit{online} e controle \cite{datarecshakar}. Entretanto, as medições realizadas na planta frequentemente apresentam imprecisões causadas por erros aleatórios ou sistemáticos que comprometem o modelo de processo utilizado para otimização e controle. Para resolver problemas dessa natureza, foi desenvolvida a área de conhecimento da reconciliação de dados que faz uso de equações de processos, relações de equilíbrio e leis de conservação de massa e energia \cite{reformulationdatarecon}. De todos os possíveis métodos a serem aplicados no \textit{software} RADARE, o escolhido foi o de minimização de funções multivariáveis utilizando o método dos multiplicadores de Lagrange.
 
 Além disso, o desenvolvimento \textit{web} tem experimentado um notável crescimento na última década \cite{webusage}. As vantagens distintas do ambiente \textit{web}, como a implementação de sistemas de API \cite{apirest}, possibilitam interoperabilidade eficiente entre diferentes sistemas, acesso remoto, manuseio simplificado \cite{apiimportance} e maior acessibilidade, inclusive para indivíduos com deficiências visuais. Esses atributos tornam o ambiente \textit{web} uma escolha estratégica para o desenvolvimento do RADARE, destacando-o em relação a alternativas menos dinâmicas e explorando áreas ainda não amplamente investidas no mercado.
 
@@ -15,7 +15,7 @@ Portanto, a criação de uma ferramenta que unifique esses aspectos tecnológico
 % ------------------------- REVISADO
 \subsection{\textit{Objetivo geral}}
 
-Desenvolver e implementar um \textit{software web} para a reconciliação de dados oriundos de processos industriais, utilizando o método dos multiplicadores de Lagrange, com o objetivo de aumentar a qualidade, a confiabilidade das informações e otimizar a tomada de decisões nos processos industriais.
+Desenvolver e implementar um \textit{software web} para a reconciliação de dados oriundos de processos industriais, utilizando o método dos multiplicadores de Lagrange, com o objetivo de aumentar a qualidade dos dados e a confiabilidade das informações, e de otimizar a tomada de decisões nos processos industriais.
 
 % ------------------------- REVISADO
 \subsection{\textit{Objetivos específicos}}
@@ -43,7 +43,7 @@ Para atingir o objetivo geral, os seguintes objetivos específicos foram definid
 
 Em meio ao processo de elaboração do trabalho de conclusão de curso, um aspecto fundamental que merece destaque é a investigação das tendências tecnológicas emergentes nas áreas relevantes para o estudo. Essa pesquisa não apenas fornece uma visão abrangente do cenário atual, mas também ajuda a identificar oportunidades para inovação e melhoria.
 
-As tendências tecnológicas são indicadores poderosos do progresso em qualquer campo de estudo e podem ser representadas tanto na área comercial direta, como na indústria química, nas áreas adjacentes, como em conceitos de contabilidade, além de pesquisas cientificas. Elas refletem os avanços mais recentes e as direções futuras que a tecnologia pode tomar. Portanto, é essencial estar ciente dessas tendências ao realizar qualquer pesquisa acadêmica ou científica.
+As tendências tecnológicas são indicadores poderosos do progresso em qualquer campo de estudo e podem ser representadas tanto na área comercial direta, como na indústria química e áreas adjacentes, como em conceitos de contabilidade, além de pesquisas cientificas. Elas refletem os avanços mais recentes e as direções futuras que a tecnologia pode tomar. Portanto, é essencial estar ciente dessas tendências ao realizar qualquer pesquisa acadêmica ou científica.
 
 % ------------------------- REVISADO
 \subsection{Aplicação na indústria química}
@@ -53,11 +53,11 @@ No contexto da indústria química, há várias empresas com soluções similare
 % ------------------------- REVISADO
 \subsubsection{Software RECON da empresa ChemPlant Technology}
 
-A ChemPlant Technology, fundada em 1991 é uma empresa situada na Republica Checa, especializada em fornecer soluções tecnológicas avançadas para indústrias de processos (principalmente, processos químico, petróleo e gás, geração e distribuição de energia) \cite{reconset}. Uma de suas inovações mais notáveis é a ferramenta de reconciliação de dados chamada RECONSET. Esta ferramenta é fundamentada nos sólidos princípios físicos de balanço de massa e energia, um \textit{software} interativo abrangente que oferece uma plataforma robusta para modelagem de complexas plantas industriais químicas e energéticas. Ele realiza uma variedade de cálculos, incluindo balanceamento de massa, energia e momento, bem como cálculos termodinâmicos. O principal objetivo da solução é validar dados que já foram obtidos de processos operacionais. No entanto, a ferramenta, exposta na Figura \ref{fig:RECONSET} também pode ser utilizada para simular o comportamento da planta sob diferentes condições.
+A ChemPlant Technology, fundada em 1991, é uma empresa situada na Republica Checa, especializada em fornecer soluções tecnológicas avançadas para indústrias de processos (principalmente, processos químico, petróleo e gás, geração e distribuição de energia) \cite{reconset}. Uma de suas inovações mais notáveis é a ferramenta de reconciliação de dados chamada RECONSET. Esta ferramenta é fundamentada nos sólidos princípios físicos de balanço de massa e energia, um \textit{software} interativo  e abrangente que oferece uma plataforma robusta para modelagem de complexas plantas industriais químicas e energéticas. Ele realiza uma variedade de cálculos, incluindo balanceamento de massa, energia e momento, bem como cálculos termodinâmicos. O principal objetivo da solução é validar dados que já foram obtidos de processos operacionais. No entanto, a ferramenta, exposta na Figura \ref{fig:RECONSET}, também pode ser utilizada para simular o comportamento da planta sob diferentes condições.
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.8\textwidth]{figuras/RECONSET.jpg}
+	\includegraphics[width=0.8\textwidth]{figuras/recon-chemplay.png}
 	\caption{Tela Principal da ferramenta RECONSET. Fonte: Chemplant Techonology (2024).}
 	\label{fig:RECONSET}
 \end{figure}
@@ -73,7 +73,7 @@ Uma das suas inovações é o \textit{software} de reconciliação de dados BILC
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.6\textwidth]{figuras/BILCOCASPEOP.png}
+	\includegraphics[width=0.8\textwidth]{figuras/BILCOCASPEOP.png}
 	\caption{Tela Principal da ferramenta BILCO (Fonte: BRGM - Pesquisa Geológica Francesa, 2024).}
 	\label{fig:BILCO}
 \end{figure}
@@ -87,21 +87,21 @@ Essa solução também oferece uma única interface para gerenciar todo o proces
 
 A Sigmafine, fundada na Itália, é uma empresa que desenvolve e integra soluções voltadas para a qualidade de dados e reconciliação em indústrias de processos. Seu principal produto, o \textit{PIMSOFT}, foi originalmente lançado em 2002 pela Sigmafine.
 
-O \textit{PIMSOFT} é uma solução voltada para a reconciliação de dados e controle de qualidade, amplamente utilizada em setores como petróleo, gás e manufatura. A ferramenta utiliza princípios de conservação, estatísticas e padrões de engenharia para validar, corrigir e estruturar dados de processos industriais, oferecendo uma base confiável para análises e tomadas de decisão. A Sigmafine continua a expandir e aprimorar o PIMSOFT.
+O \textit{PIMSOFT} é uma solução voltada para a reconciliação de dados e controle de qualidade, amplamente utilizada em setores como petróleo, gás e manufatura. A ferramenta utiliza princípios de conservação, estatísticas e padrões de engenharia para validar, corrigir e estruturar dados de processos industriais, oferecendo uma base confiável para análises e tomadas de decisão. A Figura~\ref{fig:PIMSOFT} mostra a tela principal do \textit{PIMSOFT}.
 
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figuras/sigmafine-pimsoft.png}
 	\caption{Tela Principal da ferramenta PIMSoft (Fonte: Sigmafine, 2023).}
-	\label{fig:Sigmafine}
+	\label{fig:PIMSOFT}
 \end{figure}
 
 % ------------------------- REVISADO
 \subsubsection{Software AspenTech da empresa Aspentech}
 
-A AspenTech foi fundada a partir do Projeto ASPEN, uma iniciativa conjunta entre o MIT e o Departamento de Energia dos EUA nos anos 1980, com o objetivo de desenvolver tecnologia avançada de modelagem e simulação para a indústria de processos químicos. A AspenTech se consolidou como uma empresa líder em soluções de otimização industrial, oferecendo softwares especializados para diversos setores, incluindo geração de energia, mineração, química e farmacêutica, entre outros \cite{aspen}.
+A AspenTech foi fundada a partir do Projeto ASPEN, uma iniciativa conjunta entre o MIT e o Departamento de Energia dos EUA nos anos 1980, com o objetivo de desenvolver tecnologias avançadas de modelagem e simulação para a indústria de processos químicos. A AspenTech se consolidou como uma empresa líder em soluções de otimização industrial, oferecendo \textit{softwares} especializados para diversos setores, incluindo geração de energia, mineração, química e farmacêutica, entre outros \cite{aspen}.
 
-O software \textit{AspenTech} foi desenvolvido para auxiliar na reconciliação de dados e otimização de processos industriais, com funcionalidades que permitem o monitoramento em tempo real e a análise de desempenho dos ativos. Essa ferramenta facilita a redução de perdas de material, o monitoramento de emissões e a gestão de balanços de massa e energia, contribuindo para um uso mais eficiente dos recursos.
+O \textit{software} \textit{AspenTech} foi desenvolvido para auxiliar na reconciliação de dados e otimização de processos industriais, com funcionalidades que permitem o monitoramento em tempo real e a análise de desempenho dos ativos. Essa ferramenta facilita a redução de perdas de material, o monitoramento de emissões e a gestão de balanços de massa e energia, contribuindo para um uso mais eficiente dos recursos. A Figura~\ref{fig:AspenTech} ilustra a interface do \textit{software} \textit{AspenTech}.
 
 \begin{figure}[htbp!]
 	\centering
@@ -118,9 +118,7 @@ Paralelamente à disciplina de Reconciliação de Dados na área industrial quí
 % ------------------------- REVISADO
 \subsubsection{Software AutoRec da empresa FloQast}
 
-A FloQast é uma empresa fundada em 2013, especializada em contabilidade operacional na nuvem, com foco na automação e gestão contábil. Uma de suas soluções é o \textit{AutoRec}, uma ferramenta de reconciliação de dados voltada para contabilidade, parte da plataforma FloQast Reconciliation Management. Essa solução avançada de automação de fluxo de trabalho permite o gerenciamento de reconciliações de contas de ponta a ponta, otimizando o fechamento financeiro e reduzindo o risco de declarações incorretas \cite{floqast}.
-
-O \textit{software} permite que controladores e suas equipes automatizem e gerenciem o processo de reconciliação em uma plataforma centralizada, amplamente confiável por contadores e auditores em todo o mundo.
+A FloQast é uma empresa fundada em 2013, especializada em contabilidade operacional na nuvem, com foco na automação e gestão contábil. Uma de suas soluções é o \textit{AutoRec}, uma ferramenta de reconciliação de dados voltada para contabilidade, parte da plataforma FloQast Reconciliation Management. Essa solução avançada de automação de fluxo de trabalho permite o gerenciamento de reconciliações de contas de ponta a ponta, otimizando o fechamento financeiro e reduzindo o risco de declarações incorretas \cite{floqast}. O \textit{software} permite que controladores e suas equipes automatizem e gerenciem o processo de reconciliação em uma plataforma centralizada, amplamente confiável por contadores e auditores em todo o mundo. A Figura~\ref{fig:AutoRec} representa o sistema \textit{AutoRec}.
 
 \begin{figure}[htbp!]
 	\centering
@@ -159,7 +157,12 @@ As ferramentas propostas para diferentes regimes operacionais de processamento m
 % ------------------------- REVISADO
 \subsubsection{Balanços de Materiais em Rede de Distribuição de Gás}
 
-O desenvolvimento realizado por Jesús David Badillo Herrera, Arlex Chaves e José Augusto Fuentes Osorio \cite{datareconherrera}, foca em uma solução prática para enfrentar os desafios apresentados por erros em s5
+O desenvolvimento realizado por Jesús David Badillo Herrera, Arlex Chaves e José Augusto Fuentes Osorio \cite{balancecontrol}, foca em uma solução prática para enfrentar os desafios apresentados por erros em sistemas de distribuição de gás natural. A ferramenta combina técnicas numéricas e estatísticas, como a Reconciliação de Dados (DR) \cite{datareconciliationtechniques} e a Detecção de Erros Brutos (GED) \cite{grosserrorcontrol}, para melhorar a precisão das medições e garantir a conformidade com as leis de conservação de massa.
+
+Essa abordagem não apenas aprimora a acurácia das medições, mas também identifica e corrige erros grosseiros, proporcionando maior confiabilidade nos dados. A validação da ferramenta com problemas da literatura \cite{literaturevalidation} e sua aplicação em uma rede de distribuição real demonstram sua eficácia em fornecer resultados reconciliados com alta precisão \cite{precisiondatareconciliation}.
+
+A abordagem combinada de Reconciliação de Dados (DR) e Detecção de Erros Brutos (GED), utilizada na distribuição de gás natural, pode ser integrada ao RADARE para garantir maior precisão nas medições e identificar rapidamente inconsistências ou erros em sistemas industriais \cite{industrialdataapplications}.
+
 % ------------------------- REVISADO
 \section{Justificativa}
 
