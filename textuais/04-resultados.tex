@@ -2,7 +2,7 @@
 \mychapter{Resultados} 
 \label{Cap:Resultados}
 
-Neste capítulo, são apresentados os resultados da implementação e testes do \textit{software} RADARE, com foco na precisão dos dados reconciliados, no desempenho computacional em diferentes cenários de carga e na usabilidade da ferramenta, tanto no \textit{front-end} (menu e \textit{canvas}) quanto no \textit{back-end} (rotas, serviços e banco de dados). Além disso, foram desenvolvidos dois manuais: um para manutenção técnica do sistema e outro para orientar os usuários finais.
+Neste capítulo, são apresentados os resultados da implementação e testes do \textit{software} RADARE, com foco na precisão dos dados reconciliados, no desempenho computacional em diferentes cenários de carga e na usabilidade da ferramenta, tanto no \textit{front-end} (menu e \textit{canvas}) quanto no \textit{back-end} (rotas, serviços e banco de dados).
 
 Para facilitar a leitura e manter a fluidez do texto principal, todos os códigos desenvolvidos para o RADARE foram incluídos nos Anexos. Essa abordagem permite uma melhor organização do conteúdo, evitando que o texto principal seja interrompido por trechos extensos de código. Sempre que necessário, o texto principal indicará a referência ao anexo correspondente para consulta detalhada.
 
@@ -62,8 +62,7 @@ A Figura \ref{Fig:AddOutputButton} mostra o botão "Adicionar Output" na interfa
 
 O botão \textbf{"Adicionar Nódulo 1-1"} permite ao usuário inserir um novo nódulo de transição no \textit{canvas}. Esse nódulo atua como um ponto intermediário no fluxo de dados, podendo representar sensores, transformações ou outros elementos de processo. Ao clicar no botão, o nódulo é adicionado ao \textit{canvas}, permitindo ao usuário conectá-lo com outros nódulos.
 
-A lógica para adicionar este nódulo foi desenvolvida de forma personalizada, especificando o tipo de conexão, a quantidade de pontos de conexão (\textit{handles}), além do estilo visual e da posição no \textit{canvas}, garantindo que o comportamento do nódulo se ajuste adequadamente ao fluxo de dados esperado. O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Anexo:frontCodeNodeOneOne}}.
-ulo 1-1" disponível no menu do sistema.
+A lógica para adicionar este nódulo foi desenvolvida de forma personalizada, especificando o tipo de conexão, a quantidade de pontos de conexão (\textit{handles}), além do estilo visual e da posição no \textit{canvas}, garantindo que o comportamento do nódulo se ajuste adequadamente ao fluxo de dados esperado. O trecho principal do código responsável pela criação desse nódulo pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Anexo:frontCodeNodeOneOne}}.
 
 \begin{figure}[htbp]
     \centering

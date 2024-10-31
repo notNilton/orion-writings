@@ -37,7 +37,7 @@ Na era contemporânea, a reconciliação de dados desempenha um papel crucial na
 A técnica de minimização por multiplicadores de Lagrange foi introduzida por Joseph-Louis Lagrange, um matemático e físico francês nascido em 25 de janeiro de 1736, em Turim, Itália, que mais tarde se estabeleceu na França. Lagrange é conhecido por suas contribuições fundamentais em mecânica analítica, cálculo e teoria dos números, além de desenvolver o método dos multiplicadores de Lagrange no século XVIII, fornecendo uma maneira eficaz de resolver problemas de otimização condicionada \cite{lagrange}.
 
 % ------------------------- REVISADO - GRAMATICA - CITAÇÃO
-\subsubsection{O Método dos Multiplicadores de Lagrange}
+\subsubsection{O método dos multiplicadores de Lagrange}
 
 O método dos multiplicadores de Lagrange é uma técnica utilizada para encontrar máximos e mínimos de uma função sujeita a uma ou mais restrições. Considera-se o problema de minimizar uma função $f(x, y, z, \dots)$ sujeita a uma restrição $g(x, y, z, \dots) = 0$. Para transformar esse problema com restrições em um problema sem restrições, introduz-se uma variável adicional, o multiplicador de Lagrange, que representa o impacto da restrição sobre a função objetivo. Em um problema de minimização com uma única restrição, a função de Lagrange $\mathcal{L}$ é definida como mostrado na Equação \ref{eq
 }:
@@ -52,7 +52,7 @@ A solução do problema ocorre ao determinar os pontos críticos de $\mathcal{L}
 \begin{equation} \frac{\partial \mathcal{L}}{\partial x} = 0, \quad \frac{\partial \mathcal{L}}{\partial y} = 0, \quad \frac{\partial \mathcal{L}}{\partial z} = 0, \quad \dots, \quad \frac{\partial \mathcal{L}}{\partial \lambda} = 0 \label{eq:lambdaa} \end{equation}
 
 % ------------------------- REVISADO - GRAMATICA - CITAÇÃO
-\subsubsection{Exemplo com Duas Variáveis}
+\subsubsection{Exemplo com duas variáveis}
 
 Considera-se o caso de uma função de duas variáveis, $f(x, y)$, que necessita ser minimizada sujeita a uma restrição $g(x, y) = 0$. A função de Lagrange é dada por:
 
@@ -79,7 +79,6 @@ Para encontrar os valores de $x$, $y$ e $\lambda$ que minimizam $f(x, y)$, resol
 A resolução desse sistema fornece os valores de $x$, $y$ e $\lambda$ que minimizam $f(x, y)$ enquanto satisfazem a restrição $g(x, y) = 0$.
 
 O método dos multiplicadores de Lagrange é amplamente utilizado em diversas áreas, incluindo otimização de processos industriais, economia e física, onde os problemas frequentemente envolvem restrições complexas. A abordagem permite uma solução sistemática e rigorosa para problemas de otimização condicionada, assegurando que as soluções encontradas respeitem as restrições impostas \cite{lagrangeoptbook}.
-
 
 % ------------------------- REVISADO - GRAMATICA - CITAÇÃO
 \subsection{Aplicação do método dos multiplicadores de Lagrange à necessidade de reconciliação de dados}
@@ -118,6 +117,123 @@ Calculando as derivadas parciais de $\Phi$ em relação a cada variável corrigi
 \end{equation}
 
 Juntas com as $m$ equações de restrição $\phi_j = 0$, essas expressões formam um sistema de $n + m$ equações para $n + m$ incógnitas, permitindo a resolução para determinar os valores reconciliados das variáveis.
+
+% ------------------------- REVISADO - GRAMATICA - CITAÇÃO
+\subsubsection{Exemplo com um problema de balanço de sistema}
+Para ilustrar a aplicação do método dos multiplicadores de Lagrange na reconciliação de dados, considera-se um problema de balanço de um sistema com o número de medições \(N = 3\) e o número de nodos \(H = 1\), descrito na Figura \ref{Fig:ExemploImage}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figuras/exemplo-problema.png}
+    \caption{Um exemplo com medidas (Fonte: próprio autor, 2024).}
+    \label{Fig:ExemploImage}
+\end{figure}
+
+O vetor de medições \(m\) é dado pela Equação \eqref{eq:medidas}:
+\begin{equation}
+    m = [M_1 \quad M_2 \quad M_3] = [161 \quad 79 \quad 80]
+    \label{eq:medidas}
+\end{equation}
+
+O vetor de desvios percentuais \(p\) é expresso na Equação \eqref{eq:desvios_percentuais}:
+\begin{equation}
+    p = [\sigma_1 \quad \sigma_2 \quad \sigma_3] = [0.05 \quad 0.01 \quad 0.01]
+    \label{eq:desvios_percentuais}
+\end{equation}
+
+Para calcular o vetor de desvios absolutos \(a\), utiliza-se a notação do Matlab, realizando a operação elemento a elemento entre o vetor de medições e o vetor de desvios percentuais, conforme demonstrado na Equação \eqref{eq:desvios_absolutos}:
+\begin{equation}
+    a = m .* p = [8.05 \quad 0.79 \quad 0.80]
+    \label{eq:desvios_absolutos}
+\end{equation}
+
+Para facilitar a implementação do cálculo de reconciliação, o sistema é formulado em notação matricial. A Equação \eqref{eq:sistema_matricial} representa o sistema de equações utilizado:
+
+\begin{equation}
+\begin{bmatrix}
+    \frac{2}{a_1^2} & 0 & 0 & 1 \\
+    0 & \frac{2}{a_2^2} & 0 & -1 \\
+    0 & 0 & \frac{2}{a_3^2} & 1 \\
+    1 & -1 & -1 & 0 \\
+\end{bmatrix}
+\begin{bmatrix}
+    \hat{M}_1 \\
+    \hat{M}_2 \\
+    \hat{M}_3 \\
+    \lambda_1 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+    \frac{2 M_1}{a_1^2} \\
+    \frac{2 M_2}{a_2^2} \\
+    \frac{2 M_3}{a_3^2} \\
+    0 \\
+\end{bmatrix}
+\label{eq:sistema_matricial}
+\end{equation}
+
+A resolução do sistema, conforme mostrado na Equação \eqref{eq:sistema_resolvido}, é realizada invertendo a matriz e multiplicando-a pelo vetor dos termos independentes:
+
+\begin{equation}
+\begin{bmatrix}
+    \hat{M}_1 \\
+    \hat{M}_2 \\
+    \hat{M}_3 \\
+    \lambda_1 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+    \frac{2}{a_1^2} & 0 & 0 & 1 \\
+    0 & \frac{2}{a_2^2} & 0 & -1 \\
+    0 & 0 & \frac{2}{a_3^2} & 1 \\
+    1 & -1 & -1 & 0 \\
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+    \frac{2 M_1}{a_1^2} \\
+    \frac{2 M_2}{a_2^2} \\
+    \frac{2 M_3}{a_3^2} \\
+    0 \\
+\end{bmatrix}
+\label{eq:sistema_resolvido}
+\end{equation}
+
+O vetor de correções, que representa as diferenças entre as medições originais e os valores reconciliados, é definido pela Equação \eqref{eq:vetor_correcoes}:
+
+\begin{equation}
+\begin{bmatrix}
+    E_1 \\
+    E_2 \\
+    E_3 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+    M_1 \\
+    M_2 \\
+    M_3 \\
+\end{bmatrix}
+-
+\begin{bmatrix}
+    \hat{M}_1 \\
+    \hat{M}_2 \\
+    \hat{M}_3 \\
+\end{bmatrix}
+\label{eq:vetor_correcoes}
+\end{equation}
+
+O resultado final das medidas reconciliadas é apresentado na Equação \eqref{eq:medidas_reconciliadas}:
+
+\begin{equation}
+    Rec = [159.0383 \quad 79.0189 \quad 80.0194]
+    \label{eq:medidas_reconciliadas}
+\end{equation}
+
+A correção dos valores, ou seja, a variação entre o valor medido e o valor reconciliado, é descrita na Equação \eqref{eq:correcao_valores}:
+
+\begin{equation}
+    E = [1.9617 \quad -0.0189 \quad -0.0194 ]
+    \label{eq:correcao_valores}
+\end{equation}
+
 
 
 % ------------------------- REVISADO - GRAMATICA - CITAÇÃO
