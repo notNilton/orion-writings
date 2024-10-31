@@ -51,7 +51,7 @@ RF05 & Os usuários devem poder exportar os dados reconciliados para diferentes 
 
 Os requisitos não funcionais em um projeto de \textit{software} desempenham um papel igualmente crucial, complementando os requisitos funcionais ao definir os critérios de qualidade, desempenho e restrições operacionais que o sistema deve atender. Enquanto os requisitos funcionais se concentram naquilo sobre "o quê" \ o sistema deve fazer, os requisitos não funcionais delineiam sobre "como" \ o sistema deve fazer isso, bem como outras características importantes que afetam sua operação e usabilidade e muitas vezes abordam características mais abstratas do sistema, como segurança, confiabilidade, escalabilidade, desempenho e usabilidade \cite{softwareengreq}. 
             
-A Tabela \ref{tab:ReqNaoFuncional} demonstra os atuais requisitos não funcionais do \textit{software}.
+A Tabela \ref{tab:ReqNaoFuncional} cita os atuais requisitos não funcionais do \textit{software}.
 
 \begin{table}[htbp]
 \centering
@@ -80,7 +80,7 @@ A Tabela \ref{tab:ReqNaoFuncional} demonstra os atuais requisitos não funcionai
     RNF10 & O tempo de resposta do sistema deve ser consistente e previsível, independentemente da carga de trabalho ou do número de usuários simultâneos. & Média \\
     \hline
 \end{tabularx}
-\caption{Tabela de Requisitos Não Funcionais}
+\caption{Tabela de Requisitos Não Funcionais.}
 \label{tab:ReqNaoFuncional}
 \end{table}
 
@@ -89,19 +89,19 @@ A Tabela \ref{tab:ReqNaoFuncional} demonstra os atuais requisitos não funcionai
 
 O Gráfico de Gantt é uma ferramenta essencial no gerenciamento de projetos, permitindo visualizar e acompanhar o progresso das atividades ao longo do tempo. Desenvolvido por Henry Gantt na década de 1910, o gráfico organiza as tarefas em barras horizontais ao longo de um eixo de tempo, facilitando a identificação das datas de início e término, além das interdependências entre atividades \cite{ganttchart}.
 
-\begin{figure}[h]
+\begin{figure}[htbp!]
     \centering
     \includegraphics[width=0.8\textwidth]{figuras/DRD-Ganttt.pdf} % Replace "example.pdf" with the path to your PDF file
     \caption{Grafico de Gantt para desenvolvimento do \textit{software} RADARE.}
     \label{fig:ganttChart}
-\end{figure}    
+\end{figure}   
 
 Na Figura \ref{fig:ganttChart} é visível Gráfico de Gantt utilizado pelo projeto, onde ele é separado nas seguintes partes: 
     
 \begin{itemize}
     \item \textbf{Planejamento e Análise Inicial:} Esta fase inclui a identificação dos requisitos, definição dos objetivos, análise de viabilidade técnica e econômica, além da elaboração dos casos de uso e da documentação.
     
-    \item \textbf{\textit{Design} e Prototipagem:} Nesta etapa, são criados o design de interface do usuário (UI) e o design de experiência do usuário (UX), bem como a definição da arquitetura do sistema e a prototipagem com revisões iterativas do design.
+    \item \textbf{\textit{Design} e Prototipagem:} Nesta etapa, são criados o design de interface do usuário (UI) e o \textit{design} de experiência do usuário (UX), bem como a definição da arquitetura do sistema e a prototipagem com revisões iterativas do \textit{design}.
     
     \item \textbf{Desenvolvimento e Implementação:} Aqui ocorre a implementação do \textit{front} e \textit{back-end}, o desenvolvimento das funcionalidades principais do sistema, os testes unitários e a integração contínua, além da revisão e \textit{feedback} com os \textit{stakeholders}.
     
@@ -124,11 +124,18 @@ Durante o desenvolvimento de \textit{software}, o uso de representações visuai
 
 O diagrama de classes representa a estrutura estática do sistema RADARE, descrevendo as classes, seus atributos e métodos \cite{softwareenguml}, como mostrado na Figura \ref{fig:ClassDiagram}.
 
-\begin{figure}[htb]
-    \caption{\label{fig:ClassDiagram}Diagrama de Classe em UML do sistema RADARE.}
-    \begin{center}
+% \begin{figure}[htb]
+%     \caption{\label{fig:ClassDiagram}Diagrama de Classe em UML do sistema RADARE.}
+%     \begin{center}
+%         \includegraphics[width=0.6\textwidth]{figuras/ClassDiagramRADARE.drawio.png}
+%     \end{center}
+% \end{figure
+
+\begin{figure}[htbp!]
+	\centering
         \includegraphics[width=0.6\textwidth]{figuras/ClassDiagramRADARE.drawio.png}
-    \end{center}
+	\caption{Diagrama de Classe em UML do sistema RADARE.}
+	\label{fig:ClassDiagram}
 \end{figure}
 
 Principais classes do sistema:
@@ -150,11 +157,18 @@ Os relacionamentos entre as classes mostram associações e dependências, refle
 
 O diagrama de caso de uso descreve a interação entre o sistema RADARE e seu único usuário, o operador. Ele mostra os principais casos de uso ou funcionalidades do sistema que o operador pode acessar, como ilustrado na Figura \ref{fig:UseCaseDiagram}.
 
-\begin{figure}[htb]
-    \caption{\label{fig:UseCaseDiagram}Diagrama de Caso de Uso em UML.}
-    \begin{center}
+% \begin{figure}[htb]
+%     \caption{\label{fig:UseCaseDiagram}Diagrama de Caso de Uso em UML.}
+%     \begin{center}
+%         \includegraphics[width=0.6\textwidth]{figuras/DiagramaCasodeUso.drawio.png}
+%     \end{center}
+% \end{figure}
+
+\begin{figure}[htbp!]
+	\centering
         \includegraphics[width=0.6\textwidth]{figuras/DiagramaCasodeUso.drawio.png}
-    \end{center}
+	\caption{Diagrama de Caso de Uso em UML  (Fonte: próprio autor, 2024).}
+	\label{fig:UseCaseDiagram}
 \end{figure}
 
 Neste diagrama, os casos de uso são:
@@ -185,7 +199,7 @@ O desenvolvimento do RADARE foi realizado em um ambiente configurado para otimiz
 
 Para testar e garantir a compatibilidade do \textit{website}, foram utilizados os navegadores \textit{Microsoft Edge} versão 129, \textit{Google Chrome} versão 130 e \textit{Mozilla Firefox} versão 131. Essa abordagem permitiu avaliar o comportamento e a responsividade da interface em diferentes navegadores, assegurando que o sistema fosse acessível e funcional para uma variedade de usuários.
 
-Informações detalhadas sobre a configuração da máquina utilizada no desenvolvimento do sistema, incluindo especificações de hardware e software, estão disponíveis no \textbf{Apêndice \ref{Ap:configuracaoMaquina}}. Esse ambiente de desenvolvimento foi fundamental para a construção e testes do RADARE, proporcionando as ferramentas necessárias para uma implementação eficiente e controle visual de qualidade.
+Informações detalhadas sobre a configuração da máquina utilizada no desenvolvimento do sistema, incluindo especificações de \textit{hardware} e \textit{software}, estão disponíveis no \textbf{Apêndice \ref{Ap:configuracaoMaquina}}. Esse ambiente de desenvolvimento foi fundamental para a construção e testes do RADARE, proporcionando as ferramentas necessárias para uma implementação eficiente e controle visual de qualidade.
     
 % ------------------------- REVISADO
 \section{Linguagem TypeScript no desenvolvimento do front-end}
@@ -194,12 +208,12 @@ No desenvolvimento do front-end do RADARE, o TypeScript foi escolhido como a lin
 
 A estrutura do projeto foi baseada em uma abordagem modular, onde cada componente foi desenvolvido como uma unidade independente. Isso facilitou a manutenção e a escalabilidade, especialmente para os elementos visuais do \textit{canvas}, onde cada nódulo e conexão pode ser manipulado de forma individual. A tipagem garantiu que todos os elementos do \textit{canvas} tivessem propriedades definidas, como posição e estado, assegurando interações consistentes entre os módulos.
 
-Para a construção da interface visual, o TypeScript foi integrado ao HTML e SCSS, com o HTML definindo a estrutura dos elementos e o SCSS cuidando do design e layout. O TypeScript coordenou as interações entre a interface e a lógica de negócios, tornando a interface responsiva e interativa, reagindo às entradas do usuário de maneira dinâmica.
+Para a construção da interface visual, o TypeScript foi integrado ao HTML e SCSS, com o HTML definindo a estrutura dos elementos e o SCSS cuidando do \textit{design} e \textit{layout}. O TypeScript coordenou as interações entre a interface e a lógica de negócios, tornando a interface responsiva e interativa, reagindo às entradas do usuário de maneira dinâmica.
 
 % ------------------------- REVISADO
 \section{Linguagem Python no desenvolvimento do \textit{back-end}}
 
-A linguagem \textit{Python} (versão 3.12) foi escolhida para o desenvolvimento do \textit{back-end} do RADARE devido à sua simplicidade, flexibilidade e à ampla variedade de bibliotecas disponíveis, que facilitam a implementação de funcionalidades essenciais em sistemas de reconciliação de dados. Python é reconhecido pela sua clareza e legibilidade, características que tornam o desenvolvimento mais eficiente e reduzem o tempo necessário para depuração e manutenção do código. Além disso, o suporte robusto a cálculos numéricos e estatísticos através de bibliotecas como \textit{NumPy} e \textit{SciPy} permite realizar operações complexas de maneira otimizada, um aspecto crucial para o processamento de dados em tempo real.
+A linguagem \textit{Python} (versão 3.12) foi escolhida para o desenvolvimento do \textit{back-end} do RADARE devido à sua simplicidade, flexibilidade e variedade de bibliotecas disponíveis, que facilitam a implementação de funcionalidades essenciais em sistemas de reconciliação de dados. Python é reconhecido por sua clareza e legibilidade, características que tornam o desenvolvimento mais eficiente e reduzem o tempo necessário para depuração e manutenção do código. Além disso, o suporte robusto a cálculos numéricos e estatísticos através de bibliotecas como \textit{NumPy} e \textit{SciPy} permite realizar operações complexas de maneira otimizada, um aspecto crucial para o processamento de dados em tempo real.
 
 Para a criação de uma API RESTful que facilita a comunicação entre o \textit{front-end} e o banco de dados, foi utilizado o microframework \textit{Flask}. \textit{Flask} é uma ferramenta leve e modular que oferece flexibilidade para a construção de aplicações \textit{web} sem impor uma estrutura rígida. Essa flexibilidade é vantajosa no desenvolvimento do RADARE, pois permite a implementação de \textit{endpoints} customizados para manipulação de dados, que se ajustam facilmente às necessidades específicas do sistema de reconciliação.
 
@@ -210,6 +224,4 @@ Além disso, \textit{Flask} integra-se perfeitamente com \textit{Psycopg2}, uma 
 
 Para o banco de dados do RADARE, foi escolhido o \textit{PostgreSQL} (versão 13) pela sua robustez, confiabilidade e eficiência em lidar com grandes volumes de dados. Esse sistema de gerenciamento de banco de dados relacional de código aberto é amplamente reconhecido por seu suporte a transações complexas e integridade de dados, além de oferecer uma variedade de tipos de dados e operações avançadas, essenciais para um sistema de reconciliação de dados.
 
-Uma vantagem importante do \textit{PostgreSQL} é o suporte a transações ACID (Atomicidade, Consistência, Isolamento e Durabilidade), garantindo que todas as operações no banco de dados sejam executadas de forma segura e consistente.
-
-Além disso, sua compatibilidade com bibliotecas como \textit{Psycopg2} permite uma integração rápida e segura com o \textit{back-end} em \textit{Python}, assegurando uma comunicação eficiente entre o sistema e o banco de dados.
+Uma vantagem importante do \textit{PostgreSQL} é o suporte a transações ACID (Atomicidade, Consistência, Isolamento e Durabilidade), garantindo que todas as operações no banco de dados sejam executadas de forma segura e consistente. Além disso, sua compatibilidade com bibliotecas como \textit{Psycopg2} permite uma integração rápida e segura com o \textit{back-end} em \textit{Python}, assegurando uma comunicação eficiente entre o sistema e o banco de dados.

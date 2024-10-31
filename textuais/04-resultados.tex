@@ -20,12 +20,12 @@ A biblioteca \textit{ReactFlow} \cite{reactflow} é fundamental para a manipula�
 
 Cada nódulo inserido no \textit{canvas} possui uma estrutura personalizada, onde as conexões, denominadas \textit{handles}, são configuradas com características específicas, como estilo visual e lógica de interação. Essa personalização assegura que a visualização dos fluxos de dados seja clara e que sua manipulação seja intuitiva, facilitando o gerenciamento das operações dentro do sistema.
 
-A Figura \ref{Fig:MenuImage} apresenta o menu principal do sistema, destacando as opções para adição de nódulos ao \textit{canvas}. Através desse menu, o usuário pode inserir diferentes tipos de nódulos, como entradas, saídas e pontos de processamento de dados, além de opções como reconciliação de dados e ajustes de visualização. Cada funcionalidade foi projetada para que o usuário possa construir fluxos de dados industriais de maneira modular e interativa, proporcionando maior flexibilidade no gerenciamento e análise de grandes volumes de dados.
+A Figura \ref{Fig:MenuImage} apresenta o \textit{menu} principal do sistema, destacando as opções para adição de nódulos ao \textit{canvas}. Através desse menu, o usuário pode inserir diferentes tipos de nódulos, como entradas, saídas e pontos de processamento de dados, além de opções como reconciliação de dados e ajustes de visualização. Cada funcionalidade foi projetada para que o usuário possa construir fluxos de dados industriais de maneira modular e interativa, proporcionando maior flexibilidade no gerenciamento e análise de grandes volumes de dados.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.4\textwidth]{figuras/menu-image.png}
-    \caption{Menu principal do sistema RADARE.}
+    \caption{Menu principal do sistema RADARE (Fonte: próprio autor, 2024).}
     \label{Fig:MenuImage}
 \end{figure}
 
@@ -62,9 +62,7 @@ A Figura \ref{Fig:AddOutputButton} mostra o botão "Adicionar Output" na interfa
 
 O botão \textbf{"Adicionar Nódulo 1-1"} permite ao usuário inserir um novo nódulo de transição no \textit{canvas}. Esse nódulo atua como um ponto intermediário no fluxo de dados, podendo representar sensores, transformações ou outros elementos de processo. Ao clicar no botão, o nódulo é adicionado ao \textit{canvas}, permitindo ao usuário conectá-lo com outros nódulos.
 
-A lógica para adicionar este nódulo foi desenvolvida de forma personalizada, especificando o tipo de conexão, a quantidade de pontos de conexão (\textit{handles}), além do estilo visual e da posição no \textit{canvas}, garantindo que o comportamento do nódulo se ajuste adequadamente ao fluxo de dados esperado.
-
-O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Anexo:frontCodeNodeOneOne}}.
+A lógica para adicionar este nódulo foi desenvolvida de forma personalizada, especificando o tipo de conexão, a quantidade de pontos de conexão (\textit{handles}), além do estilo visual e da posição no \textit{canvas}, garantindo que o comportamento do nódulo se ajuste adequadamente ao fluxo de dados esperado. O trecho principal do código responsável pela criação desse nódulo, que pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Anexo:frontCodeNodeOneOne}}.
 ulo 1-1" disponível no menu do sistema.
 
 \begin{figure}[htbp]
@@ -79,9 +77,7 @@ ulo 1-1" disponível no menu do sistema.
 
 O botão \textbf{"Adicionar Nódulo 1-2"} permite ao usuário inserir um nódulo de transição que recebe uma única entrada e gera duas saídas no \textit{canvas}. Este tipo de nódulo é particularmente útil em cenários onde um único ponto de dados precisa ser bifurcado para diferentes processos ou análises. Ao ser adicionado, o nódulo facilita o roteamento de dados para dois fluxos distintos, mantendo a integridade e a flexibilidade do processo.
 
-A lógica para este nódulo foi customizada para suportar uma conexão de entrada e duas saídas, com o código responsável definindo os \textit{handles} (pontos de conexão), a posição e o estilo visual no \textit{canvas}. Assim como no caso do nódulo 1-1, o comportamento é ajustado para garantir uma integração fluida no fluxo de dados.
-
-O trecho principal do código responsável pela criação desse nódulo pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Anexo:frontCodeNodeOneTwo}}.
+A lógica para este nódulo foi customizada para suportar uma conexão de entrada e duas saídas, com o código responsável definindo os \textit{handles} (pontos de conexão), a posição e o estilo visual no \textit{canvas}. Assim como no caso do nódulo 1-1, o comportamento é ajustado para garantir uma integração fluida no fluxo de dados. O trecho principal do código responsável pela criação desse nódulo pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Anexo:frontCodeNodeOneTwo}}.
 
 A Figura \ref{Fig:AddNodeOneTwoButton} ilustra o botão "Adicionar Nódulo 1-2" disponível no menu do sistema.
 
@@ -95,11 +91,9 @@ A Figura \ref{Fig:AddNodeOneTwoButton} ilustra o botão "Adicionar Nódulo 1-2" 
 % ------------------------- REVISADO
 \subsubsection{Adicionar nódulo 2-1}
 
-O botão \textbf{"Adicionar Nódulo 2-1"} permite ao usuário inserir um nódulo de transição que recebe duas entradas e gera uma única saída no \textit{canvas}. Esse nódulo é ideal para processos em que múltiplas fontes de dados precisam ser combinadas ou integradas antes de continuar o fluxo. Ao ser adicionado, o nódulo permite a fusão de duas linhas de dados, garantindo que as informações de entrada sejam processadas de forma conjunta antes de seguirem para a próxima etapa.
+O botão \textbf{"Adicionar Nódulo 2-1"} permite ao usuário inserir um nódulo de transição que recebe duas entradas e gera uma única saída no \textit{canvas}. Esse nódulo é ideal para processos em que múltiplas fontes de dados precisam ser combinadas ou integradas, antes de continuar o fluxo. Ao ser adicionado, o nódulo permite a fusão de duas linhas de dados, garantindo que as informações de entrada sejam processadas de forma conjunta, antes de seguirem para a próxima etapa.
 
-A lógica para este nódulo foi desenvolvida de maneira personalizada, permitindo a adição de dois pontos de conexão de entrada e um ponto de saída. O código responsável configura os \textit{handles}, define o estilo visual e posiciona o nódulo no \textit{canvas}, assegurando que ele atenda às necessidades de integração e processamento combinados dentro do fluxo de dados.
-
-O trecho principal do código responsável pela criação desse nódulo pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Cap:NodeTwoOneCode}}.
+A lógica para este nódulo foi desenvolvida de maneira personalizada, permitindo a adição de dois pontos de conexão de entrada e um ponto de saída. O código responsável configura os \textit{handles}, define o estilo visual e posiciona o nódulo no \textit{canvas}, assegurando que ele atenda às necessidades de integração e processamento combinados dentro do fluxo de dados. O trecho principal do código responsável pela criação desse nódulo pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Cap:NodeTwoOneCode}}.
 
 A Figura \ref{Fig:AddNodeTwoOneButton} mostra o botão "Adicionar Nódulo 2-1" presente no menu da interface do sistema.
 
@@ -115,9 +109,7 @@ A Figura \ref{Fig:AddNodeTwoOneButton} mostra o botão "Adicionar Nódulo 2-1" p
 
 O botão \textbf{"Reconciliar Dados"} executa o processo de reconciliação dos dados conectados no \textit{canvas}. Ao ser acionado, o sistema analisa os nódulos interconectados e realiza a reconciliação dos dados utilizando o método dos multiplicadores de Lagrange. Esse processo ajusta as discrepâncias entre os valores medidos e os valores reconciliados, garantindo que as restrições impostas pelos balanços de massa e energia sejam respeitadas.
 
-A lógica por trás desse botão foi desenvolvida para percorrer os nódulos conectados no \textit{canvas}, extrair os dados necessários e enviá-los ao back-end. No back-end, o algoritmo de reconciliação é executado, processando os dados conforme as regras definidas, e os resultados são retornados ao front-end, onde os dados reconciliados são exibidos no fluxo visual do \textit{canvas}.
-
-O trecho principal do código responsável por essa funcionalidade pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Cap:ReconcileDataCode}}.
+A lógica por trás desse botão foi desenvolvida para percorrer os nódulos conectados no \textit{canvas}, extrair os dados necessários e enviá-los ao \textit{back-end}. No \textit{back-end}, o algoritmo de reconciliação é executado, processando os dados conforme as regras definidas, e os resultados são retornados ao \textit{front-end}, onde os dados reconciliados são exibidos no fluxo visual do \textit{canvas}. O trecho principal do código responsável por essa funcionalidade pode ser encontrado em sua totalidade no \textbf{Anexo \ref{Cap:ReconcileDataCode}}.
 
 A Figura \ref{Fig:ReconcileButton} ilustra o botão "Reconciliar Dados" na interface do sistema.
 
@@ -133,18 +125,16 @@ A Figura \ref{Fig:ReconcileButton} ilustra o botão "Reconciliar Dados" na inter
 
 O botão \textbf{"Esconder Gráfico das Reconciliações"} permite ao usuário ocultar o gráfico que exibe os resultados das reconciliações de dados, proporcionando uma interface mais organizada e com maior espaço para outros elementos do processo. Ao ativar essa função, o gráfico é temporariamente removido do \textit{dashboard}, mas os dados reconciliados permanecem disponíveis no sistema, permitindo que o usuário possa reexibi-los quando necessário. A lógica implementada para esse botão utiliza um simples operador ternário para alternar a visibilidade do gráfico, sem interferir nos demais componentes ou no fluxo dos dados processados. Dada a simplicidade da implementação, não é necessário incluir um anexo de código.
 
-A Figura \ref{Fig
-} ilustra o botão "Esconder Gráfico das Reconciliações" na interface gráfica.
+A Figura \ref{Fig:Recon} ilustra o botão "Esconder Gráfico das Reconciliações" na interface gráfica.
 
-\begin{figure}[htbp] \centering \includegraphics[width=0.4\textwidth]{figuras/hide-graphbar-button.png} \caption{Botão de esconder gráfico das reconciliações (Fonte: próprio autor, 2024).} \label{Fig
-} \end{figure}
+\begin{figure}[htbp] \centering \includegraphics[width=0.4\textwidth]{figuras/hide-graphbar-button.png} \caption{Botão de esconder gráfico das reconciliações (Fonte: próprio autor, 2024).} \label{Fig:Recon} \end{figure}
 
 % ------------------------- REVISADO
 \subsubsection{Esconder \textit{Sidebar} de Informações}
 
 O botão \textbf{"Esconder Sidebar de Informações"} permite ao usuário ocultar a barra lateral que exibe informações detalhadas sobre os nódulos e fluxos no \textit{canvas}, liberando mais espaço para visualização e manipulação em fluxos complexos. A lógica dessa funcionalidade é simples, utilizando ternários em SCSS para alternar estilos e \textit{useState} do React para controlar a visibilidade da \textit{sidebar} sem perda de dados. O usuário pode reexibi-la a qualquer momento com as informações preservadas, garantindo uma interface adaptável. Não há necessidade de anexo com código, pois a implementação é direta.
 
-A Figura \ref{Fig:HideSidebarButton} ilustra o botão "Esconder Sidebar de Informações" na interface gráfica do sistema.
+A Figura \ref{Fig:HideSidebarButton} ilustra o botão "Esconder Sidebar de Informações" \ na interface gráfica do sistema.
 
 \begin{figure}[htbp]
     \centering
@@ -188,9 +178,7 @@ A Figura \ref{Fig:EmptyCanvas} mostra um exemplo do \textit{canvas} com vários 
 
 O sistema permite que o usuário estabeleça conexões visuais entre os nódulos, representando o fluxo de dados entre diferentes pontos de um processo industrial. Essas conexões são fundamentais para assegurar que os dados fluam corretamente entre os elementos do \textit{canvas}, como entradas, saídas e pontos de processamento.
 
-A Figura \ref{Fig:NodeConnections} ilustra a conexão de dois nódulos no \textit{canvas}, demonstrando como o usuário pode arrastar e soltar as conexões de forma intuitiva. O usuário também pode ajustar e mover essas conexões entre os nódulos. Cada conexão entre os nódulos possui um valor e uma tolerância associados, que podem ser modificados diretamente com um duplo clique na linha de conexão, permitindo ao usuário ajustar os parâmetros conforme necessário. Além disso, as conexões recebem nomes gerados automaticamente para facilitar a distinção entre as diferentes \textit{tags}.
-
-O trecho principal do código responsável pela criação dessa funcionalidade está disponível no \textbf{Anexo \ref{Anexo:frontCodeNodeTwoOne}}.
+A Figura \ref{Fig:NodeConnections} ilustra a conexão de dois nódulos no \textit{canvas}, demonstrando como o usuário pode arrastar e soltar as conexões de forma intuitiva. O usuário também pode ajustar e mover essas conexões entre os nódulos. Cada conexão entre os nódulos possui um valor e uma tolerância associados, que podem ser modificados diretamente com um duplo clique na linha de conexão, permitindo ao usuário ajustar os parâmetros conforme necessário. Além disso, as conexões recebem nomes gerados automaticamente para facilitar a distinção entre as diferentes \textit{tags}. O trecho principal do código responsável pela criação dessa funcionalidade está disponível no \textbf{Anexo \ref{Anexo:frontCodeNodeTwoOne}}.
 
 \begin{figure}[htbp]
     \centering
@@ -230,7 +218,7 @@ A Figura \ref{Fig:SidebarInterface} mostra um exemplo da \textit{sidebar} com de
 % ------------------------- REVISADO
 \subsection{Resultados finais do front-end em sua visualização completa}
 
-O desenvolvimento do front-end do RADARE culminou em uma tela inicial funcional e intuitiva, integrando todas as funcionalidades discutidas anteriormente. A área do \textit{canvas} serve como o núcleo da interface, permitindo que o usuário visualize, conecte e manipule os nódulos para configurar o fluxo de dados industrial de maneira personalizada. É nesse espaço que os fluxos de trabalho são estruturados, com entradas, saídas e pontos de processamento conectados em harmonia para atender às necessidades específicas dos processos industriais.
+O desenvolvimento do \textit{front-end} do RADARE culminou em uma tela inicial funcional e intuitiva, integrando todas as funcionalidades discutidas anteriormente. A área do \textit{canvas} serve como o núcleo da interface, permitindo que o usuário visualize, conecte e manipule os nódulos para configurar o fluxo de dados industrial de maneira personalizada. É nesse espaço que os fluxos de trabalho são estruturados, com entradas, saídas e pontos de processamento conectados em harmonia para atender às necessidades específicas dos processos industriais.
 
 A Figura \ref{Fig:CanvasArea} apresenta o \textit{canvas} com vários nódulos interligados, proporcionando uma visão satisfatória de como os elementos podem ser organizados e ajustados para criar um fluxo de trabalho viável e eficiente. Cada nódulo desempenha uma função distinta dentro do sistema, e as conexões entre eles representam o fluxo de dados que o RADARE processa e reconcilia. 
 
@@ -256,9 +244,7 @@ As interfaces RESTful foram projetadas para garantir uma comunicação eficiente
 
 A rota \texttt{GET /reconciled-data} permite ao usuário recuperar os dados reconciliados armazenados no banco de dados. Quando acionada, esta rota consulta o banco e retorna os valores ajustados, que são exibidos na interface gráfica para visualização e análise.
 
-Esse processo envolve uma consulta ao banco de dados, onde os resultados das reconciliações são armazenados após o processamento. Os dados reconciliados refletem os valores ajustados com base no método dos multiplicadores de Lagrange, aplicados durante a fase de reconciliação.
-
-O código completo para a implementação desta rota pode ser consultado no \textbf{Anexo \ref{Anexo:CodigoFunctionGetReconciledData}}.
+Esse processo envolve uma consulta ao banco de dados, onde os resultados das reconciliações são armazenados após o processamento. Os dados reconciliados refletem os valores ajustados com base no método dos multiplicadores de Lagrange, aplicados durante a fase de reconciliação. O código completo para a implementação desta rota pode ser consultado no \textbf{Anexo \ref{Anexo:CodigoFunctionGetReconciledData}}.
 
 % ------------------------- REVISADO
 \subsubsection{Interface RESTful para Obter Dados Reconciliados: \texttt{GET /reconciled-data}}
@@ -286,9 +272,8 @@ O banco de dados do sistema RADARE, implementado em PostgreSQL, armazena todas a
 
 A tabela de dados de processos industriais (\autoref{tab:processDataTable}) armazena informações fundamentais para o funcionamento do RADARE, incluindo medições de sensores e resultados das reconciliações. Essa estrutura organiza os dados de forma clara, garantindo que cada registro seja identificado de maneira única e associado a operações de reconciliação específicas.
 
-\begin{table}[htbp]
+\begin{table}[htbp!]
     \centering
-    \caption{Descrição das colunas da tabela de dados de processos industriais.}
     \label{tab:processDataTable}
     \begin{tabular}{|l|p{10cm}|}
         \hline
@@ -301,4 +286,5 @@ A tabela de dados de processos industriais (\autoref{tab:processDataTable}) arma
         \textbf{tagcorrection} & Lista das correções aplicadas às variáveis medidas. \\ \hline
         \textbf{tagmatrix} & Matriz de incidência usada no processo de reconciliação. \\ \hline
     \end{tabular}
+    \caption{Descrição das colunas da tabela de dados de processos industriais.}
 \end{table}

@@ -1,7 +1,7 @@
 \chapter{Configuração da Máquina de Desenvolvimento}
 \label{Ap:configuracaoMaquina}
 
-Este apêndice apresenta as especificações de hardware e software da máquina utilizada para o desenvolvimento do sistema RADARE, garantindo que o ambiente fosse adequado para o trabalho de desenvolvimento e testes do \textit{software}.
+Este apêndice apresenta as especificações de \textit{hardware} e \textit{software} da máquina utilizada para o desenvolvimento do sistema RADARE, garantindo que o ambiente fosse adequado para o trabalho de desenvolvimento e testes do \textit{software}.
 
 \section{Especificações de Hardware}
 \begin{itemize}
@@ -17,7 +17,7 @@ Este apêndice apresenta as especificações de hardware e software da máquina 
     \item \textbf{Sistema Operacional}: Windows 11 Pro (64-bit)
     \item \textbf{Editor de Código}: Visual Studio Code (com extensões para TypeScript, Python e controle de versão Git)
     \item \textbf{Versionamento de Código}: Git e GitHub para controle de versão e colaboração
-    \item \textbf{Ambiente de Execução de Python}: Python 3.9 com bibliotecas específicas para o desenvolvimento \textit{back-end}
+    \item \textbf{Ambiente de Execução de Python}: Python 3.12 com bibliotecas específicas para o desenvolvimento \textit{back-end}
     \item \textbf{Navegadores para Testes}: Microsoft Edge, Google Chrome e Mozilla Firefox (versões mais recentes)
 \end{itemize}
 
@@ -74,7 +74,7 @@ export default memo(customNodeOneOne);
 \chapter{Código da lógica do nódulo 1-2}
 \label{Anexo:frontCodeNodeOneTwo}
 
-Este código demonstra a estrutura do nódulo "1-2", que recebe uma única entrada e gera duas saídas. Os \textit{handles} são configurados para permitir a conexão nos pontos específicos do nódulo, permitindo a bifurcação do fluxo de dados.
+Este código demonstra a estrutura do nódulo "1-2", que recebe uma única entrada e gera duas saídas. Os \textit{handles} são configurados para permitir a conexão nos pontos específicos do nódulo.
 
 \begin{minted}[linenos, breaklines, tabsize=2]{typescript}
 import React, { memo } from "react";
@@ -310,6 +310,9 @@ export const reconciliarApi = async (
 \chapter{Código lógica de conexão entre nódulos}
 \label{Anexo:frontCodeNodeTwoOne}
 
+Este código implementa a lógica principal para criar e gerenciar conexões entre nódulos no \textit{canvas}, incluindo a configuração de valores e tolerâncias ajustáveis diretamente pela interface, conforme descrito na seção correspondente.
+
+
 \begin{minted}[linenos,breaklines,fontsize=\small]{typescript}
 // Função para estabelecer conexão entre nódulos no canvas
 function connectNodes(nodeA: Node, nodeB: Node, canvas: Canvas) {
@@ -363,11 +366,12 @@ function generateRandomName(): string {
 }
 \end{minted}
 
-Este código implementa a lógica principal para criar e gerenciar conexões entre nódulos no \textit{canvas}, incluindo a configuração de valores e tolerâncias ajustáveis diretamente pela interface, conforme descrito na seção correspondente.
 
 % ---
 \chapter{Código do serviço get\_reconciled\_data}
 \label{Anexo:CodigoFunctionGetReconciledData}
+
+Esta função \texttt{get\_reconciled\_data} conecta-se ao banco de dados PostgreSQL utilizando variáveis de ambiente para os dados de conexão (\texttt{DB\_HOST}, \texttt{DB\_NAME}, \texttt{DB\_USER}, \texttt{DB\_PASSWORD} e \texttt{DB\_PORT}), consulta as colunas \texttt{tagname} e \texttt{tagreconciled} da tabela \texttt{reconciliations}, e retorna os dados em formato JSON para uso no \textit{front-end}. Em caso de falha, uma mensagem de erro é retornada.
 
 \begin{minted}[fontsize=\small, breaklines, linenos]{python}
 # Função para recuperar dados reconciliados do banco de dados
@@ -401,11 +405,13 @@ def get_reconciled_data():
         return jsonify({"error": "Erro ao conectar ao banco de dados"}), 500
 \end{minted}
 
-Esta função \texttt{get\_reconciled\_data} conecta-se ao banco de dados PostgreSQL utilizando variáveis de ambiente para os dados de conexão (\texttt{DB\_HOST}, \texttt{DB\_NAME}, \texttt{DB\_USER}, \texttt{DB\_PASSWORD} e \texttt{DB\_PORT}), consulta as colunas \texttt{tagname} e \texttt{tagreconciled} da tabela \texttt{reconciliations}, e retorna os dados em formato JSON para uso no \textit{front-end}. Em caso de falha, uma mensagem de erro é retornada.
+
 
 % ---
 \chapter{Código do serviço de reconciliação de dados}
 \label{Anexo:CodigoReconciliacaoDados}
+
+Esta função \texttt{reconcile\_data\_service} processa dados de sensores utilizando uma matriz de incidência, realizando cálculos de reconciliação baseados no método dos multiplicadores de Lagrange. Os dados reconciliados são inseridos no banco de dados PostgreSQL, permitindo a análise posterior dos resultados ajustados.
 
 \begin{minted}[fontsize=\small, breaklines, linenos]{python}
 # Função principal do serviço de reconciliação de dados no sistema RADARE
@@ -511,10 +517,12 @@ def reconcile_data_service(payload):
         abort(500, description="Ocorreu um erro durante a reconciliação: " + str(e))
 \end{minted}
 
-Esta função \texttt{reconcile\_data\_service} processa dados de sensores utilizando uma matriz de incidência, realizando cálculos de reconciliação baseados no método dos multiplicadores de Lagrange. Os dados reconciliados são inseridos no banco de dados PostgreSQL, permitindo a análise posterior dos resultados ajustados.
+
 % ---
 \chapter{Código da funcionalidade UploadCSVLogic}
 \label{Anexo:UploadCSVLogic}
+
+Este código mostra a implementação da funcionalidade de upload de arquivos CSV no RADARE. A função \texttt{handleFileUpload} lida com a seleção do arquivo, gera a matriz de adjacência e os nomes das arestas a partir dos dados dos nódulos e arestas, e chama a API de reconciliação (\texttt{reconciliarApi}) para processar o arquivo carregado.
 
 \begin{minted}[fontsize=\small, breaklines, linenos]{typescript}
 // Função para lidar com o upload de arquivo CSV no RADARE
@@ -539,7 +547,7 @@ const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
 };
 \end{minted}
 
-Este código mostra a implementação da funcionalidade de upload de arquivos CSV no RADARE. A função \texttt{handleFileUpload} lida com a seleção do arquivo, gera a matriz de adjacência e os nomes das arestas a partir dos dados dos nódulos e arestas, e chama a API de reconciliação (\texttt{reconciliarApi}) para processar o arquivo carregado.
+
 % ---
 \chapter{Código do Componente ReconciliationGraph}
 \label{Anexo:ReconciliationGraph}
