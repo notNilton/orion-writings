@@ -1,0 +1,748 @@
+\chapter{Configuração da Máquina de Desenvolvimento}
+\label{Ap:configuracaoMaquina}
+
+Este apêndice apresenta as especificações de \textit{hardware} e \textit{software} da máquina utilizada para o desenvolvimento do sistema RADARE, garantindo que o ambiente fosse adequado para o trabalho de desenvolvimento e testes do \textit{software}.
+
+\section{Especificações de Hardware}
+\begin{itemize}
+    \item \textbf{Processador}: Intel Core i7-10750H (2.6 GHz até 5.0 GHz, 6 núcleos)
+    \item \textbf{Memória RAM}: 16 GB DDR4
+    \item \textbf{Armazenamento}: 512 GB SSD NVMe
+    \item \textbf{Placa Gráfica}: NVIDIA GeForce GTX 1650 Ti (4 GB GDDR6)
+    \item \textbf{Monitor}: Resolução Full HD (1920x1080) em uma tela de 15,6 polegadas
+\end{itemize}
+
+\section{Especificações de Software}
+\begin{itemize}
+    \item \textbf{Sistema Operacional}: Windows 11 Pro (64-bit)
+    \item \textbf{Editor de Código}: Visual Studio Code (com extensões para TypeScript, Python e controle de versão Git)
+    \item \textbf{Versionamento de Código}: Git e GitHub para controle de versão e colaboração
+    \item \textbf{Ambiente de Execução de Python}: Python 3.12 com bibliotecas específicas para o desenvolvimento \textit{back-end}
+    \item \textbf{Navegadores para Testes}: Microsoft Edge, Google Chrome e Mozilla Firefox (versões mais recentes)
+\end{itemize}
+
+\section{Extensões Utilizadas no Visual Studio Code}
+\begin{itemize}
+    \item \textbf{TypeScript}: Extensão para suporte e autocompletar do TypeScript
+    \item \textbf{Python}: Suporte ao desenvolvimento com Python, incluindo linting e debugging
+    \item \textbf{Prettier - Code Formatter}: Ferramenta de formatação automática para o código
+    \item \textbf{ESLint}: Análise de código estática para manter a qualidade do código
+    \item \textbf{GitLens}: Ferramenta para integração avançada com Git
+\end{itemize}
+
+Essas configurações e ferramentas foram essenciais para assegurar um fluxo de trabalho eficiente, com suporte adequado para o desenvolvimento e teste do \textit{software} RADARE.
+
+% ---
+\chapter{Código da lógica do nódulo 1-1}
+\label{Anexo:frontCodeNodeOneOne}
+
+Este anexo apresenta o código completo da implementação do nódulo "Adicionar Nódulo 1-1", que é responsável pela criação de um ponto de transição no \textit{canvas}. O código configura as conexões (\textit{handles}) e estiliza o nódulo.
+
+\begin{minted}[linenos, breaklines, fontsize=\small]{typescript}
+import React, { memo } from "react";
+import { Handle, Position } from "reactflow";
+
+const customNodeOneOne = ({ data }) => {
+  const { label, isConnectable } = data;
+
+  return (
+    <>
+      <Handle
+        type="target"
+        id="a"
+        position={Position.Left}
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      ></Handle>
+
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="b"
+        style={{ background: "#784be8" }}
+        isConnectable={isConnectable}
+      ></Handle>
+      <div>{`${label}`}</div>
+    </>
+  );
+};
+
+export default memo(customNodeOneOne);
+\end{minted}
+
+% ---
+\chapter{Código da lógica do nódulo 1-2}
+\label{Anexo:frontCodeNodeOneTwo}
+
+Este código demonstra a estrutura do nódulo "1-2", que recebe uma única entrada e gera duas saídas. Os \textit{handles} são configurados para permitir a conexão nos pontos específicos do nódulo.
+
+\begin{minted}[linenos, breaklines, tabsize=2]{typescript}
+import React, { memo } from "react";
+import { Handle, Position } from "reactflow";
+
+const customNodeOneTwo = ({ data }) => {
+  const { label, isConnectable } = data;
+
+  return (
+    <>
+      <Handle
+        type="source"
+        id="a"
+        position={Position.Left}
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      ></Handle>
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="b"
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      ></Handle>
+
+      <Handle
+        type="target"
+        position={Position.Top}
+        id="c"
+        style={{ background: "#784be8" }}
+        isConnectable={isConnectable}
+      ></Handle>
+
+      <div>{`${label}`}</div>
+    </>
+  );
+};
+
+export default memo(customNodeOneTwo);
+\end{minted}
+
+% ---
+\chapter{Código da lógica do nódulo 2-1}
+\label{Cap:NodeTwoOneCode}
+
+Este código mostra a implementação do componente "Nódulo 2-1" no \textit{canvas} do sistema RADARE. Ele define dois pontos de entrada e um ponto de saída.
+
+\begin{minted}[linenos, breaklines, fontsize=\small]{typescript}
+import React, { memo } from "react";
+import { Handle, Position } from "reactflow";
+
+const customNodeTwoOne = ({ data }) => {
+  const { label, isConnectable } = data;
+
+  return (
+    <>
+      <Handle
+        type="target"
+        id="a"
+        position={Position.Left}
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      ></Handle>
+
+      <Handle
+        type="target"
+        position={Position.Right}
+        id="b"
+        style={{ background: "black" }}
+        isConnectable={isConnectable}
+      ></Handle>
+
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        id="c"
+        style={{ background: "#784be8" }}
+        isConnectable={isConnectable}
+      ></Handle>
+
+      <div>{`${label}`}</div>
+    </>
+  );
+};
+
+export default memo(customNodeTwoOne);
+\end{minted}
+
+% ---
+\chapter{Código da reconciliação de dados no \textit{front-end}}
+\label{Cap:ReconcileDataCode}
+
+Este anexo apresenta o código completo da função de reconciliação de dados no \textit{front-end}. Ele ilustra como os dados são extraídos dos nós conectados, enviados ao \textit{back-end} para processamento, e como os valores reconciliados são atualizados e exibidos na interface do usuário.
+
+
+\begin{minted}[fontsize=\small, breaklines=true, linenos]{typescript}
+// ReconciliationUtils.js
+export const createAdjacencyMatrix = (nodes: any[], edges: any[]) => {
+  const cnOneTwoNodes = nodes.filter((node) => node.type === "cnOneTwo");
+  const incidencematrix = Array.from({ length: cnOneTwoNodes.length }, () =>
+    Array(edges.length).fill(0)
+  );
+
+  edges.forEach((edge, edgeIndex) => {
+    const sourceIndex = cnOneTwoNodes.findIndex(
+      (node) => node.id === edge.source
+    );
+    const targetIndex = cnOneTwoNodes.findIndex(
+      (node) => node.id === edge.target
+    );
+
+    if (sourceIndex !== -1) incidencematrix[sourceIndex][edgeIndex] = -1;
+    if (targetIndex !== -1) incidencematrix[targetIndex][edgeIndex] = 1;
+  });
+
+  return incidencematrix;
+};
+
+export const calcularReconciliacao = (
+  nodes: any[],
+  edges: any[],
+  reconciliarApi: {
+    (
+      incidenceMatrix: any,
+      values: any,
+      tolerances: any,
+      names: any[],
+      atualizarProgresso: any
+    ): Promise<void>;
+    (
+      arg0: any[][],
+      arg1: any,
+      arg2: any,
+      arg3: any,
+      arg4: any[]
+    ): void;
+  },
+  atualizarProgresso: { (message: string): void; (arg0: string): void },
+  edgeNames: any[]
+) => {
+  const value = edges.map((edge) => edge.value); // Captura os valores
+  const tolerance = edges.map((edge) => edge.tolerance); // Captura as tolerâncias
+
+  const incidencematrix = createAdjacencyMatrix(nodes, edges); // Gera a matriz de adjacência
+
+  // Exibe os valores capturados no console
+  // console.log("Valores de Medida:", value);
+  // console.log("Valores de Tolerância:", tolerance);
+  // console.log("Nomes das Arestas:", edgeNames);
+  // console.log("Matriz de Adjacência:", incidencematrix);
+
+  // Se necessário, você ainda pode chamar a API de reconciliação aqui
+  atualizarProgresso("Chamando API de reconciliação...");
+  reconciliarApi(incidencematrix, value, tolerance, edgeNames, atualizarProgresso);
+};
+
+export const reconciliarApi = async (
+  incidence_matrix: any,
+  values: any,
+  tolerances: any,
+  names: any[],
+  atualizarProgresso: (arg0: string) => void,
+  jsonFile?: File // Parâmetro opcional para o arquivo JSON
+) => {
+  try {
+    atualizarProgresso("Enviando dados para o servidor...");
+
+    let unreconciledata;
+
+    // Se um arquivo JSON foi fornecido, lê o conteúdo
+    if (jsonFile) {
+      const fileContent = await jsonFile.text();
+      const jsonData = JSON.parse(fileContent);
+
+      // Substitui os valores e tolerâncias pelos dados do arquivo JSON
+      unreconciledata = jsonData.unreconciledata || jsonData;
+    } else {
+      // Se não, usa os valores e tolerâncias fornecidos
+      unreconciledata = [
+        {
+          values, // Valores não reconciliados
+          tolerances, // Tolerâncias
+        },
+      ];
+    }
+
+    // Criação do timestamp
+    const timestamp = new Date().toISOString();
+
+    // Criação do ID único
+    const id = `reconciliation_${Date.now()}`;
+
+    // Criação do pacote de dados
+    const pacote = {
+      data: {
+        id,
+        description: "Reconciliation for Q3 financial data across departments",
+        user: "John Doe",
+        timestamp,
+        names, // Lista de nomes
+        incidence_matrix, // Matriz de incidência
+        unreconciledata, // Dados carregados do arquivo JSON ou gerados
+      },
+    };
+
+    console.log("Pacote", pacote );
+
+    // Envio do pacote para o servidor
+    const response = await fetch("http://localhost:5000/reconcile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(pacote),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Resposta do Back-end:", data);
+      atualizarProgresso("Reconciliação bem-sucedida.");
+    } else {
+      console.error("Falha na reconciliação dos dados");
+      atualizarProgresso("Falha na reconciliação.");
+    }
+  } catch (error) {
+    console.error("Erro ao reconciliar dados:", error);
+    atualizarProgresso("Erro durante a reconciliação.");
+  }
+};
+\end{minted}
+
+% ---
+\chapter{Código lógica de conexão entre nódulos}
+\label{Anexo:frontCodeNodeTwoOne}
+
+Este código implementa a lógica principal para criar e gerenciar conexões entre nódulos no \textit{canvas}, incluindo a configuração de valores e tolerâncias ajustáveis diretamente pela interface, conforme descrito na seção correspondente.
+
+
+\begin{minted}[linenos,breaklines,fontsize=\small]{typescript}
+// Função para estabelecer conexão entre nódulos no canvas
+function connectNodes(nodeA: Node, nodeB: Node, canvas: Canvas) {
+    // Verifica se os nódulos são compatíveis para conexão
+    if (isValidConnection(nodeA, nodeB)) {
+        // Cria a linha de conexão entre os nódulos
+        const connection = createConnection(nodeA, nodeB);
+
+        // Define propriedades da conexão, como valor e tolerância padrão
+        connection.value = getDefaultValue(nodeA, nodeB);
+        connection.tolerance = getDefaultTolerance(nodeA, nodeB);
+
+        // Adiciona a conexão ao canvas
+        canvas.addConnection(connection);
+
+        // Atribui um nome aleatório para fácil identificação
+        connection.name = generateRandomName();
+
+        // Configura a interação de duplo clique para ajustar valor e tolerância
+        connection.onDoubleClick(() => {
+            const newValue = prompt("Digite o novo valor para a conexão:");
+            const newTolerance = prompt("Digite a nova tolerância:");
+            if (newValue !== null) connection.value = parseFloat(newValue);
+            if (newTolerance !== null) connection.tolerance = parseFloat(newTolerance);
+        });
+    } else {
+        console.error("Conexão inválida entre nódulos.");
+    }
+}
+
+// Função para validar se a conexão entre os nódulos é permitida
+function isValidConnection(nodeA: Node, nodeB: Node): boolean {
+    // Exemplo de validação básica entre tipos de nódulos
+    return nodeA.outputType === nodeB.inputType;
+}
+
+// Função para criar um objeto de conexão
+function createConnection(nodeA: Node, nodeB: Node): Connection {
+    return {
+        source: nodeA.id,
+        target: nodeB.id,
+        value: 0,
+        tolerance: 0,
+        name: ""
+    };
+}
+
+// Função para gerar um nome aleatório para a conexão
+function generateRandomName(): string {
+    return `Conexao-${Math.random().toString(36).substr(2, 9)}`;
+}
+\end{minted}
+
+% ---
+\chapter{Código da rota POST\_reconcile\_data}
+\label{Anexo:CodigoFunctionPostReconcileData}
+
+A função \texttt{reconcile} implementa a rota \texttt{POST /reconcile} e permite ao sistema realizar o processo de reconciliação de dados com base nas informações enviadas pelo cliente. Utilizando o pacote \texttt{psycopg2} para conectar-se ao banco de dados PostgreSQL, essa função recebe os dados em formato JSON, verifica a presença da chave obrigatória \texttt{data}, e, caso os dados estejam no formato correto, passa o conteúdo para o serviço de reconciliação.
+
+O serviço de reconciliação (\texttt{reconcile\_data\_service}) realiza os ajustes necessários nos dados de entrada utilizando o método de minimização com multiplicadores de Lagrange e retorna o status do processamento. Finalmente, a resposta é enviada ao cliente em formato JSON, contendo o status do processo, com o código HTTP 201 indicando o sucesso da operação. Em caso de erro, uma mensagem de falha é retornada.
+
+\begin{minted}[fontsize=\small, breaklines, linenos]{python}
+# Função para processar dados e realizar reconciliação
+
+import psycopg2
+@bp.route('/reconcile', methods=['POST'])
+def reconcile():
+    data = request.get_json()
+
+    # Verifique se o objeto 'data' está presente na requisição
+    if not data or 'data' not in data:
+        abort(400, description="Invalid data format: missing 'data' key")
+
+    payload = data['data']
+    # Chame o serviço de reconciliação com os parâmetros corretos
+    result = reconcile_data_service(payload)
+
+    # Retorne apenas a resposta do serviço
+    return jsonify({"status": result}), 201
+\end{minted}
+
+% ---
+\chapter{Código do serviço GET\_reconciled\_data}
+\label{Anexo:CodigoFunctionGetReconciledData}
+
+Esta função \texttt{get\_reconciled\_data} conecta-se ao banco de dados PostgreSQL utilizando variáveis de ambiente para os dados de conexão (\texttt{DB\_HOST}, \texttt{DB\_NAME}, \texttt{DB\_USER}, \texttt{DB\_PASSWORD} e \texttt{DB\_PORT}), consulta as colunas \texttt{tagname} e \texttt{tagreconciled} da tabela \texttt{reconciliations}, e retorna os dados em formato JSON para uso no \textit{front-end}. Em caso de falha, uma mensagem de erro é retornada.
+
+\begin{minted}[fontsize=\small, breaklines, linenos]{python}
+# Função para recuperar dados reconciliados do banco de dados
+
+import psycopg2
+from flask import jsonify
+
+def get_reconciled_data():
+    try:
+        # Conexão com o banco de dados PostgreSQL
+        conn = psycopg2.connect(host="DB_HOST", 
+                                dbname="DB_NAME", 
+                                user="DB_USER", 
+                                password="DB_PASSWORD",
+                                port="DB_PORT")
+        cur = conn.cursor()
+
+        # Seleção das colunas tagname e tagreconciled da tabela reconciliations
+        cur.execute("SELECT tagname, tagreconciled FROM reconciliations")
+        rows = cur.fetchall()
+
+        # Fechamento da conexão
+        cur.close()
+        conn.close()
+
+        # Retornando os dados no formato JSON
+        return jsonify(rows)
+    
+    except Exception as e:
+        print("Erro ao conectar ao banco de dados:", e)
+        return jsonify({"error": "Erro ao conectar ao banco de dados"}), 500
+\end{minted}
+
+
+
+% ---
+\chapter{Código do serviço de reconciliação de dados}
+\label{Anexo:CodigoReconciliacaoDados}
+
+Esta função \texttt{reconcile\_data\_service} processa dados de sensores utilizando uma matriz de incidência, realizando cálculos de reconciliação baseados no método dos multiplicadores de Lagrange. Os dados reconciliados são inseridos no banco de dados PostgreSQL, permitindo a análise posterior dos resultados ajustados.
+
+\begin{minted}[fontsize=\small, breaklines, linenos]{python}
+# Função principal do serviço de reconciliação de dados no sistema RADARE
+
+import numpy as np
+import psycopg2
+from flask import abort
+import logging
+
+logger = logging.getLogger(__name__)
+
+def reconcile_data_service(payload):
+    """
+    Reconciliador de dados baseado em matriz de incidência, medições e tolerâncias.
+
+    Args:
+        payload (dict): Dados da requisição POST contendo 'incidence_matrix', 'names', e 'unreconciledata'.
+
+    Returns:
+        str: "ok" se o processo for bem-sucedido.
+    """
+    try:
+        # Extração de parâmetros do payload
+        incidence_matrix = np.array(payload['incidence_matrix'])
+        names = payload['names']
+        unreconciledata = payload['unreconciledata']
+
+        # Conexão com o banco de dados PostgreSQL
+        conn = psycopg2.connect(host="DB_HOST", 
+                                dbname="DB_NAME", 
+                                user="DB_USER", 
+                                password="DB_PASSWORD",
+                                port="DB_PORT")
+        cur = conn.cursor()
+
+        num_nodes, num_measurements = incidence_matrix.shape
+
+        # Processamento de cada conjunto de dados em unreconciledata
+        for data_set in unreconciledata:
+            measurements = np.array(data_set['values'])
+            tolerances = np.array(data_set['tolerances'])
+
+            if len(measurements) != num_measurements:
+                raise ValueError("Mismatch in number of measurements")
+            if len(tolerances) != num_measurements:
+                raise ValueError("Mismatch in number of tolerances")
+
+            absolute_tolerances = measurements * tolerances
+
+            # Cálculo do vetor de pesos
+            weight_vector = 2 * np.concatenate((measurements / (absolute_tolerances ** 2), np.zeros(num_nodes)))
+
+            # Cálculo da matriz diagonal
+            diag_matrix = 2 * np.linalg.inv(np.diag(absolute_tolerances) ** 2)
+
+            # Cálculo da matriz de pesos
+            weight_matrix = np.block([[diag_matrix, incidence_matrix.T], [incidence_matrix, np.zeros((num_nodes, num_nodes))]])
+
+            # Verificação da singularidade da matriz de pesos
+            if np.linalg.cond(weight_matrix) < 1 / np.finfo(weight_matrix.dtype).eps:
+                result = np.linalg.inv(weight_matrix) @ weight_vector
+            else:
+                raise ValueError("Weight matrix is singular or nearly singular")
+
+            reconciled_measurements = result[:num_measurements]
+            correction = measurements - reconciled_measurements
+
+            # Arredondamento dos valores
+            reconciled_values = np.round(reconciled_measurements, 2)
+            correction = np.round(correction, 2)
+
+            logger.info("Reconciliação bem-sucedida para um conjunto de dados.")
+            logger.debug(f"Valores reconciliados: {reconciled_values.tolist()}")
+            logger.debug(f"Correções: {correction.tolist()}")
+
+            # Inserção dos dados reconciliados no banco de dados
+            cur.execute("""
+                INSERT INTO reconciliations ("user", "time", tagname, tagreconciled, tagcorrection, tagmatrix)
+                VALUES (%s, %s, %s, %s, %s, %s)
+            """, (
+                payload.get('user', 'DefaultUser'),
+                payload['timestamp'],
+                names,
+                reconciled_values.tolist(),
+                correction.tolist(),
+                incidence_matrix.tolist()
+            ))
+
+        # Commit da transação
+        conn.commit()
+
+        # Fechamento da conexão com o banco de dados
+        cur.close()
+        conn.close()
+
+        return "ok"
+
+    except ValueError as e:
+        logger.error(f"ValueError durante a reconciliação: {e}")
+        abort(400, description="Números inválidos fornecidos: " + str(e))
+    except Exception as e:
+        logger.error(f"Erro inesperado durante a reconciliação: {e}")
+        abort(500, description="Ocorreu um erro durante a reconciliação: " + str(e))
+\end{minted}
+
+
+% ---
+\chapter{Código da funcionalidade UploadCSVLogic}
+\label{Anexo:UploadCSVLogic}
+
+Este código mostra a implementação da funcionalidade de upload de arquivos CSV no RADARE. A função \texttt{handleFileUpload} lida com a seleção do arquivo, gera a matriz de adjacência e os nomes das arestas a partir dos dados dos nódulos e arestas, e chama a API de reconciliação (\texttt{reconciliarApi}) para processar o arquivo carregado.
+
+\begin{minted}[fontsize=\small, breaklines, linenos]{typescript}
+// Função para lidar com o upload de arquivo CSV no RADARE
+
+const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+        // Gera a matriz de adjacência e os nomes das arestas, necessários para a reconciliação
+        const edgeNames = edges.map((edge) => edge.nome);
+        const incidenceMatrix = createAdjacencyMatrix(nodes, edges); // Cria a matriz de incidência
+  
+        // Agora usando a função reconciliarApi para processar o arquivo JSON
+        reconciliarApi(
+            incidenceMatrix,      // Passa a matriz de incidência gerada
+            [],                   // Placeholder para values, que será sobrescrito pelo JSON
+            [],                   // Placeholder para tolerances, que será sobrescrito pelo JSON
+            edgeNames,            // Passa os nomes das arestas
+            (message) => console.log(message),
+            file                  // Passa o arquivo JSON
+        );
+    }
+};
+\end{minted}
+
+
+% ---
+\chapter{Código do Componente ReconciliationGraph}
+\label{Anexo:ReconciliationGraph}
+
+
+Este código define o componente \texttt{GraphComponent} em \texttt{React}, que utiliza a biblioteca \texttt{primereact/chart} para exibir um gráfico de linha baseado nos dados obtidos pelo \texttt{GraphHook}. O componente verifica a existência de dados e exibe uma mensagem de erro caso haja problemas ou se não houver dados disponíveis para exibição.
+
+\begin{minted}[fontsize=\small, breaklines, linenos]{typescript}
+// src/components/GraphComponent.tsx
+
+import React from 'react';
+import { Chart } from 'primereact/chart';
+import useGraphData from '../../hooks/GraphHook';
+import './GraphComponent.scss';
+
+const GraphComponent: React.FC = () => {
+  const { lineChartData, error } = useGraphData();
+
+  const lineChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
+
+  return (
+    <div className="graph-component">
+      <div className="graph-bar-title">Análise Resumida</div>
+      <div className="graph-bar-content">
+        {error && <div>{error}</div>}
+        {lineChartData ? (
+          <Chart type="line" data={lineChartData} options={lineChartOptions} />
+        ) : (
+          <div>Nenhum dado disponível para exibição no gráfico</div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default React.memo(GraphComponent);
+\end{minted}
+% ---
+\chapter{Código do Componente SidebarComponent}
+\label{Anexo:CodigoSidebar}
+
+Este código define o componente \texttt{SidebarComponent} em \texttt{React} e uma série de subcomponentes. Ele verifica a existência de dados, módulos, conexões e banco de dados, exibindo-os quando disponíveis ou mostrando mensagens informativas caso estejam indisponíveis.
+
+\begin{minted}[fontsize=\small, breaklines, linenos]{typescript}
+import React, { useState, useEffect } from "react";
+import { Divider } from "primereact/divider"; 
+import MatrixDisplay from "./MatrixDisplay";
+import "./SidebarComponent.scss";
+import ExistingTags from "./TagDisplayComp";
+import ReconciledDataComp from "./ReconciledDataComp";  // Importa o novo componente
+import { createAdjacencyMatrix } from "../Canva/utils/Reconciliacao";
+
+interface SidebarComponentProps {
+  nodes: any[];
+  edges: any[];
+  edgeNames: string[]; 
+}
+
+const SidebarComponent: React.FC<SidebarComponentProps> = ({
+  nodes,
+  edges,
+  edgeNames,
+}) => {
+  const [visibleSidebarContent, setVisibleSidebarContent] = useState<{
+    [key: string]: boolean;
+  }>({
+    "tags-existentes": true,
+    "tags-selecionadas": true,
+    matriz: true,
+    reconciled: true,
+  });
+
+  const [matrixData, setMatrixData] = useState<number[][]>([]);
+
+  useEffect(() => {
+    const newMatrix = createAdjacencyMatrix(nodes, edges);
+    setMatrixData(newMatrix);
+  }, [nodes, edges]);
+
+  const toggleSidebarContent = (key: string) => {
+    setVisibleSidebarContent((prevState) => ({
+      ...prevState,
+      [key]: !prevState[key],
+    }));
+  };
+
+  return (
+    <>
+      {/* Tags Existentes */}
+      <div
+        className="sidebar-title"
+        onClick={() => toggleSidebarContent("tags-existentes")}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === "Enter" && toggleSidebarContent("tags-existentes")}
+      >
+        Tags Existentes
+      </div>
+      <div
+        className="sidebar-content"
+        style={{
+          display: visibleSidebarContent["tags-existentes"]
+            ? "block"
+            : "none",
+        }}
+      >
+        <ExistingTags edgeNames={edgeNames} />
+      </div>
+
+      <Divider />
+
+      {/* Matriz de Incidência */}
+      <div
+        className="sidebar-title matrix"
+        onClick={() => toggleSidebarContent("matriz")}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === "Enter" && toggleSidebarContent("matriz")}
+      >
+        Matriz de Incidência
+      </div>
+      <div
+        className={`sidebar-content matrix${
+          visibleSidebarContent["matriz"] ? "matrix-visible" : ""
+        }`}
+        style={{
+          display: visibleSidebarContent["matriz"] ? "block" : "none",
+        }}
+      >
+        <div className="matrix-container">
+          <MatrixDisplay matrix={matrixData} />
+        </div>
+      </div>
+
+      <Divider />
+
+      {/* Dados Reconciliados */}
+      <div
+        className="sidebar-title reconciled"
+        onClick={() => toggleSidebarContent("reconciled")}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === "Enter" && toggleSidebarContent("reconciled")}
+      >
+        Dados Reconciliados
+      </div>
+      <div
+        className={`sidebar-content reconciled${
+          visibleSidebarContent["reconciled"] ? "matrix-visible" : ""
+        }`}
+        style={{
+          display: visibleSidebarContent["reconciled"] ? "block" : "none",
+        }}
+      >
+        <ReconciledDataComp /> {/* Usa o componente ReconciledDataComp */}
+      </div>
+    </>
+  );
+};
+
+export default SidebarComponent;
+\end{minted}
+% ---

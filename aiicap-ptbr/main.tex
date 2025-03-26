@@ -1,0 +1,228 @@
+%%
+%% Arquivo principal para:
+%% - trabalhos de conclusão de curso
+%%
+%% NOTA: ESSE MODELO DE TCC FOI BASEADO NO MODELO DE TESE E DISSERTAÇÃO DO PPGEEC,
+%%       DA UFRN, COM AUTORIZAÇÃO DO SEU AUTOR, O PROFESSOR ADELARDO MEDEIROS
+%%
+%% Criado por Adelardo Medeiros, professor do Curso de Engenharia de Computação da UFRN, dezembro de 2005. 
+%% Revisado pelos alunos de Metodologia da Pesquisa Científica de 2016.1, do curso de Engenharia de Computação da UFRN.
+%% Adaptado por Diogo Henrique Duarte Bezerra, professor do Curso de Engenharia de Computação da UFMT, dezembro de 2020.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DEFINIÇÕES GLOBAIS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Esta primeira linha define a classe do documento e suas opções básicas
+% PARA A VERSÃO FINAL:
+% - a4paper: tamanho do papel
+% - 12pt: tamanho da fonte
+% - openright: capítulos só iniciam em página direita (verso)
+% - twoside: documento para impressão frente e verso
+% PARA QUALIFICAÇÃO E VERSÃO INICIAL:
+% - openany: capítulos iniciam em qualquer página
+% - oneside: documento impresso apenas em um lado
+\documentclass[a4paper,12pt,openany,oneside]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PACOTES OBRIGATÓRIOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Pacote para codificação de caracteres (permite acentos diretamente)
+\usepackage[utf8]{inputenc}
+% Pacote para melhor renderização de fontes
+\usepackage{ae}
+% Define fonte padrão como sans-serif
+\renewcommand{\familydefault}{\sfdefault}
+% Melhora a qualidade das fontes no PDF
+\usepackage{pslatex}
+% Configurações de idioma e hifenização
+\usepackage[portuges, brazil]{babel}
+% Indenta o primeiro parágrafo de cada seção
+\usepackage{indentfirst}
+% Para inclusão de figuras
+\usepackage{graphicx}
+% Para criação de lista de símbolos/glossário
+\usepackage[portuguese,noprefix]{nomencl}
+% Controle de espaçamento entre linhas
+\usepackage{setspace}
+% Pacote matemático avançado
+\usepackage{amsmath}
+% Ambiente para comentários no código
+\usepackage{verbatim}
+% Tabelas com colunas de largura flexível
+\usepackage{tabularx}
+% Executar comandos após a página atual
+\usepackage{afterpage}
+% Formatação de URLs
+\usepackage{url}
+% Reduz espaçamento em listas
+\usepackage{lib/noitemsep}
+% Estilo de citações bibliográficas
+\usepackage[abbr]{lib/harvard}
+% Tabelas longas (multipágina)
+\usepackage{longtable}
+% Destaque de código fonte
+\usepackage{minted}
+% Suporte a cores
+\usepackage{color}
+% Células que abrangem múltiplas linhas em tabelas
+\usepackage{multirow}
+% Texto em múltiplas colunas
+\usepackage{multicol}
+% Listagens de código
+\usepackage{listings}
+% Pseudocódigos e algoritmos
+\usepackage[portuguese, ruled, linesnumbered]{algorithm2e}
+% Estilo personalizado para capítulos
+\usepackage{lib/capitulos}
+% Links e referências no PDF
+\usepackage[breaklinks]{hyperref}
+% Correção de links para figuras/tabelas
+\usepackage[all]{hypcap}
+% Cores em tabelas
+\usepackage[table]{xcolor}
+% Formatação de apêndices
+\usepackage[titletoc]{appendix}
+% Inclusão de PDFs externos
+\usepackage{pdfpages}
+% Tabelas com notas
+\usepackage{threeparttable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CONFIGURAÇÕES PERSONALIZADAS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Carrega comandos personalizados definidos em um arquivo separado
+\input{lib/comandos.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DEFINIÇÃO DAS MARGENS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Configuração de margens horizontais:
+% - Margem esquerda para páginas ímpares: 3.5cm
+% - Margem esquerda para páginas pares: 2.5cm
+% - Largura do texto: 15cm
+\setlength{\oddsidemargin}{2.5cm}
+\setlength{\evensidemargin}{2.5cm}
+\setlength{\textwidth}{16cm}
+% Ajuste para compensar margem padrão do LaTeX (1 polegada)
+\addtolength{\oddsidemargin}{-1in}
+\addtolength{\evensidemargin}{-1in}
+
+% Configuração de margens verticais:
+% - Margem superior: 2.0cm
+% - Altura do cabeçalho: 1.0cm
+% - Espaço entre cabeçalho e texto: 1.0cm
+\setlength{\topmargin}{2.0cm}
+\setlength{\headheight}{1.0cm}
+\setlength{\headsep}{1.0cm}
+% Altura do texto principal
+\setlength{\textheight}{22.7cm}
+% Espaço entre texto e rodapé
+\setlength{\footskip}{1.0cm}
+% Ajuste para compensar margem padrão do LaTeX (1 polegada)
+\addtolength{\topmargin}{-1in}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CONFIGURAÇÕES ADICIONAIS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Define o estilo bibliográfico
+\bibliographystyle{bibliografia/ppgee}
+
+% Espaçamento entre linhas inicial
+\singlespacing
+
+% Habilita a criação de glossário/lista de símbolos
+\makenomenclature
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% INÍCIO DO DOCUMENTO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% Páginas iniciais sem numeração
+\pagestyle{empty}
+
+% Capa do trabalho
+\include{pre-textuais/rosto}
+
+% Ficha catalográfica (apenas na versão final)
+% \include{pre-textuais/catalograficos}
+
+% Páginas preliminares (assinaturas, dedicatória, agradecimentos)
+% \include{pre-textuais/preambulo}
+
+% Define espaçamento 1.5 para o texto principal
+\doublespacing
+
+% % Inclui resumo e abstract | O resumo já está incluído na página inicial
+% \include{pre-textuais/resumos}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ELEMENTOS PRÉ-TEXTUAIS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Inicia numeração romana para páginas pré-textuais
+\frontmatter
+
+% % Sumário
+% \phantomsection
+% \addcontentsline{toc}{chapter}{Sumário}
+% \tableofcontents
+
+% % Lista de figuras
+% \cleardoublepage
+% \phantomsection
+% \addcontentsline{toc}{chapter}{Lista de Figuras}
+% \listoffigures
+
+% % Lista de tabelas
+% \cleardoublepage
+% \phantomsection
+% \addcontentsline{toc}{chapter}{Lista de Tabelas}
+% \listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TEXTO PRINCIPAL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Inicia numeração arábica e estilo com cabeçalhos
+\mainmatter
+\pagestyle{headings}
+
+% Capítulos do trabalho:
+\include{textuais/01-introducao}       % Capítulo 1: Introdução
+% \include{textuais/02-refteorico}       % Capítulo 2: Referencial Teórico
+% \include{textuais/03-metodologia}      % Capítulo 3: Metodologia
+% \include{textuais/04-resultados}       % Capítulo 4: Resultados
+% \include{textuais/05-conclusao}        % Capítulo 5: Conclusão
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% REFERÊNCIAS BIBLIOGRÁFICAS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \phantomsection
+% \addcontentsline{toc}{chapter}{Referências bibliográficas}
+% \bibliography{bibliografia/bibliografia}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% APÊNDICES E ANEXOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% % Apêndices (material elaborado pelo autor)
+% \begin{appendices}
+% \appendix
+% \include{textuais/apendice/Apendices}
+% \end{appendices}
+
+% % Anexos (material não elaborado pelo autor)
+% \renewcommand{\appendixname}{Anexo}
+% \begin{appendices}
+% \appendix
+% \include{textuais/anexo/Anexos}
+% \end{appendices}
+
+\end{document}
